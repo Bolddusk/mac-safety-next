@@ -1,0 +1,203 @@
+"use client";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/component/ui/form";
+import { Input } from "@/component/ui/input";
+import { Textarea } from "@/component/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/component/ui/select";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { useToast } from "@/component/hooks/use-toast";
+import { useMutation } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
+import { Button } from "../ui/button";
+
+const contactFormSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.string().email("Invalid email address"),
+  company: z.string().min(1, "Company name is required"),
+  industry: z.string().min(1, "Please select an industry"),
+  message: z.string().min(10, "Message must be at least 10 characters"),
+  serviceName: z.string().min(1, "ServiceName is required"),
+});
+
+type ContactFormValues = z.infer<typeof contactFormSchema>;
+
+const industries = [
+  "Chemical Processing",
+  "Defense & Aerospace",
+  "Maritime",
+  "Mining",
+  "Power Generation",
+  "Renewable Energy",
+  "Telecommunications",
+  "Warehousing",
+  "Construction",
+  "Healthcare",
+  "Manufacturing",
+  "Oil & Gas",
+  "Rail",
+  "Steel",
+  "Water Treatment",
+];
+
+const ContactForm = () => {
+  const { toast } = useToast();
+  const form = useForm<z.infer<typeof contactFormSchema>>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      company: "",
+      industry: "",
+      message: "",
+      serviceName: "Contact Us",
+    },
+  });
+
+  const onClose = () =>
+    document.querySelector('[role="dialog"]')?.closest("dialog")?.close();
+
+  const mutation = useMutation<
+    unknown, // Response type (unknown if not needed)
+    Error, // Error type
+    ContactFormValues // The expected type of 'data'
+  >({
+    mutationFn: async (data: ContactFormValues) => {
+      return await apiRequest("POST", "/api/messsage", data);
+    },
+    onSuccess: () => {
+      toast({
+        title: "Message Sent",
+        description: "We'll get back to you shortly.",
+        duration: 1000,
+      });
+      form.reset();
+      onClose();
+    },
+    onError: () => {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+        duration: 1000,
+      });
+    },
+  });
+
+  function onSubmit(values: z.infer<typeof contactFormSchema>) {
+    mutation.mutate(values);
+  }
+
+  return (
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Name</FormLabel>
+              <FormControl>
+                <Input placeholder="John Doe" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input placeholder="john@example.com" type="email" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="company"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Company</FormLabel>
+              <FormControl>
+                <Input placeholder="Your Company" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="industry"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Industry</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select an industry" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {industries.map((industry) => (
+                    <SelectItem key={industry} value={industry}>
+                      {industry}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="message"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Message</FormLabel>
+              <FormControl>
+                <Textarea
+                  placeholder="Tell us about your needs..."
+                  className="min-h-[100px]"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <div className="flex justify-end gap-4">
+          <Button type="button" variant="outline" onClick={onClose}>
+            Cancel
+          </Button>
+          <Button
+            type="submit"
+            className="w-full bg-[#eba200] text-black hover:bg-[#eba200]/90 hover:shadow-[0_0_15px_rgba(235,162,0,0.5)] transition-all"
+          >
+            Submit
+          </Button>
+        </div>
+      </form>
+    </Form>
+  );
+};
+
+export default ContactForm;
