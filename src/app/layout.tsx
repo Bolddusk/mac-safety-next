@@ -15,6 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Landing page",
   description: "test dscription",
+  icons: "/uploads/FaviconMAC.png",
 };
 
 export default function RootLayout({
