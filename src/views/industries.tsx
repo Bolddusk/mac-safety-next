@@ -490,7 +490,7 @@ export default function IndustriesPage() {
                         <div className="w-full">
                           <div className="relative h-48 wfull rounded-t-lg overflow-hidden">
                             <img
-                              src={`/uploads/${industryImages[industry.id]}`}
+                              src={`/uploads/${industryImages[industry.id as keyof typeof industryImages]}`}
                               alt={`${industry.title} industry`}
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                             />
