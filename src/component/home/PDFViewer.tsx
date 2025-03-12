@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
-import { HUDOverlay } from "@/components/ui/hud-overlay";
+import { HUDOverlay } from "@/component/ui/hud-overlay";
 import { ChevronLeft, ChevronRight, Upload } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/component/ui/button";
 import 'react-pdf/dist/esm/Page/TextLayer.css';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
 
