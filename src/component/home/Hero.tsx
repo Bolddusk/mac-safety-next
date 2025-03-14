@@ -36,10 +36,7 @@ export default function Hero() {
             playsInline
             className="w-full h-full object-cover"
           >
-            <source
-              src="/uploads/Smaller xOS NIXN notifications.mp4"
-              type="video/mp4"
-            />
+            <source src="/uploads/hero-page-video.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>
@@ -356,8 +353,8 @@ export default function Hero() {
                               cabinet. Our platforms—NIXN and NIXNos—are built
                               to drive action by merging real-time data,
                               predictive analytics, and AI-powered
-                              decision-making. This isn&apos;t software; this is an
-                              operating system for risk.
+                              decision-making. This isn&apos;t software; this is
+                              an operating system for risk.
                             </p>
                           </div>
                         </div>
