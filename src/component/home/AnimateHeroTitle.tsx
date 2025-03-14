@@ -76,7 +76,7 @@ const AnimateHeroTitle = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.6 }}
-          className="text-2xl sm:text-3xl md:text-4xl text-white/90 mt-4 drop-shadow-[0_2px_15px_rgba(0,0,0,0.5)]"
+          className="text-2xl sm:text-3xl md:text-4xl text-white/90 mt-4"
         >
           Working as One
         </motion.div>
