@@ -32,7 +32,7 @@ const AnimateHeroTitle = () => {
       className="max-w-3xl mx-auto"
     >
       <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold space-y-8 md:space-y-12">
-        <div className="text-white drop-shadow-[0_2px_15px_rgba(0,0,0,0.5)]">
+        <div className="text-white">
           Intelligence at Every Level
         </div>
         <div className="h-32 flex items-center justify-start overflow-hidden py-4">
