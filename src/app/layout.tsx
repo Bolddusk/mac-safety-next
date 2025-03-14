@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Head from "next/head";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -103,7 +102,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <Head>
+      <head>
         <script
           key="schema_1"
           type="application/ld+json"
@@ -118,7 +117,7 @@ export default function RootLayout({
             __html: JSON.stringify(organizationSchema),
           }}
         />
-      </Head>
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
