@@ -26,6 +26,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "../ui/carousel";
+import Image from "next/image";
 
 export default function ProductShowcase() {
   const industries = [
@@ -186,10 +187,15 @@ export default function ProductShowcase() {
               >
                 <div>
                   <MilitaryCard title={industry.title} icon={industry.icon}>
-                    <img
+                    import Image from 'next/image';
+                    <Image
                       src={industry.image}
                       alt={`${industry.title} industry`}
+                      width={300} // Adjust width as needed
+                      height={160} // Adjust height as needed
                       className="w-full h-40 object-cover rounded-md mb-4"
+                      style={{ objectFit: "cover" }}
+                      priority // Optional: Use for above-the-fold images
                     />
                     <p className="text-gray-300">{industry.description}</p>
                   </MilitaryCard>

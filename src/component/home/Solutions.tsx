@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { HUDOverlay } from "../ui/hud-overlay";
 import { Quote } from "lucide-react";
 
@@ -54,11 +55,17 @@ export default function Solutions() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8">
             {partners.map((partner, index) => (
-              <div key={`home-partner-${index}`} className="flex items-center justify-center p-4 sm:p-6">
-                <img
+              <div
+                key={`home-partner-${index}`}
+                className="flex items-center justify-center p-4 sm:p-6"
+              >
+                <Image
                   src={partner.logo}
                   alt={`${partner.name} logo`}
+                  width={100} // Adjust width as needed
+                  height={64} // Adjust height as needed (16 * 4)
                   className="max-h-16 sm:max-h-20 w-auto object-contain filter hover:brightness-110 opacity-80 hover:opacity-100 transition-all duration-300"
+                  style={{ objectFit: "contain" }}
                 />
               </div>
             ))}
@@ -77,14 +84,15 @@ export default function Solutions() {
               <div className="pt-8 px-6 sm:px-10">
                 <blockquote className="text-lg sm:text-xl text-gray-300 leading-relaxed">
                   MAC Safety Inc. has been instrumental in supporting General
-                  Motors&apos; capital programs, particularly in the construction of
-                  new battery facilities. By providing specialized personnel,
-                  leveraging comprehensive data analytics, and deploying
-                  advanced software solutions, MAC Safety ensures that GM&apos;s
-                  projects are executed efficiently and safely. Their integrated
-                  approach has become an essential component of GM&apos;s daily
-                  operations, contributing significantly to the successful
-                  expansion of GM&apos;s electric vehicle infrastructure.
+                  Motors&apos; capital programs, particularly in the
+                  construction of new battery facilities. By providing
+                  specialized personnel, leveraging comprehensive data
+                  analytics, and deploying advanced software solutions, MAC
+                  Safety ensures that GM&apos;s projects are executed
+                  efficiently and safely. Their integrated approach has become
+                  an essential component of GM&apos;s daily operations,
+                  contributing significantly to the successful expansion of
+                  GM&apos;s electric vehicle infrastructure.
                 </blockquote>
                 <div className="mt-6 flex items-center gap-4 border-t border-white/10 pt-6">
                   <img
