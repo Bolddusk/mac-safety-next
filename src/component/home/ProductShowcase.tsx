@@ -187,7 +187,6 @@ export default function ProductShowcase() {
               >
                 <div>
                   <MilitaryCard title={industry.title} icon={industry.icon}>
-                    import Image from 'next/image';
                     <Image
                       src={industry.image}
                       alt={`${industry.title} industry`}
