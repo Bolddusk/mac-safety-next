@@ -89,7 +89,7 @@ export default function Hero() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <Dialog>
                 <DialogTrigger asChild>
-                  <div className="group cursor-pointer transition duration-300 scale-[0.9] hover:scale-[1]">
+                  <button className="group cursor-pointer transition duration-300 scale-[0.9] hover:scale-[1]">
                     <HUDOverlay className="p-4 hover:bg-white/5 transition-all duration-300">
                       <div className="flex items-center gap-3 text-[#eba200]">
                         <Brain className="w-6 h-6 group-hover:animate-pulse" />
@@ -98,7 +98,7 @@ export default function Hero() {
                         </span>
                       </div>
                     </HUDOverlay>
-                  </div>
+                  </button>
                 </DialogTrigger>
                 <DialogContent className="bg-black/95 border-[#eba200]/20 backdrop-blur-md max-w-2xl max-h-[90vh] sm:max-h-[85vh] overflow-hidden p-0 mx-4">
                   <div className="relative">
@@ -183,7 +183,7 @@ export default function Hero() {
               </Dialog>
               <Dialog>
                 <DialogTrigger asChild>
-                  <div className="group cursor-pointer transition duration-300 scale-[0.9] hover:scale-[1]">
+                  <button className="group cursor-pointer transition duration-300 scale-[0.9] hover:scale-[1]">
                     <HUDOverlay className="p-4 hover:bg-white/5 transition-all duration-300">
                       <div className="flex items-center gap-3 text-[#eba200]">
                         <Activity className="w-6 h-6 group-hover:animate-pulse" />
@@ -192,7 +192,7 @@ export default function Hero() {
                         </span>
                       </div>
                     </HUDOverlay>
-                  </div>
+                  </button>
                 </DialogTrigger>
                 <DialogContent className="bg-black/95 border-[#eba200]/20 backdrop-blur-md max-w-2xl max-h-[90vh] sm:max-h-[85vh] overflow-hidden p-0 mx-4">
                   <div className="relative">
@@ -275,7 +275,7 @@ export default function Hero() {
               </Dialog>
               <Dialog>
                 <DialogTrigger asChild>
-                  <div className="group cursor-pointer transition duration-300 scale-[0.9] hover:scale-[1]">
+                  <button className="group cursor-pointer transition duration-300 scale-[0.9] hover:scale-[1]">
                     <HUDOverlay className="p-4 hover:bg-white/5 transition-all duration-300">
                       <div className="flex items-center gap-3 text-[#eba200]">
                         <Network className="w-6 h-6 group-hover:animate-pulse" />
@@ -284,7 +284,7 @@ export default function Hero() {
                         </span>
                       </div>
                     </HUDOverlay>
-                  </div>
+                  </button>
                 </DialogTrigger>
                 <DialogContent className="bg-black/95 border-[#eba200]/20 backdrop-blur-md max-w-2xl max-h-[90vh] sm:max-h-[85vh] overflow-hidden p-0 mx-4">
                   <div className="relative">
