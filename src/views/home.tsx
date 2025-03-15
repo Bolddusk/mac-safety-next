@@ -1,8 +1,30 @@
-import ContactSection from "@/component/home/ContactSection";
-import Hero from "@/component/home/Hero";
-import ProductShowcase from "@/component/home/ProductShowcase";
-import Solutions from "@/component/home/Solutions";
-import Footer from "@/layout/Footer";
+import dynamic from "next/dynamic";
+
+const Hero = dynamic(() => import("@/component/home/Hero"), {
+  ssr: true,
+});
+
+const ProductShowcase = dynamic(
+  () => import("@/component/home/ProductShowcase"),
+  {
+    ssr: true,
+  }
+);
+
+const Solutions = dynamic(() => import("@/component/home/Solutions"), {
+  ssr: true,
+});
+
+const ContactSection = dynamic(
+  () => import("@/component/home/ContactSection"),
+  {
+    ssr: true,
+  }
+);
+
+const Footer = dynamic(() => import("@/layout/Footer"), {
+  ssr: true,
+});
 
 export default function Home() {
   return (
