@@ -5,43 +5,43 @@ import { Quote } from "lucide-react";
 const partners = [
   {
     name: "General Motors",
-    logo: "/uploads/GM.png",
+    logo: "/uploads/GM.webp",
   },
   {
     name: "Hitachi",
-    logo: "/uploads/hitachi_logo.jpeg",
+    logo: "/uploads/hitachi_logo.webp",
   },
   {
     name: "Marathon Petroleum Corporation",
-    logo: "/uploads/marathon_petroleum_company_logo.jpeg",
+    logo: "/uploads/marathon_petroleum_company_logo.webp",
   },
   {
     name: "MBTA",
-    logo: "/uploads/mbta_logo.jpeg",
+    logo: "/uploads/mbta_logo.webp",
   },
   {
     name: "Meccon Industries",
-    logo: "/uploads/meccon_industries_logo.jpeg",
+    logo: "/uploads/meccon_industries_logo.webp",
   },
   {
     name: "Pinnacol Assurance",
-    logo: "/uploads/pinnacol_assurance_logo.jpeg",
+    logo: "/uploads/pinnacol_assurance_logo.webp",
   },
   {
     name: "Range Resources",
-    logo: "/uploads/range_resources_logo.jpeg",
+    logo: "/uploads/range_resources_logo.webp",
   },
   {
     name: "Tenaris",
-    logo: "/uploads/tenaris.jpeg",
+    logo: "/uploads/tenaris.webp",
   },
   {
     name: "Williams",
-    logo: "/uploads/williams.jpeg",
+    logo: "/uploads/williams.webp",
   },
   {
     name: "WTW Corporate",
-    logo: "/uploads/wtwcorporate_logo.jpeg",
+    logo: "/uploads/wtwcorporate_logo.webp",
   },
 ];
 
@@ -96,7 +96,7 @@ export default function Solutions() {
                 </blockquote>
                 <div className="mt-6 flex items-center gap-4 border-t border-white/10 pt-6">
                   <img
-                    src="/uploads/GM.png"
+                    src="/uploads/GM.webp"
                     alt="General Motors logo"
                     className="w-12 h-12 object-contain"
                   />

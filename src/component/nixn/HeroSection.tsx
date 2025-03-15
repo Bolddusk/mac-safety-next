@@ -22,7 +22,7 @@ const HeroSection = () => {
           <div className="space-y-6 md:space-y-8 p-4 md:p-6">
             <div className="relative w-24 h-24 md:w-32 md:h-32 mx-auto">
               <img
-                src="/uploads/IMG_8888 (1).png"
+                src="/uploads/IMG_8888_1.webp"
                 alt="NIXN Logo"
                 className="w-full h-full object-contain relative z-10 rounded-2xl"
               />

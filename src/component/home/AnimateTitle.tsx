@@ -14,9 +14,9 @@ const AnimateTitle = () => {
   }, []);
 
   const icons = [
-    "/uploads/People Icon.jpg",
-    "/uploads/Data Icon.png",
-    "/uploads/AI icon.png",
+    "/uploads/People Icon.webp",
+    "/uploads/data_icon.webp",
+    "/uploads/ai_icon.webp",
   ];
   const gradientClasses = [
     "text-white",

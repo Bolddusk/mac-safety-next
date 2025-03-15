@@ -128,7 +128,7 @@ export default function Header() {
           <Link href="/">
             <div className="flex items-center cursor-pointer -mt-2">
               <img
-                src="/uploads/Untitled design (11).png"
+                src="/uploads/Untitled design (11).webp"
                 alt="MAC Brand Logo"
                 className="h-20 w-auto object-contain"
               />
@@ -197,7 +197,7 @@ export default function Header() {
                           <div className="relative flex items-center gap-3">
                             <div className="h-10 w-10 rounded-lg border border-white/20 p-2 group-hover:border-[#eba200]/40">
                               <img
-                                src="/uploads/IMG_8888 (1).png"
+                                src="/uploads/IMG_8888_1.webp"
                                 alt="NIXN Logo"
                                 className="w-full h-full object-contain"
                               />
@@ -225,7 +225,7 @@ export default function Header() {
                           <div className="relative flex items-center gap-3">
                             <div className="h-10 w-10 rounded-lg border border-white/20 p-2 group-hover:border-[#64FFDA]/40">
                               <img
-                                src="/uploads/xos logo.png"
+                                src="/uploads/xos_logo.webp"
                                 alt="xOS Logo"
                                 className="w-full h-full object-contain"
                               />

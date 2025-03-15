@@ -11,7 +11,7 @@ export default function Footer() {
             <Link href="/">
               <div className="flex items-center cursor-pointer">
                 <img
-                  src="/uploads/Untitled design (11).png"
+                  src="/uploads/Untitled design (11).webp"
                   alt="MAC Brand Logo"
                   className="h-48 w-auto object-contain md:origin-center md:rotate-0 origin-left -rotate-90 translate-y-16 md:translate-y-0"
                 />

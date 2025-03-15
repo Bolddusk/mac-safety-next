@@ -275,7 +275,7 @@ export default function IndustriesPage() {
               <div className="w-full md:w-1/3 relative">
                 <div className="absolute inset-0 bg-[#eba200] blur-[20px] opacity-30 rounded-full"></div>
                 <img
-                  src="/uploads/People Icon.jpg"
+                  src="/uploads/People Icon.webp"
                   alt="MAC Safety Icon"
                   className="relative w-48 h-48 md:w-64 md:h-64 mx-auto object-contain rounded-2xl"
                 />

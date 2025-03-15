@@ -35,7 +35,7 @@ export default function XOSPage() {
             <div className="space-y-6 md:space-y-8 p-4 md:p-6">
               <div className="relative w-24 h-24 md:w-32 md:h-32 mx-auto">
                 <img
-                  src="/uploads/xos logo.png"
+                  src="/uploads/xos_logo.webp"
                   alt="xOS Logo"
                   className="w-full h-full object-contain relative z-10 rounded-2xl"
                 />
@@ -177,7 +177,7 @@ export default function XOSPage() {
             <div className="flex items-center justify-center gap-3 mb-6">
               <div className="relative w-16 h-16">
                 <img
-                  src="/uploads/NIXN Button.png"
+                  src="/uploads/nixn_button.webp"
                   alt="NIXN Logo"
                   className="w-full h-full object-contain relative z-10"
                 />
@@ -199,7 +199,7 @@ export default function XOSPage() {
             <div className="relative flex items-center justify-center">
               <div className="relative w-full max-w-md">
                 <img
-                  src="/uploads/Kaleidoscope LLM.png"
+                  src="/uploads/kaleidoscope_llm.webp"
                   alt="Kaleidoscope LLM Visualization"
                   className="w-full h-auto relative z-10"
                 />
@@ -303,7 +303,7 @@ export default function XOSPage() {
             <div className="flex items-center justify-center gap-3 mb-6">
               <div className="relative w-16 h-16">
                 <img
-                  src="/uploads/ATLAS (2).png"
+                  src="/uploads/Atlas_2.webp"
                   alt="Atlas Logo"
                   className="w-full h-full object-contain relative z-10"
                 />
@@ -323,7 +323,7 @@ export default function XOSPage() {
           {/* Main Visual */}
           <div className="relative rounded-xl overflow-hidden mb-16">
             <img
-              src="/uploads/473shots_so.png"
+              src="/uploads/473shots_so.webp"
               alt="Atlas Risk Mapping Interface"
               className="w-full h-auto relative z-10"
             />

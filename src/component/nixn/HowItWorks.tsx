@@ -237,7 +237,7 @@ const HowItWorks = () => {
               {/* Image */}
               <div className="relative z-10">
                 <img
-                  src="/uploads/NIXNScreenGrab.png"
+                  src="/uploads/NIXNScreenGrab.webp"
                   alt="NIXN Dashboard Interface"
                   className="w-full rounded-lg"
                 />
