@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const AnimateTitle = () => {
   const [currentWord, setCurrentWord] = useState(0);
@@ -42,9 +43,11 @@ const AnimateTitle = () => {
             transition={{ duration: 0.3 }}
             className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 flex items-center justify-center"
           >
-            <img
+            <Image
               src={icons[currentWord]}
               alt={`${words[currentWord]} icon`}
+              width={500} // Adjust width as needed
+              height={500} // Adjust height as needed
               className="w-full h-full object-contain rounded-lg drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
             />
           </motion.div>

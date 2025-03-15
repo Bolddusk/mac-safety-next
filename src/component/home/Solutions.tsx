@@ -95,10 +95,12 @@ export default function Solutions() {
                   GM&apos;s electric vehicle infrastructure.
                 </blockquote>
                 <div className="mt-6 flex items-center gap-4 border-t border-white/10 pt-6">
-                  <img
+                  <Image
                     src="/uploads/GM.webp"
                     alt="General Motors logo"
-                    className="w-12 h-12 object-contain"
+                    width={48} // Equivalent to w-12 (12 * 4px)
+                    height={48} // Equivalent to h-12 (12 * 4px)
+                    className="object-contain"
                   />
                   <div>
                     <div className="text-[#eba200] font-semibold">

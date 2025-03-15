@@ -10,6 +10,7 @@ import { Button } from "@/component/ui/button";
 import Link from "next/link";
 import Footer from "@/layout/Footer";
 import IndustrialForm from "@/component/forms/IndustrialForm";
+import Image from "next/image";
 
 // Update industryImages mapping
 const industryImages = {
@@ -274,9 +275,11 @@ export default function IndustriesPage() {
             <div className="flex flex-col md:flex-row items-center gap-12">
               <div className="w-full md:w-1/3 relative">
                 <div className="absolute inset-0 bg-[#eba200] blur-[20px] opacity-30 rounded-full"></div>
-                <img
+                <Image
                   src="/uploads/People Icon.webp"
                   alt="MAC Safety Icon"
+                  width={256} // Default size (w-64 in Tailwind)
+                  height={256} // Default size (h-64 in Tailwind)
                   className="relative w-48 h-48 md:w-64 md:h-64 mx-auto object-contain rounded-2xl"
                 />
               </div>
@@ -489,9 +492,15 @@ export default function IndustriesPage() {
                       >
                         <div className="w-full">
                           <div className="relative h-48 wfull rounded-t-lg overflow-hidden">
-                            <img
-                              src={`/uploads/${industryImages[industry.id as keyof typeof industryImages]}`}
+                            <Image
+                              src={`/uploads/${
+                                industryImages[
+                                  industry.id as keyof typeof industryImages
+                                ]
+                              }`}
                               alt={`${industry.title} industry`}
+                              width={500} // Adjust width as needed
+                              height={500} // Adjust height as needed
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                             />
                             <div className="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-colors" />

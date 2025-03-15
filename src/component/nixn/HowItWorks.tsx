@@ -14,6 +14,7 @@ import {
   Workflow,
   Activity,
 } from "lucide-react";
+import Image from "next/image";
 
 const HowItWorks = () => {
   return (
@@ -236,9 +237,11 @@ const HowItWorks = () => {
 
               {/* Image */}
               <div className="relative z-10">
-                <img
+                <Image
                   src="/uploads/NIXNScreenGrab.webp"
                   alt="NIXN Dashboard Interface"
+                  width={800} // Adjust width as needed
+                  height={450} // Adjust height as needed
                   className="w-full rounded-lg"
                 />
 

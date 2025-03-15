@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { SiLinkedin, SiGithub } from "react-icons/si";
 
@@ -10,9 +11,11 @@ export default function Footer() {
           <div className="md:w-1/4">
             <Link href="/">
               <div className="flex items-center cursor-pointer">
-                <img
+                <Image
                   src="/uploads/Untitled design (11).webp"
                   alt="MAC Brand Logo"
+                  width={500} // Adjust width as needed
+                  height={500} // Adjust height as needed
                   className="h-48 w-auto object-contain md:origin-center md:rotate-0 origin-left -rotate-90 translate-y-16 md:translate-y-0"
                 />
               </div>

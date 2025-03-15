@@ -2,6 +2,7 @@ import React from "react";
 import { DemoScheduleModal } from "./DemoScheduleModal";
 import { TrialSetupModal } from "./TrialSetupModal";
 import Link from "next/link";
+import Image from "next/image";
 
 const HeroSection = () => {
   return (
@@ -21,9 +22,11 @@ const HeroSection = () => {
         <div className="flex flex-col items-center text-center">
           <div className="space-y-6 md:space-y-8 p-4 md:p-6">
             <div className="relative w-24 h-24 md:w-32 md:h-32 mx-auto">
-              <img
+              <Image
                 src="/uploads/IMG_8888_1.webp"
                 alt="NIXN Logo"
+                width={800} // Adjust width as needed
+                height={800} // Adjust height as needed
                 className="w-full h-full object-contain relative z-10 rounded-2xl"
               />
               <div className="absolute inset-0 bg-[#eba200] filter blur-2xl opacity-30 animate-pulse rounded-2xl"></div>

@@ -38,6 +38,7 @@ import { apiRequest } from "@/lib/queryClient";
 import Link from "next/link";
 import { Button } from "@/component/ui/button";
 import { toast } from "@/component/hooks/use-toast";
+import Image from "next/image";
 
 const industries = [
   { title: "Airline", href: "/industries#airline" },
@@ -127,9 +128,11 @@ export default function Header() {
         <div className="container mx-auto px-4 h-16 flex items-center justify-between relative">
           <Link href="/">
             <div className="flex items-center cursor-pointer -mt-2">
-              <img
+              <Image
                 src="/uploads/Untitled design (11).webp"
                 alt="MAC Brand Logo"
+                width={80} // Adjust width as needed
+                height={80} // Adjust height as needed
                 className="h-20 w-auto object-contain"
               />
             </div>
@@ -196,9 +199,11 @@ export default function Header() {
                           <div className="absolute inset-0 bg-gradient-to-r from-[#eba200]/0 via-[#eba200]/5 to-[#eba200]/0 opacity-0 group-hover:opacity-100 transition-opacity" />
                           <div className="relative flex items-center gap-3">
                             <div className="h-10 w-10 rounded-lg border border-white/20 p-2 group-hover:border-[#eba200]/40">
-                              <img
+                              <Image
                                 src="/uploads/IMG_8888_1.webp"
                                 alt="NIXN Logo"
+                                width={500} // Adjust width as needed
+                                height={500} // Adjust height as needed
                                 className="w-full h-full object-contain"
                               />
                             </div>
@@ -224,9 +229,11 @@ export default function Header() {
                           <div className="absolute inset-0 bg-gradient-to-r from-[#64FFDA]/0 via-[#64FFDA]/5 to-[#64FFDA]/0 opacity-0 group-hover:opacity-100 transition-opacity" />
                           <div className="relative flex items-center gap-3">
                             <div className="h-10 w-10 rounded-lg border border-white/20 p-2 group-hover:border-[#64FFDA]/40">
-                              <img
+                              <Image
                                 src="/uploads/xos_logo.webp"
                                 alt="xOS Logo"
+                                width={500} // Adjust width as needed
+                                height={500} // Adjust height as needed
                                 className="w-full h-full object-contain"
                               />
                             </div>

@@ -13,6 +13,7 @@ import {
 import { RequestDemoModal } from "@/component/xos/RequestDemoModal";
 import Footer from "@/layout/Footer";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function XOSPage() {
   return (
@@ -34,9 +35,11 @@ export default function XOSPage() {
           <div className="flex flex-col items-center text-center">
             <div className="space-y-6 md:space-y-8 p-4 md:p-6">
               <div className="relative w-24 h-24 md:w-32 md:h-32 mx-auto">
-                <img
+                <Image
                   src="/uploads/xos_logo.webp"
                   alt="xOS Logo"
+                  width={500} // Adjust width based on actual requirements
+                  height={500} // Adjust height based on actual requirements
                   className="w-full h-full object-contain relative z-10 rounded-2xl"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#eba200] to-[#64FFDA] filter blur-2xl opacity-30 animate-pulse rounded-2xl"></div>
@@ -176,9 +179,11 @@ export default function XOSPage() {
           <div className="text-center mb-12 md:mb-16">
             <div className="flex items-center justify-center gap-3 mb-6">
               <div className="relative w-16 h-16">
-                <img
+                <Image
                   src="/uploads/nixn_button.webp"
                   alt="NIXN Logo"
+                  width={500} // Adjust as needed
+                  height={500} // Adjust as needed
                   className="w-full h-full object-contain relative z-10"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#eba200] to-[#64FFDA] filter blur-xl opacity-30 animate-pulse"></div>
@@ -198,10 +203,12 @@ export default function XOSPage() {
             {/* Visual Representation */}
             <div className="relative flex items-center justify-center">
               <div className="relative w-full max-w-md">
-                <img
+                <Image
                   src="/uploads/kaleidoscope_llm.webp"
                   alt="Kaleidoscope LLM Visualization"
-                  className="w-full h-auto relative z-10"
+                  width={500} // Adjust as needed
+                  height={500} // Adjust as needed
+                  className="w-full h-full object-contain relative z-10"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#eba200] to-[#64FFDA] filter blur-3xl opacity-20 animate-pulse"></div>
               </div>
@@ -264,8 +271,9 @@ export default function XOSPage() {
                 </h4>
                 <p className="text-gray-300">
                   Transform scattered data into a unified knowledge base.
-                  Kaleidoscope breaks down silos, making your organization&apos;s
-                  collective expertise instantly accessible and actionable.
+                  Kaleidoscope breaks down silos, making your
+                  organization&apos;s collective expertise instantly accessible
+                  and actionable.
                 </p>
               </div>
 
@@ -302,11 +310,14 @@ export default function XOSPage() {
           <div className="text-center mb-12 md:mb-16">
             <div className="flex items-center justify-center gap-3 mb-6">
               <div className="relative w-16 h-16">
-                <img
+                <Image
                   src="/uploads/Atlas_2.webp"
                   alt="Atlas Logo"
+                  width={500} // Adjust as needed
+                  height={500} // Adjust as needed
                   className="w-full h-full object-contain relative z-10"
                 />
+
                 <div className="absolute inset-0 bg-gradient-to-r from-[#eba200] to-[#64FFDA] filter blur-xl opacity-30 animate-pulse"></div>
               </div>
               <h2 className="text-3xl md:text-5xl font-bold text-white">
@@ -315,18 +326,21 @@ export default function XOSPage() {
             </div>
             <p className="text-lg text-gray-300 max-w-3xl mx-auto">
               Transform your risk management with our advanced mapping engine
-              that provides unprecedented visibility into your organization&apos;s
-              risk landscape.
+              that provides unprecedented visibility into your
+              organization&apos;s risk landscape.
             </p>
           </div>
 
           {/* Main Visual */}
           <div className="relative rounded-xl overflow-hidden mb-16">
-            <img
+            <Image
               src="/uploads/473shots_so.webp"
               alt="Atlas Risk Mapping Interface"
-              className="w-full h-auto relative z-10"
+              width={500} // Adjust as needed
+              height={500} // Adjust as needed
+              className="w-full h-full object-contain relative z-10"
             />
+
             <div className="absolute inset-0 bg-gradient-to-r from-[#eba200] to-[#64FFDA] filter blur-3xl opacity-20 animate-pulse"></div>
           </div>
 
@@ -359,9 +373,9 @@ export default function XOSPage() {
                 Scenario Planning
               </h4>
               <p className="text-gray-300">
-                Run sophisticated &quot;what-if&quot; scenarios to stress-test your
-                operations. Develop and validate contingency plans based on real
-                data and network analysis.
+                Run sophisticated &quot;what-if&quot; scenarios to stress-test
+                your operations. Develop and validate contingency plans based on
+                real data and network analysis.
               </p>
             </div>
           </div>
@@ -389,9 +403,10 @@ export default function XOSPage() {
                   Strategic Planning
                 </h4>
                 <p className="text-gray-300">
-                  Transform risk management from reactive to proactive. Atlas&apos;s
-                  predictive modeling enables data-driven decision making for
-                  resource allocation and long-term strategic planning.
+                  Transform risk management from reactive to proactive.
+                  Atlas&apos;s predictive modeling enables data-driven decision
+                  making for resource allocation and long-term strategic
+                  planning.
                 </p>
               </div>
 
