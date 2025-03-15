@@ -1,30 +1,24 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
-const words = ["PEOPLE", "DATA", "AI"];
-const icons = [
-  "/uploads/People Icon.webp",
-  "/uploads/data_icon.webp",
-  "/uploads/ai_icon.webp",
-];
-
-export default function AnimateTitle() {
-  const [index, setIndex] = useState(0);
-  const [animate, setAnimate] = useState(true);
+const AnimateTitle = () => {
+  const [currentWord, setCurrentWord] = useState(0);
+  const words = ["People", "Data", "AI"];
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setAnimate(false); // Fade-out + move down
-      setTimeout(() => {
-        setIndex((prev) => (prev + 1) % words.length);
-        setAnimate(true); // Fade-in + move up
-      }, 600); // Matches transition duration
-    }, 2500); // Change word every 2 seconds
-
+      setCurrentWord((prev) => (prev + 1) % words.length);
+    }, 2000);
     return () => clearInterval(interval);
   }, []);
 
+  const icons = [
+    "/uploads/People Icon.webp",
+    "/uploads/data_icon.webp",
+    "/uploads/ai_icon.webp",
+  ];
   const gradientClasses = [
     "text-white",
     "text-white",
@@ -32,35 +26,46 @@ export default function AnimateTitle() {
   ];
 
   return (
-    <div className="h-40 flex items-center justify-start overflow-hidden py-8">
-      <div className="flex items-center gap-6 md:gap-8">
-        {/* Animated Image */}
-        <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 flex items-center justify-center overflow-hidden">
-          <Image
-            key={index} // Forces re-render when index changes
-            src={icons[index]}
-            alt={`${words[index]} icon`}
-            width={400}
-            height={400}
-            className={`absolute w-full h-full object-contain rounded-lg transition-all duration-800 ${
-              animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-            }`}
-          />
-        </div>
-
-        {/* Animated Text with Larger Font */}
-        <div className="relative h-15 md:h-28 w-100 overflow-hidden">
-          <p
-            className={`absolute w-full font-furore text-5xl md:text-8xl font-extrabold transition-all duration-800 ${
-              gradientClasses[index]
-            } ${
-              animate ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-            }`}
+    <div className="h-32 flex items-center justify-start overflow-hidden py-4">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentWord}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.5, ease: "easeInOut" }}
+          className="flex items-center gap-6 md:gap-8"
+        >
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 flex items-center justify-center"
           >
-            {words[index]}
-          </p>
-        </div>
-      </div>
+            <Image
+              src={icons[currentWord]}
+              alt={`${words[currentWord]} icon`}
+              width={500} // Adjust width as needed
+              height={500} // Adjust height as needed
+              className="w-full h-full object-contain rounded-lg drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
+            />
+          </motion.div>
+          <motion.span
+            className={`text-5xl sm:text-7xl md:text-8xl font-bold font-furore ${gradientClasses[currentWord]}`}
+            style={{
+              textShadow:
+                currentWord === 2
+                  ? "0 2px 20px rgba(100,255,218,0.3)"
+                  : "0 2px 20px rgba(0,0,0,0.5)",
+            }}
+          >
+            {words[currentWord]}
+          </motion.span>
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
-}
+};
+
+export default AnimateTitle;
