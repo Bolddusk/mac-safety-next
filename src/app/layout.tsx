@@ -23,41 +23,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const softwareApplicationSchema = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "NIXN",
-    operatingSystem: "Windows, Mac, Linux",
-    applicationCategory: "BusinessApplication",
-    applicationSubCategory: "RiskManagementSoftware",
-    description:
-      "NIXN quantifies risk in real-time, transforming safety from a compliance function into a competitive advantage. Predict exposure, price risk accurately, and drive smarter decisions—before incidents happen.",
-    image: "https://macsafety.com/uploads/IMG_8888%20(1).png",
-    url: "https://macsafety.com/nixn",
-    author: {
-      "@type": "Organization",
-      name: "Mac Safety",
-      url: "https://macsafety.com",
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Mac Safety",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://macsafety.com/uploads/Untitled%20design%20(11).png",
-      },
-    },
-    datePublished: "2025-03-08",
-  };
-
-  const organizationSchema = {
+  const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "MAC Safety Consultants",
     url: "https://macsafety.com/",
     logo: "https://macsafety.com/uploads/Untitled%20design%20(11).png",
     description:
-      "MAC Safety Consultants uniquely integrates human expertise, audits, compliance monitoring, safety program implementation, safety assessments, mission-critical software, and AI-driven intelligence to deliver unparalleled value across the enterprise safety ecosystem.",
+      "MAC Safety Consultants uniquely integrates human expertise, audits, compliance monitoring, safety program implementation, safety assessments, mission-critical software, and AI-driven intelligence to deliver unparalleled value across the enterprise safety ecosystem. Serving industries including Airline, Auto, Chemical Processing, Construction, Data Centers, Defense & Aerospace, Healthcare, Insurance, Life Science, Manufacturing, Maritime, Mining, Oil & Gas, Power Generation, Rail, Renewable Energy, Steel, Telecommunications, and Warehousing.",
     foundingDate: "2005",
     numberOfEmployees: "50+",
     areaServed: ["US", "Global"],
@@ -98,6 +71,88 @@ export default function RootLayout({
       postalCode: "15009",
       addressCountry: "US",
     },
+    subjectOf: {
+      "@type": "DefinedTermSet",
+      name: "Industries Served",
+      hasDefinedTerm: [
+        { "@type": "DefinedTerm", name: "Airline" },
+        { "@type": "DefinedTerm", name: "Auto" },
+        { "@type": "DefinedTerm", name: "Chemical Processing" },
+        { "@type": "DefinedTerm", name: "Construction" },
+        { "@type": "DefinedTerm", name: "Data Centers" },
+        { "@type": "DefinedTerm", name: "Defense & Aerospace" },
+        { "@type": "DefinedTerm", name: "Healthcare" },
+        { "@type": "DefinedTerm", name: "Insurance" },
+        { "@type": "DefinedTerm", name: "Life Science" },
+        { "@type": "DefinedTerm", name: "Manufacturing" },
+        { "@type": "DefinedTerm", name: "Maritime" },
+        { "@type": "DefinedTerm", name: "Mining" },
+        { "@type": "DefinedTerm", name: "Oil & Gas" },
+        { "@type": "DefinedTerm", name: "Power Generation" },
+        { "@type": "DefinedTerm", name: "Rail" },
+        { "@type": "DefinedTerm", name: "Renewable Energy" },
+        { "@type": "DefinedTerm", name: "Steel" },
+        { "@type": "DefinedTerm", name: "Telecommunications" },
+        { "@type": "DefinedTerm", name: "Warehousing" },
+      ],
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Services Offered",
+      itemListElement: [
+        {
+          "@type": "Service",
+          name: "People Services",
+          description:
+            "Expert consultants and safety specialists for your mission-critical operations",
+        },
+        {
+          "@type": "Service",
+          name: "Software Solutions",
+          description:
+            "Advanced AI-powered platforms for comprehensive risk management",
+        },
+        {
+          "@type": "Service",
+          name: "Software Platforms",
+          description:
+            "Integrate reporting, predictive analytics, and real-time intelligence into a unified dashboard.",
+        },
+        {
+          "@type": "Service",
+          name: "Safety & Health Consultations",
+          description:
+            "Diagnose vulnerabilities and chart strategic improvements.",
+        },
+        {
+          "@type": "Service",
+          name: "Safety Professional Staffing",
+          description:
+            "On-site experts to drive best practices and reduce hazards.",
+        },
+        {
+          "@type": "Service",
+          name: "Safety Attendant Services",
+          description:
+            "Real-time oversight in high-risk settings, preventing incidents before they occur.",
+        },
+        {
+          "@type": "Service",
+          name: "Occupational Medicine Support",
+          description: "Keep employees healthy, productive, and on the job.",
+        },
+        {
+          "@type": "Service",
+          name: "Drug & Alcohol Testing",
+          description: "Safeguard compliance and workplace integrity.",
+        },
+        {
+          "@type": "Service",
+          name: "Industrial Hygiene Testing",
+          description: "Monitor exposures to protect your team’s well-being.",
+        },
+      ],
+    },
   };
 
   return (
@@ -107,14 +162,7 @@ export default function RootLayout({
           key="schema_1"
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify(softwareApplicationSchema),
-          }}
-        />
-        <script
-          key="schema_2"
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify(organizationSchema),
+            __html: JSON.stringify(jsonLd),
           }}
         />
       </head>
