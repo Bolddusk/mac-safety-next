@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { lazy } from "react";
 import { HUDOverlay } from "../ui/hud-overlay";
 import {
   Brain,
@@ -18,7 +17,8 @@ import {
   DialogClose,
 } from "../ui/dialog";
 import { Button } from "../ui/button";
-const AnimateHeroTitle = lazy(() => import("./AnimateHeroTitle"));
+import AnimateHeroTitle from "./AnimateHeroTitle";
+
 
 export default function Hero() {
   return (
