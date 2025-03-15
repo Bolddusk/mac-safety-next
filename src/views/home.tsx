@@ -1,9 +1,8 @@
-import { lazy } from "react";
-const Hero = lazy(() => import("@/component/home/Hero"));
-const ContactSection = lazy(() => import("@/component/home/ContactSection"));
-const ProductShowcase = lazy(() => import("@/component/home/ProductShowcase"));
-const Solutions = lazy(() => import("@/component/home/Solutions"));
-const Footer = lazy(() => import("@/layout/Footer"));
+import ContactSection from "@/component/home/ContactSection";
+import Hero from "@/component/home/Hero";
+import ProductShowcase from "@/component/home/ProductShowcase";
+import Solutions from "@/component/home/Solutions";
+import Footer from "@/layout/Footer";
 
 export default function Home() {
   return (
