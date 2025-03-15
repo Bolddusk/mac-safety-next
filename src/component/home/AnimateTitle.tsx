@@ -32,7 +32,7 @@ export default function AnimateTitle() {
   ];
 
   return (
-    <div className="h-32 flex items-center justify-start overflow-hidden">
+    <div className="h-40 flex items-center justify-start overflow-hidden py-8">
       <div className="flex items-center gap-6 md:gap-8">
         {/* Animated Image */}
         <div className="relative w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 flex items-center justify-center overflow-hidden">
