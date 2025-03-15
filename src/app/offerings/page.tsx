@@ -2,6 +2,16 @@ import Header from "@/layout/Header";
 import { queryClient } from "@/lib/queryClient";
 import Offerings from "@/views/offerings";
 import { QueryClientProvider } from "@tanstack/react-query";
+import { Metadata } from "next";
+
+
+export const metadata: Metadata = {
+  title: "Risk Management Services and Safety Consultancy & Solutions | Mac Safety",
+  description: "Explore Mac Safety’s full range of safety solutions, from risk assessments to advanced safety software. Protect your business with expert guidance.",
+  alternates: {
+    canonical: "https://macsafety.com/offerings",
+  },
+};
 
 export default function Index() {
   return (

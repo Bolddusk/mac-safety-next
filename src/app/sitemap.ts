@@ -15,7 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date().toISOString(),
     },
     {
-      url: "https://macsafety.com/impact_studies",
+      url: "https://macsafety.com/impact-studies",
       lastModified: new Date().toISOString(),
     },
     {
