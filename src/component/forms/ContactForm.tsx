@@ -9,13 +9,6 @@ import {
 } from "@/component/ui/form";
 import { Input } from "@/component/ui/input";
 import { Textarea } from "@/component/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/component/ui/select";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
@@ -55,10 +48,6 @@ const industries = [
 
 const ContactForm = () => {
   const { toast } = useToast();
-  const {
-    register,
-    formState: { errors },
-  } = useForm();
   const form = useForm<z.infer<typeof contactFormSchema>>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
