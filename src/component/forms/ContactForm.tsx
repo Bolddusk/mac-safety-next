@@ -55,6 +55,10 @@ const industries = [
 
 const ContactForm = () => {
   const { toast } = useToast();
+  const {
+    register,
+    formState: { errors },
+  } = useForm();
   const form = useForm<z.infer<typeof contactFormSchema>>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
@@ -63,7 +67,7 @@ const ContactForm = () => {
       company: "",
       industry: "",
       message: "",
-      serviceName: "Contact Us",
+      serviceName: "Contact Us From Offerings page",
     },
   });
 
@@ -76,7 +80,7 @@ const ContactForm = () => {
     ContactFormValues // The expected type of 'data'
   >({
     mutationFn: async (data: ContactFormValues) => {
-      return await apiRequest("POST", "/api/messsage", data);
+      return await apiRequest("POST", "/api/message", data);
     },
     onSuccess: () => {
       toast({
@@ -147,26 +151,106 @@ const ContactForm = () => {
           control={form.control}
           name="industry"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Industry</FormLabel>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Select an industry" />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {industries.map((industry) => (
-                    <SelectItem key={industry} value={industry}>
-                      {industry}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+            <>
+              <label
+                htmlFor="industry"
+                className="block text-sm font-medium text-white"
+              >
+                Industry
+              </label>
+              <select
+                id="industry"
+                name="industry"
+                className="p-2 block w-full rounded-sm border border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                value={field.value}
+                onChange={field.onChange}
+              >
+                <option value="" disabled>
+                  Select an industry
+                </option>
+                {industries.map((industry) => (
+                  <option key={industry} value={industry}>
+                    {industry}
+                  </option>
+                ))}
+              </select>
               <FormMessage />
-            </FormItem>
+            </>
+            // <FormItem>
+            //   <FormLabel>Industry</FormLabel>
+            //   <Select onValueChange={field.onChange} defaultValue={field.value}>
+            //     <FormControl>
+            //       <SelectTrigger>
+            //         <SelectValue placeholder="Select an industry" />
+            //       </SelectTrigger>
+            //     </FormControl>
+            //     <SelectContent>
+            //       {industries.map((industry) => (
+            //         <SelectItem key={industry} value={industry}>
+            //           {industry}
+            //         </SelectItem>
+            //       ))}
+            //     </SelectContent>
+            //   </Select>
+            //   <FormMessage />
+            // </FormItem>
           )}
         />
+        {/* 
+        <div className="space-y-2">
+          <label
+            htmlFor="industry"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Industry
+          </label>
+          <select
+            id="industry"
+            name="industry"
+            className="p-2 block w-full rounded-sm border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+            // value={value}
+            // onChange={(e) => onChange(e.target.value)}
+          >
+            <option value="" disabled>
+              Select an industry
+            </option>
+            {industries.map((industry) => (
+              <option key={industry} value={industry}>
+                {industry}
+              </option>
+            ))}
+          </select>
+          {!value && (
+            <p className="text-sm text-red-500">Please select an industry.</p>
+          )}
+        </div> */}
+
+        {/* <div className="space-y-2">
+          <label
+            htmlFor="industry"
+            className="block text-sm font-medium text-gray-700"
+          >
+            Industry
+          </label>
+          <select
+            id="industry"
+            className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+            {...register("industry", { required: "Please select an industry" })}
+          >
+            <option value="" disabled>
+              Select an industry
+            </option>
+            {industries.map((industry) => (
+              <option key={industry} value={industry}>
+                {industry}
+              </option>
+            ))}
+          </select>
+          {errors.industry && (
+            <p className="text-sm text-red-500">{errors.industry.message}</p>
+          )}
+        </div> */}
+
         <FormField
           control={form.control}
           name="message"
