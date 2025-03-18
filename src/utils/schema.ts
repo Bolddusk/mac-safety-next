@@ -4,6 +4,7 @@ export const jsonLd = {
   name: "MAC Safety Consultants",
   url: "https://macsafety.com/",
   logo: "https://macsafety.com/uploads/Untitled%20design%20(11).webp",
+  image: "https://macsafety.com/favicon.ico",
   description:
     "MAC Safety Consultants uniquely integrates human expertise, audits, compliance monitoring, safety program implementation, safety assessments, mission-critical software, and AI-driven intelligence to deliver unparalleled value across the enterprise safety ecosystem. Serving industries including Airline, Auto, Chemical Processing, Construction, Data Centers, Defense & Aerospace, Healthcare, Insurance, Life Science, Manufacturing, Maritime, Mining, Oil & Gas, Power Generation, Rail, Renewable Energy, Steel, Telecommunications, and Warehousing.",
   foundingDate: "2005",

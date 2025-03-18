@@ -211,7 +211,7 @@ export default function Offerings() {
                       Learn More →
                     </Button>
                   </DialogTrigger>
-                  <DialogContent className="sm:max-w-[425px]">
+                  <DialogContent className="sm:max-w-[425px] text-white">
                     <div className="p-6">
                       <h2 className="text-2xl font-bold mb-6">Contact Us</h2>
                       <ContactForm />

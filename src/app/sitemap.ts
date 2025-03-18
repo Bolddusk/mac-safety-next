@@ -7,6 +7,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date().toISOString(),
     },
     {
+      url: "https://macsafety.com/favicon.ico", // Add favicon to sitemap
+      lastModified: new Date().toISOString(),
+    },
+    {
       url: "https://macsafety.com/alpha",
       lastModified: new Date().toISOString(),
     },
