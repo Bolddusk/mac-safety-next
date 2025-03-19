@@ -61,7 +61,7 @@ const ContactForm = () => {
   });
 
   const onClose = () =>
-    document.querySelector('[role="dialog"]')?.closest("dialog")?.close();
+    (document.getElementsByClassName("sr-only")[1] as HTMLElement)?.click();
 
   const mutation = useMutation<
     unknown, // Response type (unknown if not needed)
@@ -78,7 +78,7 @@ const ContactForm = () => {
         duration: 1000,
       });
       form.reset();
-      (document.getElementsByClassName("sr-only")[1] as HTMLElement)?.click();
+      onClose();
     },
     onError: () => {
       toast({
@@ -258,15 +258,7 @@ const ContactForm = () => {
           )}
         />
         <div className="flex justify-end gap-4">
-          <Button
-            type="button"
-            variant="outline"
-            onClick={() => {
-              (
-                document.getElementsByClassName("sr-only")[1] as HTMLElement
-              )?.click();
-            }}
-          >
+          <Button type="button" variant="outline" onClick={onClose}>
             Cancel
           </Button>
           <Button
