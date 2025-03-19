@@ -78,7 +78,7 @@ const ContactForm = () => {
         duration: 1000,
       });
       form.reset();
-      onClose();
+      (document.getElementsByClassName("sr-only")[1] as HTMLElement)?.click();
     },
     onError: () => {
       toast({
@@ -258,7 +258,15 @@ const ContactForm = () => {
           )}
         />
         <div className="flex justify-end gap-4">
-          <Button type="button" variant="outline" onClick={onClose}>
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => {
+              (
+                document.getElementsByClassName("sr-only")[1] as HTMLElement
+              )?.click();
+            }}
+          >
             Cancel
           </Button>
           <Button
