@@ -42,5 +42,81 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: "https://macsafety.com/xos",
       lastModified: new Date().toISOString(),
     },
+    {
+      url: "https://macsafety.com/industries/airline",
+      lastModified: new Date().toISOString(),
+    },
+    {
+      url: "https://macsafety.com/industries/auto",
+      lastModified: new Date().toISOString(),
+    },
+    {
+      url: "https://macsafety.com/industries/chemical",
+      lastModified: new Date().toISOString(),
+    },
+    {
+      url: "https://macsafety.com/industries/construction",
+      lastModified: new Date().toISOString(),
+    },
+    {
+      url: "https://macsafety.com/industries/data-centers",
+      lastModified: new Date().toISOString(),
+    },
+    {
+      url: "https://macsafety.com/industries/defence",
+      lastModified: new Date().toISOString(),
+    },
+    {
+      url: "https://macsafety.com/industries/healthcare",
+      lastModified: new Date().toISOString(),
+    },
+    {
+      url: "https://macsafety.com/industries/insurance",
+      lastModified: new Date().toISOString(),
+    },
+    {
+      url: "https://macsafety.com/industries/life-science",
+      lastModified: new Date().toISOString(),
+    },
+    {
+      url: "https://macsafety.com/industries/manufacturing",
+      lastModified: new Date().toISOString(),
+    },
+    {
+      url: "https://macsafety.com/industries/maritime",
+      lastModified: new Date().toISOString(),
+    },
+    {
+      url: "https://macsafety.com/industries/mining",
+      lastModified: new Date().toISOString(),
+    },
+    {
+      url: "https://macsafety.com/industries/oil-gas",
+      lastModified: new Date().toISOString(),
+    },
+    {
+      url: "https://macsafety.com/industries/rail",
+      lastModified: new Date().toISOString(),
+    },
+    {
+      url: "https://macsafety.com/industries/renewable",
+      lastModified: new Date().toISOString(),
+    },
+    {
+      url: "https://macsafety.com/industries/steel",
+      lastModified: new Date().toISOString(),
+    },
+    {
+      url: "https://macsafety.com/industries/telecom",
+      lastModified: new Date().toISOString(),
+    },
+    {
+      url: "https://macsafety.com/industries/utilities",
+      lastModified: new Date().toISOString(),
+    },
+    {
+      url: "https://macsafety.com/industries/warehouse",
+      lastModified: new Date().toISOString(),
+    },
   ];
 }

@@ -52,47 +52,47 @@ export default function Footer() {
                 Industries I
               </h3>
               <div className="space-y-3">
-                <Link href="/industries#airline">
+                <Link href="/industries/airline">
                   <div className="text-gray-400 hover:text-white transition-colors cursor-pointer">
                     Airline
                   </div>
                 </Link>
-                <Link href="/industries#auto">
+                <Link href="/industries/auto">
                   <div className="text-gray-400 hover:text-white transition-colors cursor-pointer">
                     Auto
                   </div>
                 </Link>
-                <Link href="/industries#chemical">
+                <Link href="/industries/chemical">
                   <div className="text-gray-400 hover:text-white transition-colors cursor-pointer">
                     Chemical Processing
                   </div>
                 </Link>
-                <Link href="/industries#construction">
+                <Link href="/industries/construction">
                   <div className="text-gray-400 hover:text-white transition-colors cursor-pointer">
                     Construction
                   </div>
                 </Link>
-                <Link href="/industries#data-centers">
+                <Link href="/industries/data-centers">
                   <div className="text-gray-400 hover:text-white transition-colors cursor-pointer">
                     Data Centers
                   </div>
                 </Link>
-                <Link href="/industries#defense">
+                <Link href="/industries/defense">
                   <div className="text-gray-400 hover:text-white transition-colors cursor-pointer">
                     Defense & Aerospace
                   </div>
                 </Link>
-                <Link href="/industries#healthcare">
+                <Link href="/industries/healthcare">
                   <div className="text-gray-400 hover:text-white transition-colors cursor-pointer">
                     Healthcare
                   </div>
                 </Link>
-                <Link href="/industries#insurance">
+                <Link href="/industries/insurance">
                   <div className="text-gray-400 hover:text-white transition-colors cursor-pointer">
                     Insurance
                   </div>
                 </Link>
-                <Link href="/industries#life-science">
+                <Link href="/industries/life-science">
                   <div className="text-gray-400 hover:text-white transition-colors cursor-pointer">
                     Life Science
                   </div>
@@ -105,52 +105,52 @@ export default function Footer() {
                 Industries II
               </h3>
               <div className="space-y-3">
-                <Link href="/industries#manufacturing">
+                <Link href="/industries/manufacturing">
                   <div className="text-gray-400 hover:text-white transition-colors cursor-pointer">
                     Manufacturing
                   </div>
                 </Link>
-                <Link href="/industries#maritime">
+                <Link href="/industries/maritime">
                   <div className="text-gray-400 hover:text-white transition-colors cursor-pointer">
                     Maritime
                   </div>
                 </Link>
-                <Link href="/industries#mining">
+                <Link href="/industries/mining">
                   <div className="text-gray-400 hover:text-white transition-colors cursor-pointer">
                     Mining
                   </div>
                 </Link>
-                <Link href="/industries#oil-gas">
+                <Link href="/industries/oil-gas">
                   <div className="text-gray-400 hover:text-white transition-colors cursor-pointer">
                     Oil & Gas
                   </div>
                 </Link>
-                <Link href="/industries#power">
+                <Link href="/industries/power">
                   <div className="text-gray-400 hover:text-white transition-colors cursor-pointer">
                     Power Generation
                   </div>
                 </Link>
-                <Link href="/industries#rail">
+                <Link href="/industries/rail">
                   <div className="text-gray-400 hover:text-white transition-colors cursor-pointer">
                     Rail
                   </div>
                 </Link>
-                <Link href="/industries#renewable">
+                <Link href="/industries/renewable">
                   <div className="text-gray-400 hover:text-white transition-colors cursor-pointer">
                     Renewable Energy
                   </div>
                 </Link>
-                <Link href="/industries#steel">
+                <Link href="/industries/steel">
                   <div className="text-gray-400 hover:text-white transition-colors cursor-pointer">
                     Steel
                   </div>
                 </Link>
-                <Link href="/industries#telecom">
+                <Link href="/industries/telecom">
                   <div className="text-gray-400 hover:text-white transition-colors cursor-pointer">
                     Telecommunications
                   </div>
                 </Link>
-                <Link href="/industries#warehouse">
+                <Link href="/industries/warehouse">
                   <div className="text-gray-400 hover:text-white transition-colors cursor-pointer">
                     Warehousing
                   </div>
