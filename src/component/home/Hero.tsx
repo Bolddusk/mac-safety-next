@@ -44,7 +44,10 @@ export default function Hero() {
         <div className="container mx-auto px-4 relative z-20 flex sm:justify-center">
           {/* <AnimateHeroTitle /> */}
           <div className="">
-            <h1 className="text-4xl md:text-6xl font-bold sm:w-[600px]">
+            <h1
+              className="text-4xl md:text-6xl font-bold sm:w-[600px]"
+              style={{ contentVisibility: "auto" }}
+            >
               Intelligence at Every Level
             </h1>
 
@@ -92,7 +95,10 @@ export default function Hero() {
               </div>
             </div>
 
-            <h2 className="text-2xl sm:text-3xl font-bold md:text-4xl text-white/90 mt-4">
+            <h2
+              className="text-2xl sm:text-3xl font-bold md:text-4xl text-white/90 mt-4"
+              style={{ contentVisibility: "auto" }}
+            >
               Working as One
             </h2>
           </div>
