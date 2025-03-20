@@ -26,6 +26,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <style>
+          {`
+            h1 {
+              font-size: 2.5rem;
+              font-weight: bold;
+              width: 600px;
+            }
+          `}
+        </style>
+
         <script
           key="schema_1"
           type="application/ld+json"
@@ -37,9 +47,10 @@ export default function RootLayout({
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-SL56NBPRTS"
-          strategy="lazyOnload"
+          // strategy="lazyOnload"
+          defer
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="afterInteractive" defer>
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag() { window.dataLayer.push(arguments); }

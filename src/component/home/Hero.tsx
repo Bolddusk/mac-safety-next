@@ -58,7 +58,7 @@ export default function Hero() {
                   alt={`People Icon`}
                   width={100}
                   height={100}
-                  priority
+                  loading="lazy"
                   className="object-contain rounded-lg sm:w-[100px] sm:h-[100px] w-[60px] h-[60px]"
                 />
                 <p className="text-6xl sm:text-8xl font-bold font-furore">
@@ -72,9 +72,9 @@ export default function Hero() {
                   alt={`data_icon`}
                   width={100}
                   height={100}
-                  priority
+                  loading="lazy"
                   className="object-contain rounded-lg sm:w-[100px] sm:h-[100px] w-[60px] h-[60px]"
-                />
+                  />
                 <p className="text-6xl sm:text-8xl font-bold font-furore">
                   Data
                 </p>
@@ -87,8 +87,9 @@ export default function Hero() {
                   width={100}
                   height={100}
                   priority
+                  loading="lazy"
                   className="object-contain rounded-lg sm:w-[100px] sm:h-[100px] w-[60px] h-[60px]"
-                />
+                  />
                 <p className="text-6xl sm:text-8xl bg-gradient-to-r from-[#eba200] via-[#64FFDA] to-[#eba200] text-transparent bg-clip-text animate-gradient">
                   AI
                 </p>
