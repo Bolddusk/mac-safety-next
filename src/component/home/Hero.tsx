@@ -17,8 +17,7 @@ import {
   DialogClose,
 } from "../ui/dialog";
 import { Button } from "../ui/button";
-import AnimateHeroTitle from "./AnimateHeroTitle";
-
+import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -42,8 +41,61 @@ export default function Hero() {
           </video>
         </div>
 
-        <div className="container mx-auto px-4 relative z-20">
-          <AnimateHeroTitle />
+        <div className="container mx-auto px-4 relative z-20 flex sm:justify-center">
+          {/* <AnimateHeroTitle /> */}
+          <div className="">
+            <h1 className="text-4xl md:text-6xl font-bold sm:w-[600px]">
+              Intelligence at Every Level
+            </h1>
+
+            <div className="heading-container font-bold font-furore w-[350px] sm:w-[600px] h-[80px] sm:h-[120px] ">
+              <div className="heading flex gap-4 items-center my-5">
+                <Image
+                  src={"/uploads/People Icon.webp"}
+                  alt={`People Icon`}
+                  width={100}
+                  height={100}
+                  priority
+                  className="object-contain rounded-lg sm:w-[100px] sm:h-[100px] w-[60px] h-[60px]"
+                />
+                <p className="text-6xl sm:text-8xl font-bold font-furore">
+                  People
+                </p>
+              </div>
+
+              <div className="heading flex gap-4 items-center my-5">
+                <Image
+                  src={"/uploads/data_icon.webp"}
+                  alt={`data_icon`}
+                  width={100}
+                  height={100}
+                  priority
+                  className="object-contain rounded-lg sm:w-[100px] sm:h-[100px] w-[60px] h-[60px]"
+                />
+                <p className="text-6xl sm:text-8xl font-bold font-furore">
+                  Data
+                </p>
+              </div>
+
+              <div className="heading flex gap-4 items-center my-5">
+                <Image
+                  src={"/uploads/ai_icon.webp"}
+                  alt={`ai_icon`}
+                  width={100}
+                  height={100}
+                  priority
+                  className="object-contain rounded-lg sm:w-[100px] sm:h-[100px] w-[60px] h-[60px]"
+                />
+                <p className="text-6xl sm:text-8xl bg-gradient-to-r from-[#eba200] via-[#64FFDA] to-[#eba200] text-transparent bg-clip-text animate-gradient">
+                  AI
+                </p>
+              </div>
+            </div>
+
+            <h2 className="text-2xl sm:text-3xl font-bold md:text-4xl text-white/90 mt-4">
+              Working as One
+            </h2>
+          </div>
         </div>
 
         <div className="absolute bottom-8 left-0 right-0 mx-auto text-center">

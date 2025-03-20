@@ -33,7 +33,7 @@ const AnimateTitle = () => {
             alt={`${words[currentWord]} icon`}
             width={500} // Adjust width as needed
             height={500} // Adjust height as needed
-            className="w-full h-full object-contain rounded-lg drop-shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
+            className="w-full h-full object-contain rounded-lg"
           />
         </div>
         <span
