@@ -61,7 +61,10 @@ export default function Hero() {
                   loading="lazy"
                   className="object-contain rounded-lg sm:w-[100px] sm:h-[100px] w-[60px] h-[60px]"
                 />
-                <h2 className="text-6xl sm:text-8xl font-bold font-furore" style={{ contentVisibility: "auto" }}>
+                <h2
+                  className="text-6xl sm:text-8xl font-bold font-furore"
+                  style={{ contentVisibility: "auto" }}
+                >
                   People
                 </h2>
               </div>
@@ -74,8 +77,11 @@ export default function Hero() {
                   height={100}
                   loading="lazy"
                   className="object-contain rounded-lg sm:w-[100px] sm:h-[100px] w-[60px] h-[60px]"
-                  />
-                <h2 className="text-6xl sm:text-8xl font-bold font-furore" style={{ contentVisibility: "auto" }}>
+                />
+                <h2
+                  className="text-6xl sm:text-8xl font-bold font-furore"
+                  style={{ contentVisibility: "auto" }}
+                >
                   Data
                 </h2>
               </div>
@@ -88,8 +94,11 @@ export default function Hero() {
                   height={100}
                   loading="lazy"
                   className="object-contain rounded-lg sm:w-[100px] sm:h-[100px] w-[60px] h-[60px]"
-                  />
-                <h2 className="text-6xl sm:text-8xl bg-gradient-to-r from-[#eba200] via-[#64FFDA] to-[#eba200] text-transparent bg-clip-text animate-gradient" style={{ contentVisibility: "auto" }}>
+                />
+                <h2
+                  className="text-6xl sm:text-8xl bg-gradient-to-r from-[#eba200] via-[#64FFDA] to-[#eba200] text-transparent bg-clip-text animate-gradient"
+                  style={{ contentVisibility: "auto" }}
+                >
                   AI
                 </h2>
               </div>
@@ -157,16 +166,16 @@ export default function Hero() {
                     </HUDOverlay>
                   </div>
                 </DialogTrigger>
-                <DialogContent className="bg-black/95 border-[#eba200]/20 backdrop-blur-md max-w-2xl max-h-[90vh] sm:max-h-[85vh] overflow-hidden p-0 mx-4">
+                <DialogContent aria-describedby="safety" className="bg-black/95 border-[#eba200]/20 backdrop-blur-md max-w-2xl max-h-[90vh] sm:max-h-[85vh] overflow-hidden p-0 mx-4">
                   <div className="relative">
-                    <DialogClose className="absolute right-4 top-4 z-50">
-                      <Button
-                        variant="ghost"
-                        size="icon"
+                    <DialogClose className="absolute right-4 top-4 z-50 cursor-pointer">
+                      <span
+                        // variant="ghost"
+                        // size="icon"
                         className="text-white hover:text-[#eba200]"
                       >
                         <X className="h-4 w-4" />
-                      </Button>
+                      </span>
                     </DialogClose>
                     <HUDOverlay>
                       <div className="p-4 sm:p-6 overflow-y-auto max-h-[80vh] sm:max-h-[75vh] scrollbar-thin scrollbar-thumb-[#eba200]/20 scrollbar-track-transparent">
@@ -251,16 +260,16 @@ export default function Hero() {
                     </HUDOverlay>
                   </div>
                 </DialogTrigger>
-                <DialogContent className="bg-black/95 border-[#eba200]/20 backdrop-blur-md max-w-2xl max-h-[90vh] sm:max-h-[85vh] overflow-hidden p-0 mx-4">
+                <DialogContent aria-describedby="Enterprise" className="bg-black/95 border-[#eba200]/20 backdrop-blur-md max-w-2xl max-h-[90vh] sm:max-h-[85vh] overflow-hidden p-0 mx-4">
                   <div className="relative">
-                    <DialogClose className="absolute right-4 top-4 z-50">
-                      <Button
-                        variant="ghost"
-                        size="icon"
+                    <DialogClose className="absolute right-4 top-4 z-50 cursor-pointer">
+                      <span
+                        // variant="ghost"
+                        // size="icon"
                         className="text-white hover:text-[#eba200]"
                       >
                         <X className="h-4 w-4" />
-                      </Button>
+                      </span>
                     </DialogClose>
                     <HUDOverlay>
                       <div className="p-4 sm:p-6 overflow-y-auto max-h-[80vh] sm:max-h-[75vh] scrollbar-thin scrollbar-thumb-[#eba200]/20 scrollbar-track-transparent">
@@ -343,16 +352,16 @@ export default function Hero() {
                     </HUDOverlay>
                   </div>
                 </DialogTrigger>
-                <DialogContent className="bg-black/95 border-[#eba200]/20 backdrop-blur-md max-w-2xl max-h-[90vh] sm:max-h-[85vh] overflow-hidden p-0 mx-4">
+                <DialogContent aria-describedby="Critical" className="bg-black/95 border-[#eba200]/20 backdrop-blur-md max-w-2xl max-h-[90vh] sm:max-h-[85vh] overflow-hidden p-0 mx-4">
                   <div className="relative">
-                    <DialogClose className="absolute right-4 top-4 z-50">
-                      <Button
-                        variant="ghost"
-                        size="icon"
+                    <DialogClose className="absolute right-4 top-4 z-50 cursor-pointer">
+                      <span
+                        // variant="ghost"
+                        // size="icon"
                         className="text-white hover:text-[#eba200]"
                       >
                         <X className="h-4 w-4" />
-                      </Button>
+                      </span>
                     </DialogClose>
                     <HUDOverlay>
                       <div className="p-4 sm:p-6 overflow-y-auto max-h-[80vh] sm:max-h-[75vh] scrollbar-thin scrollbar-thumb-[#eba200]/20 scrollbar-track-transparent">
