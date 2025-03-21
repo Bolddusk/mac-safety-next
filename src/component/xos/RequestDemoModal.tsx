@@ -56,7 +56,7 @@ export function RequestDemoModal() {
     DemoFormValues // The expected type of 'data'
   >({
     mutationFn: async (data: DemoFormValues) => {
-      return await apiRequest("POST", "/api/messsage", data);
+      return await apiRequest("POST", "/api/message", data);
     },
     onSuccess: () => {
       toast({

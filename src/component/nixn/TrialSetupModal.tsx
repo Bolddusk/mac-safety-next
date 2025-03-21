@@ -54,7 +54,7 @@ export function TrialSetupModal() {
     TrialFormValues // The expected type of 'data'
   >({
     mutationFn: async (data: TrialFormValues) => {
-      return await apiRequest("POST", "/api/messsage", data);
+      return await apiRequest("POST", "/api/message", data);
     },
     onSuccess: () => {
       toast({

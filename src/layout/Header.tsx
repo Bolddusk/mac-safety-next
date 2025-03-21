@@ -97,7 +97,7 @@ export default function Header() {
     ContactFormValues // The expected type of 'data'
   >({
     mutationFn: async (data: ContactFormValues) => {
-      return await apiRequest("POST", "/api/messsage", data);
+      return await apiRequest("POST", "/api/message", data);
     },
     onSuccess: () => {
       toast({

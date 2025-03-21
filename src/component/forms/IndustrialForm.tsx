@@ -62,7 +62,7 @@ const IndustrialForm = () => {
     ServiceRequestForm // The expected type of 'data'
   >({
     mutationFn: async (data: ServiceRequestForm) => {
-      return await apiRequest("POST", "/api/messsage", data);
+      return await apiRequest("POST", "/api/message", data);
     },
     onSuccess: () => {
       toast({
