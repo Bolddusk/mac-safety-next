@@ -45,7 +45,7 @@ export default function Hero() {
           {/* <AnimateHeroTitle /> */}
           <div className="">
             <h1
-              className="text-4xl md:text-6xl font-bold sm:w-[600px]"
+              className="text-4xl md:text-6xl font-bold sm:w-[600px] h-[90px] sm:h-[120px]"
               style={{ contentVisibility: "auto" }}
             >
               Intelligence at Every Level
@@ -61,9 +61,9 @@ export default function Hero() {
                   loading="lazy"
                   className="object-contain rounded-lg sm:w-[100px] sm:h-[100px] w-[60px] h-[60px]"
                 />
-                <p className="text-6xl sm:text-8xl font-bold font-furore">
+                <h2 className="text-6xl sm:text-8xl font-bold font-furore" style={{ contentVisibility: "auto" }}>
                   People
-                </p>
+                </h2>
               </div>
 
               <div className="heading flex gap-4 items-center my-5">
@@ -75,9 +75,9 @@ export default function Hero() {
                   loading="lazy"
                   className="object-contain rounded-lg sm:w-[100px] sm:h-[100px] w-[60px] h-[60px]"
                   />
-                <p className="text-6xl sm:text-8xl font-bold font-furore">
+                <h2 className="text-6xl sm:text-8xl font-bold font-furore" style={{ contentVisibility: "auto" }}>
                   Data
-                </p>
+                </h2>
               </div>
 
               <div className="heading flex gap-4 items-center my-5">
@@ -86,18 +86,16 @@ export default function Hero() {
                   alt={`ai_icon`}
                   width={100}
                   height={100}
-                  priority
                   loading="lazy"
                   className="object-contain rounded-lg sm:w-[100px] sm:h-[100px] w-[60px] h-[60px]"
                   />
-                <p className="text-6xl sm:text-8xl bg-gradient-to-r from-[#eba200] via-[#64FFDA] to-[#eba200] text-transparent bg-clip-text animate-gradient">
+                <h2 className="text-6xl sm:text-8xl bg-gradient-to-r from-[#eba200] via-[#64FFDA] to-[#eba200] text-transparent bg-clip-text animate-gradient" style={{ contentVisibility: "auto" }}>
                   AI
-                </p>
+                </h2>
               </div>
             </div>
-
             <h2
-              className="text-2xl sm:text-3xl font-bold md:text-4xl text-white/90 mt-4"
+              className="text-2xl sm:text-3xl font-bold md:text-4xl text-white/90 mt-4 h-[60px]"
               style={{ contentVisibility: "auto" }}
             >
               Working as One

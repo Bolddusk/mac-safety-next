@@ -26,16 +26,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <style>
-          {`
-            h1 {
-              font-size: 2.5rem;
-              font-weight: bold;
-              width: 600px;
-            }
-          `}
-        </style>
-
         <script
           key="schema_1"
           type="application/ld+json"
@@ -45,7 +35,7 @@ export default function RootLayout({
         />
 
         <Script
-          async
+          // async
           src="https://www.googletagmanager.com/gtag/js?id=G-SL56NBPRTS"
           // strategy="lazyOnload"
           defer

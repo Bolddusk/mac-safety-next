@@ -94,19 +94,19 @@ select + p {
 }
 
 @keyframes rotateHeadings {
-  0% {
+  10% {
     opacity: 0;
     transform: translateY(50px);
   }
-  10% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  30% {
+  20% {
     opacity: 1;
     transform: translateY(0);
   }
   40% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
     opacity: 0;
     transform: translateY(-50px);
   }
