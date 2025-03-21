@@ -16,7 +16,6 @@ import {
   DialogTrigger,
   DialogClose,
 } from "../ui/dialog";
-import { Button } from "../ui/button";
 import Image from "next/image";
 
 export default function Hero() {
