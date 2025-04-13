@@ -43,16 +43,16 @@ export default function Alpha() {
           </p>
 
           <p className="text-base md:text-lg text-gray-300 mb-4 md:mb-6">
-            Data isn&apos;t oil. It&apos;s a byproduct, inert until context, modeling, and
-            decision logic are applied. Most companies are drowning in it, and
-            still don&apos;t know what to do next.
+            Data isn&apos;t oil. It&apos;s a byproduct, inert until context,
+            modeling, and decision logic are applied. Most companies are
+            drowning in it, and still don&apos;t know what to do next.
           </p>
 
           <p className="text-base md:text-lg text-gray-300 mb-8 md:mb-12">
             Alpha—the kind that moves operations, reduces loss, and wins market
-            share—isn&apos;t in your database. It&apos;s in your decision points. And
-            those are being made right now by people under pressure, with
-            incomplete information and zero support.
+            share—isn&apos;t in your database. It&apos;s in your decision
+            points. And those are being made right now by people under pressure,
+            with incomplete information and zero support.
           </p>
 
           <p className="text-base md:text-lg font-semibold text-white mb-8 md:mb-12">
@@ -64,8 +64,8 @@ export default function Alpha() {
           </h2>
 
           <p className="text-base md:text-lg text-gray-300 mb-4 md:mb-6">
-            Every business is filled with hidden decision points. They&apos;re not
-            always in your process map—but they&apos;re always in your cost
+            Every business is filled with hidden decision points. They&apos;re
+            not always in your process map—but they&apos;re always in your cost
             structure.
           </p>
 
@@ -100,12 +100,7 @@ export default function Alpha() {
               🔍 This is the Alpha Equation:
             </p>
             <div className="text-2xl md:text-3xl font-bold text-white text-center my-6 font-mono">
-              <div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7 }}
-                className="glow-text"
-              >
+              <div className="glow-text">
                 Alpha = Uncertainty × Consequence × Decision Lift
               </div>
             </div>
@@ -136,13 +131,13 @@ export default function Alpha() {
           <p className="text-base md:text-lg text-gray-300 mb-6">
             These are the decisions that shape your risk exposure, your rework
             rate, your loss profile, and your insurance cost. Yet most
-            businesses don&apos;t even know where they&apos;re happening—let alone how to
-            intervene.
+            businesses don&apos;t even know where they&apos;re happening—let
+            alone how to intervene.
           </p>
 
           <p className="text-base md:text-lg text-gray-300 mb-6">
-            MAC doesn&apos;t log the decision. We model it. Then we embed software to
-            improve it—in real-time, at the point of action.
+            MAC doesn&apos;t log the decision. We model it. Then we embed
+            software to improve it—in real-time, at the point of action.
           </p>
 
           <div className="relative py-10 mb-12 overflow-hidden">
@@ -226,8 +221,8 @@ export default function Alpha() {
             </h2>
 
             <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto">
-              Let&apos;s build decision-layer infrastructure where your risk lives—on
-              the floor, in the field, and at the edge of execution.
+              Let&apos;s build decision-layer infrastructure where your risk
+              lives—on the floor, in the field, and at the edge of execution.
             </p>
           </div>
         </div>
