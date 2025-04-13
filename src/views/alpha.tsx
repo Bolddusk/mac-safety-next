@@ -33,7 +33,7 @@ export default function Alpha() {
 
           <p className="text-lg md:text-xl text-gray-300 mb-6 md:mb-8">
             For years, companies were told that data is the new oil. That if you
-            collect enough of it, insight will follow. It didn't. Instead,
+            collect enough of it, insight will follow. It didn&apos;t. Instead,
             businesses got dashboards, latency, and confusion—while the real
             problems stayed unsolved.
           </p>
@@ -43,14 +43,14 @@ export default function Alpha() {
           </p>
 
           <p className="text-base md:text-lg text-gray-300 mb-4 md:mb-6">
-            Data isn't oil. It's a byproduct, inert until context, modeling, and
+            Data isn&apos;t oil. It&apos;s a byproduct, inert until context, modeling, and
             decision logic are applied. Most companies are drowning in it, and
-            still don't know what to do next.
+            still don&apos;t know what to do next.
           </p>
 
           <p className="text-base md:text-lg text-gray-300 mb-8 md:mb-12">
             Alpha—the kind that moves operations, reduces loss, and wins market
-            share—isn't in your database. It's in your decision points. And
+            share—isn&apos;t in your database. It&apos;s in your decision points. And
             those are being made right now by people under pressure, with
             incomplete information and zero support.
           </p>
@@ -64,8 +64,8 @@ export default function Alpha() {
           </h2>
 
           <p className="text-base md:text-lg text-gray-300 mb-4 md:mb-6">
-            Every business is filled with hidden decision points. They're not
-            always in your process map—but they're always in your cost
+            Every business is filled with hidden decision points. They&apos;re not
+            always in your process map—but they&apos;re always in your cost
             structure.
           </p>
 
@@ -84,7 +84,7 @@ export default function Alpha() {
           </div>
 
           <p className="text-base md:text-lg text-gray-300 font-semibold mb-2">
-            These aren't data problems.
+            These aren&apos;t data problems.
           </p>
           <p className="text-base md:text-lg text-gray-300 font-semibold mb-6">
             These are judgment under pressure problems.
@@ -136,12 +136,12 @@ export default function Alpha() {
           <p className="text-base md:text-lg text-gray-300 mb-6">
             These are the decisions that shape your risk exposure, your rework
             rate, your loss profile, and your insurance cost. Yet most
-            businesses don't even know where they're happening—let alone how to
+            businesses don&apos;t even know where they&apos;re happening—let alone how to
             intervene.
           </p>
 
           <p className="text-base md:text-lg text-gray-300 mb-6">
-            MAC doesn't log the decision. We model it. Then we embed software to
+            MAC doesn&apos;t log the decision. We model it. Then we embed software to
             improve it—in real-time, at the point of action.
           </p>
 
@@ -220,13 +220,13 @@ export default function Alpha() {
 
           <div className="text-center py-8 md:py-12">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-              Your Business Doesn't Need More Software.
+              Your Business Doesn&apos;t Need More Software.
               <br />
               <span className="text-[#eba200]">It Needs Better Decisions.</span>
             </h2>
 
             <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto">
-              Let's build decision-layer infrastructure where your risk lives—on
+              Let&apos;s build decision-layer infrastructure where your risk lives—on
               the floor, in the field, and at the edge of execution.
             </p>
           </div>
