@@ -15,89 +15,219 @@ export default function Alpha() {
             </h1>
           </div>
           <div>
-            <p className="text-2xl md:text-3xl font-light text-white leading-relaxed">
-              Performant Risk Management is no longer a luxury for the
-              enterprises of tomorrow.
-            </p>
+            <div className="text-2xl md:text-4xl font-bold leading-relaxed">
+              <p className="mb-2">
+                Deploy <span className="text-[#eba200]">Intelligence</span>
+              </p>
+              <p>
+                Not <span className="text-gray-400">Interfaces</span>
+              </p>
+            </div>
           </div>
         </div>
 
         <div className="prose prose-invert max-w-none">
           <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-white">
-            The Future Belongs to Those Who Master Risk
+            Decision Points, Not Data
           </h2>
 
           <p className="text-lg md:text-xl text-gray-300 mb-6 md:mb-8">
-            The dominant companies and industries that define our economy will
-            be the ones that get risk intelligence right. Mastering this isn&apos;t
-            just an operational necessity—it&apos;s the difference between winning
-            and losing in an environment where volatility, liability, and
-            exposure define the balance sheet.
+            For years, companies were told that data is the new oil. That if you
+            collect enough of it, insight will follow. It didn't. Instead,
+            businesses got dashboards, latency, and confusion—while the real
+            problems stayed unsolved.
+          </p>
+
+          <p className="text-base md:text-lg text-gray-300 mb-4 md:mb-6">
+            At MAC, we reject that myth outright.
+          </p>
+
+          <p className="text-base md:text-lg text-gray-300 mb-4 md:mb-6">
+            Data isn't oil. It's a byproduct, inert until context, modeling, and
+            decision logic are applied. Most companies are drowning in it, and
+            still don't know what to do next.
           </p>
 
           <p className="text-base md:text-lg text-gray-300 mb-8 md:mb-12">
-            At MAC Safety, we recognize our customers&apos; existential need to
-            convert risk into competitive advantage. We don&apos;t sell compliance.
-            We don&apos;t offer commodity SaaS. We deliver the outcomes that create
-            alpha—helping organizations not just manage risk, but weaponize it
-            as a strategic edge.
+            Alpha—the kind that moves operations, reduces loss, and wins market
+            share—isn't in your database. It's in your decision points. And
+            those are being made right now by people under pressure, with
+            incomplete information and zero support.
           </p>
 
-          <div className="bg-black/30 border border-white/10 rounded-lg p-4 md:p-8 mb-8 md:mb-12">
-            <p className="text-base md:text-lg text-gray-300 mb-4 md:mb-6">
-              This approach is fundamentally opposed to the traditional safety
-              and risk management market, which rewards incremental efficiencies
-              but delivers no actual advantage to the end user.
+          <p className="text-base md:text-lg font-semibold text-white mb-8 md:mb-12">
+            This is where MAC begins.
+          </p>
+
+          <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-white">
+            We Locate the Blind Spots Where Decisions Fail
+          </h2>
+
+          <p className="text-base md:text-lg text-gray-300 mb-4 md:mb-6">
+            Every business is filled with hidden decision points. They're not
+            always in your process map—but they're always in your cost
+            structure.
+          </p>
+
+          <div className="space-y-4 mb-6">
+            <p className="text-base md:text-lg text-gray-300 italic pl-4 border-l-2 border-[#eba200]">
+              A supervisor guessing whether a crew is ready.
             </p>
-
-            <ul className="list-none space-y-3 md:space-y-4 mb-4 md:mb-6">
-              <li className="text-gray-300">
-                <span className="text-[#eba200]">→</span> Consulting firms
-                operate as if safety is a checklist.
-              </li>
-              <li className="text-gray-300">
-                <span className="text-[#eba200]">→</span> Traditional safety
-                software is designed as if risk is a library catalog.
-              </li>
-            </ul>
-
-            <p className="text-base md:text-lg font-semibold text-white">
-              We operate under a different assumption: Risk is the battlefield.
-              The winners will be those who control it.
+            <p className="text-base md:text-lg text-gray-300 italic pl-4 border-l-2 border-[#eba200]">
+              A dispatcher assigning a route without understanding the real
+              risk.
+            </p>
+            <p className="text-base md:text-lg text-gray-300 italic pl-4 border-l-2 border-[#eba200]">
+              A foreman choosing speed over redundancy, with no model of
+              consequence.
             </p>
           </div>
 
-          <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-white">
-            The MAC Safety Difference
+          <p className="text-base md:text-lg text-gray-300 font-semibold mb-2">
+            These aren't data problems.
+          </p>
+          <p className="text-base md:text-lg text-gray-300 font-semibold mb-6">
+            These are judgment under pressure problems.
+          </p>
+
+          <p className="text-base md:text-lg text-gray-300 mb-6">
+            They exist where Uncertainty is high, where the Consequence of
+            failure is massive, and where no system is helping close the gap.
+          </p>
+
+          <div className="bg-gradient-to-r from-black to-[#0D1117] border border-[#eba200]/30 rounded-lg p-6 md:p-8 mb-8 shadow-[0_0_15px_rgba(235,162,0,0.2)] backdrop-blur-sm">
+            <p className="text-lg md:text-xl font-semibold text-[#eba200] mb-4">
+              🔍 This is the Alpha Equation:
+            </p>
+            <div className="text-2xl md:text-3xl font-bold text-white text-center my-6 font-mono">
+              <div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7 }}
+                className="glow-text"
+              >
+                Alpha = Uncertainty × Consequence × Decision Lift
+              </div>
+            </div>
+
+            <div className="space-y-3 text-gray-300 mt-6">
+              <p>
+                <span className="text-[#eba200] font-semibold">
+                  Uncertainty:
+                </span>{" "}
+                How little is known when the decision is made
+              </p>
+              <p>
+                <span className="text-[#eba200] font-semibold">
+                  Consequence:
+                </span>{" "}
+                What happens if it goes wrong
+              </p>
+              <p>
+                <span className="text-[#eba200] font-semibold">
+                  Decision Lift:
+                </span>{" "}
+                How much better, faster, or safer MAC enables that choice to be
+                made
+              </p>
+            </div>
+          </div>
+
+          <p className="text-base md:text-lg text-gray-300 mb-6">
+            These are the decisions that shape your risk exposure, your rework
+            rate, your loss profile, and your insurance cost. Yet most
+            businesses don't even know where they're happening—let alone how to
+            intervene.
+          </p>
+
+          <p className="text-base md:text-lg text-gray-300 mb-6">
+            MAC doesn't log the decision. We model it. Then we embed software to
+            improve it—in real-time, at the point of action.
+          </p>
+
+          <div className="relative py-10 mb-12 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent z-0"></div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 relative z-10 mx-auto max-w-4xl">
+              <div className="transform transition-all duration-300 hover:scale-105">
+                <div className="border border-white/10 bg-black/60 backdrop-blur-sm p-5 rounded-lg shadow-[0_5px_15px_rgba(0,0,0,0.3)]">
+                  <p className="text-xl md:text-2xl font-bold text-white text-center">
+                    Not <span className="text-gray-400">post-incident</span>
+                  </p>
+                </div>
+              </div>
+
+              <div className="transform transition-all duration-300 hover:scale-105">
+                <div className="border border-white/10 bg-black/60 backdrop-blur-sm p-5 rounded-lg shadow-[0_5px_15px_rgba(0,0,0,0.3)]">
+                  <p className="text-xl md:text-2xl font-bold text-white text-center">
+                    Not <span className="text-gray-400">post-mortem</span>
+                  </p>
+                </div>
+              </div>
+
+              <div className="transform transition-all duration-300 hover:scale-105">
+                <div className="border border-[#eba200]/30 bg-black/60 backdrop-blur-sm p-5 rounded-lg shadow-[0_0_15px_rgba(235,162,0,0.15)]">
+                  <p className="text-xl md:text-2xl font-bold text-[#eba200] text-center">
+                    On the <span className="text-white">edge</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-white">
+            The New Enterprise Stack Is Embedded Execution
           </h2>
 
-          <p className="text-base md:text-lg text-gray-300 mb-6 md:mb-8">
-            The market is flooded with software and services that do nothing
-            more than track past incidents and automate bad decisions faster.
-            That isn&apos;t risk intelligence—that&apos;s the illusion of control.
-          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+            <div className="space-y-3 p-4 border border-transparent hover:border-[#eba200]/20 hover:bg-black/30 transition-all duration-300 rounded-lg">
+              <p className="text-xl md:text-2xl font-bold text-[#eba200]">
+                Not dashboards.
+              </p>
+              <p className="text-xl md:text-2xl font-bold text-white">
+                Decision engines.
+              </p>
+            </div>
 
-          <p className="text-base md:text-lg text-gray-300 mb-6 md:mb-8">
-            Our customers see risk not as a burden, but as the fuel that drives
-            operational superiority. They know that a connected, real-time risk
-            ecosystem—one that constantly learns, predicts, and compounds
-            intelligence—will define the industry leaders of tomorrow.
-          </p>
+            <div className="space-y-3 p-4 border border-transparent hover:border-[#eba200]/20 hover:bg-black/30 transition-all duration-300 rounded-lg">
+              <p className="text-xl md:text-2xl font-bold text-[#eba200]">
+                Not more data.
+              </p>
+              <p className="text-xl md:text-2xl font-bold text-white">
+                Better judgment.
+              </p>
+            </div>
 
-          <p className="text-base md:text-lg text-gray-300 mb-6 md:mb-8">
-            For these enterprises, MAC Safety builds the foundational software
-            of tomorrow, and we deliver it today. We&apos;ve moved beyond static
-            dashboards and lagging indicators to embed intelligence into the
-            core of every operational decision.
-          </p>
+            <div className="space-y-3 p-4 border border-transparent hover:border-[#eba200]/20 hover:bg-black/30 transition-all duration-300 rounded-lg">
+              <p className="text-xl md:text-2xl font-bold text-[#eba200]">
+                Not centralized IT.
+              </p>
+              <p className="text-xl md:text-2xl font-bold text-white">
+                Deployed intelligence at the edge.
+              </p>
+            </div>
+          </div>
 
-          <div className="bg-gradient-to-r from-[#64FFDA]/10 to-transparent border border-[#64FFDA]/20 rounded-lg p-4 md:p-8">
+          <div className="bg-gradient-to-r from-[#64FFDA]/10 to-transparent border border-[#64FFDA]/20 rounded-lg p-4 md:p-8 mb-12">
             <p className="text-lg md:text-xl font-semibold text-white mb-2">
-              With NIXN and NIXNos, we are not just improving safety.
+              This is how MAC generates Alpha:
             </p>
             <p className="text-lg md:text-xl text-[#64FFDA]">
-              We are transforming risk into a profit-driving,
-              competition-crushing asset.
+              Not by observing from the outside, but by building from
+              within—embedded teams, tailored models, and decision-first
+              architecture.
+            </p>
+          </div>
+
+          <div className="text-center py-8 md:py-12">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+              Your Business Doesn't Need More Software.
+              <br />
+              <span className="text-[#eba200]">It Needs Better Decisions.</span>
+            </h2>
+
+            <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto">
+              Let's build decision-layer infrastructure where your risk lives—on
+              the floor, in the field, and at the edge of execution.
             </p>
           </div>
         </div>
