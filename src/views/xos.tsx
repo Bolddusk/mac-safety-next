@@ -17,16 +17,8 @@ import {
 import { RequestDemoModal } from "@/component/xos/RequestDemoModal";
 import Footer from "@/layout/Footer";
 import Link from "next/link";
-import Image from "next/image";
-// import { useRef } from "react";
 
 export default function XOSPage() {
-  // const uncertaintyRef = useRef<HTMLDivElement>(null);
-
-  const scrollToFeatures = () => {
-    const featuresSection = document.getElementById("features");
-    featuresSection?.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
     // <div className="min-h-screen bg-black">
@@ -444,7 +436,7 @@ export default function XOSPage() {
       {/* Hero Section - Mobile Optimized */}
       <section className="pt-16 md:pt-24 pb-12 md:pb-16 px-4 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/50 to-black -z-10"></div>
-        <video
+        {/* <video
           autoPlay
           muted
           loop
@@ -452,7 +444,7 @@ export default function XOSPage() {
           className="absolute inset-0 w-full h-full object-cover opacity-30 -z-20"
         >
           <source src="/uploads/command-center.mp4" type="video/mp4" />
-        </video>
+        </video> */}
 
         <div className="container mx-auto max-w-6xl relative z-10">
           <div className="flex flex-col items-center text-center">
@@ -520,7 +512,7 @@ export default function XOSPage() {
           {/* Intro Header */}
           <div className="text-center mb-6">
             <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
-              Uncertainty isn't abstract.
+              Uncertainty isn&apos;t abstract.
             </h2>
             <p className="text-2xl md:text-3xl font-light text-[#eba200] mb-6">
               It lives inside your operations.
@@ -883,7 +875,7 @@ export default function XOSPage() {
                       {/* Title with Status Indicator */}
                       <div className="mb-4 border-l-2 border-[#eba200] pl-3">
                         <h2 className="text-2xl md:text-3xl font-mono text-white font-light leading-tight">
-                          UNCERTAINTY ISN'T ABSTRACT
+                          UNCERTAINTY ISN&apos;T ABSTRACT
                         </h2>
                         <p className="text-lg md:text-xl text-[#eba200] font-light">
                           It resides within operational systems
@@ -1029,7 +1021,7 @@ export default function XOSPage() {
           {/* Follow-up Panel */}
           <div className="py-12 px-8 bg-black/50 border-t border-[#eba200]/20 rounded-lg text-center">
             <p className="text-xl md:text-2xl text-white font-light mb-6">
-              xOS is not a platform. It's an enterprise operating system.
+              xOS is not a platform. It&apos;s an enterprise operating system.
             </p>
             <p className="text-xl md:text-2xl font-semibold">
               <span className="text-[#eba200]">Fused with intelligence.</span>{" "}
@@ -1327,8 +1319,8 @@ export default function XOSPage() {
                     </h4>
                     <p className="mb-6">
                       AIX is not an add-on. It is the embedded intelligence core
-                      that underpins every function within xOS—powering Summit's
-                      optimizations, Atlas's scenario modeling, and Foundry's
+                      that underpins every function within xOS—powering Summit&apos;s
+                      optimizations, Atlas&apos;s scenario modeling, and Foundry&apos;s
                       document generation with precision, context, and
                       foresight.
                     </p>
@@ -1343,7 +1335,7 @@ export default function XOSPage() {
                           Ontological Modeling Engine
                         </h5>
                         <p className="text-sm text-white/80">
-                          AIX doesn't just understand language—it understands
+                          AIX doesn&apos;t just understand language—it understands
                           your business. Tasks, risks, mitigations, and
                           dependencies are codified into a dynamic ontology that
                           adapts to your data, your industry, and your
@@ -1383,7 +1375,7 @@ export default function XOSPage() {
                         <p className="text-sm text-white/80">
                           AIX simulates impacts before they materialize. It
                           injects predictive logic into every scenario—whether
-                          it's project timelines, quality failures, or
+                          it&apos;s project timelines, quality failures, or
                           regulatory blind spots—so leadership sees second- and
                           third-order effects before they commit.
                         </p>
@@ -1453,7 +1445,7 @@ export default function XOSPage() {
                     </h4>
                     <p className="mb-6">
                       Summit is the scheduling and execution engine inside xOS.
-                      It doesn't just plan—it understands priorities,
+                      It doesn&apos;t just plan—it understands priorities,
                       constraints, and cascading dependencies.
                     </p>
 
@@ -1756,7 +1748,7 @@ export default function XOSPage() {
                           Compliance, Versioning, and Audit
                         </h5>
                         <p className="text-sm text-white/80">
-                          Built-in governance that's audit-ready and
+                          Built-in governance that&apos;s audit-ready and
                           traceable—without being bureaucratic.
                         </p>
                       </div>
