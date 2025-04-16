@@ -46,7 +46,7 @@ export function RequestDemoModal() {
       industry: "",
       email: "",
       phone: "",
-      serviceName: "Request a Demo",
+      serviceName: "Guard Connect",
     },
   });
 
