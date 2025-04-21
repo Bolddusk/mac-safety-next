@@ -112,8 +112,8 @@ const ForgeWorksApplicationDrawer: React.FC<
       console.log({ error });
     }
 
-    // For now, we'll just close the drawer and display an alert
-    // alert("Thank you for applying to ForgeWorks. We'll review your application and be in touch soon.");
+    // For now, we&apos;ll just close the drawer and display an alert
+    // alert("Thank you for applying to ForgeWorks. We&apos;ll review your application and be in touch soon.");
   };
 
   return (
@@ -341,7 +341,7 @@ const ForgeWorksApplicationDrawer: React.FC<
                           htmlFor="friction"
                           className="block text-sm font-medium text-gray-300"
                         >
-                          Where is the friction you're seeing?
+                          Where is the friction you&apos;re seeing?
                         </label>
                         <textarea
                           id="friction"
@@ -377,7 +377,7 @@ const ForgeWorksApplicationDrawer: React.FC<
                           htmlFor="consequences"
                           className="block text-sm font-medium text-gray-300"
                         >
-                          What happens if it doesn't get solved? (Optional)
+                          What happens if it doesn&apos;t get solved? (Optional)
                         </label>
                         <textarea
                           id="consequences"
@@ -589,7 +589,7 @@ const ForgeWorksApplicationDrawer: React.FC<
                           htmlFor="decisionMaking"
                           className="block text-sm font-medium text-gray-300"
                         >
-                          What's your decision-making structure?
+                          What&apos;s your decision-making structure?
                         </label>
                         <textarea
                           id="decisionMaking"
@@ -638,7 +638,7 @@ const ForgeWorksApplicationDrawer: React.FC<
                           htmlFor="fitReason"
                           className="block text-sm font-medium text-gray-300"
                         >
-                          Why do you believe you're a fit for ForgeWorks?
+                          Why do you believe you&apos;re a fit for ForgeWorks?
                         </label>
                         <textarea
                           id="fitReason"
