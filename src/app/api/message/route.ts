@@ -33,11 +33,11 @@ export async function POST(request: Request) {
         "hamzajamil.easycode@gmail.com",
       ],
       from: {
-        name: "Macsafety",
-        email: "no-reply@guardconnect.com",
+        name: "MacSafety",
+        email: "nixn@macintel.io",
       },
       subject: serviceName,
-      text: "",
+      text: "Test message",
       html: email,
     };
 
