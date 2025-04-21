@@ -933,7 +933,7 @@ export default function ForgeWorks() {
                     </span>
                     <span className="text-zinc-200">
                       You experience delays, rework, or incidents that
-                      "should&apos;ve been caught"
+                      &apos;should&apos;ve been caught&apos;
                     </span>
                   </motion.li>
 
