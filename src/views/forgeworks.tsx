@@ -680,7 +680,7 @@ export default function ForgeWorks() {
             </div>
 
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 text-center">
-              We don't integrate. We embed.
+              We don&apos;t integrate. We embed.
             </h2>
 
             <p className="text-lg text-gray-300 max-w-3xl mx-auto text-center mb-16">
@@ -901,7 +901,7 @@ export default function ForgeWorks() {
                       [02]
                     </span>
                     <span className="text-zinc-200">
-                      You've outgrown dashboards and generic platforms
+                      You&apos;ve outgrown dashboards and generic platforms
                     </span>
                   </motion.li>
 
@@ -933,7 +933,7 @@ export default function ForgeWorks() {
                     </span>
                     <span className="text-zinc-200">
                       You experience delays, rework, or incidents that
-                      "should've been caught"
+                      "should&apos;ve been caught"
                     </span>
                   </motion.li>
 
@@ -979,7 +979,7 @@ export default function ForgeWorks() {
                       [07]
                     </span>
                     <span className="text-zinc-200">
-                      You understand that better software doesn't mean more
+                      You understand that better software doesn&apos;t mean more
                       features—it means better decisions
                     </span>
                   </motion.li>
@@ -1314,17 +1314,17 @@ export default function ForgeWorks() {
 
               <p className="text-lg md:text-xl text-white leading-relaxed">
                 <span className="font-mono">
-                  This isn't software. It's statecraft for operators.
+                  This isn&apos;t software. It&apos;s statecraft for operators.
                 </span>
                 <br />
                 This is ForgeWorks.
               </p>
 
               <p className="text-lg md:text-xl leading-relaxed">
-                And if you're building what matters—
+                And if you&apos;re building what matters—
                 <br />
                 <span className="text-[#eba200] font-bold">
-                  We're already building with you.
+                  We&apos;re already building with you.
                 </span>
               </p>
             </motion.div>
