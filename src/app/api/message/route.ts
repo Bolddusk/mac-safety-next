@@ -28,17 +28,16 @@ export async function POST(request: Request) {
 
     const msg = {
       to: [
-        // "kevin@macsafety.us",
-        // "chris@macsafety.us",
-        "victor.gamra@gmail.com",
+        "kevin@macsafety.us",
+        "chris@macsafety.us",
         "hamzajamil.easycode@gmail.com",
       ],
       from: {
-        name: "Guard Connect",
+        name: "Macsafety",
         email: "no-reply@guardconnect.com",
       },
       subject: serviceName,
-      text: "Test message",
+      text: "",
       html: email,
     };
 
