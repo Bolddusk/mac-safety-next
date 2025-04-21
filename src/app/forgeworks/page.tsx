@@ -1,7 +1,6 @@
 import { Toaster } from "@/component/ui/toaster";
 import Header from "@/layout/Header";
 import { queryClient } from "@/lib/queryClient";
-import Contact from "@/views/contact";
 import ForgeWorks from "@/views/forgeworks";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Metadata } from "next";

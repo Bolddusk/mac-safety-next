@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const generateForgeworkEmailTemplate = (data: any) => {
   return `
       <!DOCTYPE html>
@@ -86,7 +87,8 @@ export const generateForgeworkEmailTemplate = (data: any) => {
             <div class="label">Data Types:</div>
             <div class="value">
               ${data.dataTypes
-                .map((type: any) => `<span class="badge">${type}</span>`)
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                .map((type: any ) => `<span class="badge">${type}</span>`)
                 .join("")}
             </div>
       

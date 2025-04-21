@@ -809,7 +809,7 @@ export default function ForgeWorks() {
           {/* Navigation/Title Bar - Desktop Only */}
           <div className="hidden md:flex justify-between items-center px-6 py-2 mb-16 border-y border-[#eba200]/30 bg-black/50 backdrop-blur-sm text-xs mx-auto max-w-screen-xl relative z-10">
             <div className="font-mono tracking-wider text-zinc-500">
-              <span className="text-[#eba200]">FWX-959M</span> // RESTRICTED
+              <span className="text-[#eba200]">FWX-959M</span> RESTRICTED
               ACCESS
             </div>
             <div className="flex items-center space-x-1 font-mono tracking-wider">
