@@ -149,6 +149,11 @@ export default function Header() {
                 NIXN™
               </div>
             </Link>
+            <Link href="/forgeworks">
+              <div className="text-white hover:text-[#eba200] hover:shadow-[0_0_10px_rgba(235,162,0,0.5)] transition-all cursor-pointer">
+                ForgeWorks
+              </div>
+            </Link>
             <Link href="/xos">
               <div className="text-white hover:text-[#eba200] hover:shadow-[0_0_10px_rgba(235,162,0,0.5)] transition-all cursor-pointer">
                 xOS
@@ -524,6 +529,14 @@ export default function Header() {
               <Link href="/nixn" onClick={() => setIsMobileMenuOpen(false)}>
                 <div className="text-2xl text-white hover:text-[#eba200] transition-all">
                   NIXN™
+                </div>
+              </Link>
+              <Link
+                href="/forgeworks"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <div className="text-2xl text-white hover:text-[#eba200] transition-all">
+                  ForgeWorks
                 </div>
               </Link>
               <Link href="/xos" onClick={() => setIsMobileMenuOpen(false)}>
