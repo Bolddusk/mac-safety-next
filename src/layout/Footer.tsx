@@ -43,6 +43,11 @@ export default function Footer() {
                     xOS
                   </div>
                 </Link>
+                <Link href="/forgeworks">
+                  <div className="text-gray-400 hover:text-white transition-colors cursor-pointer">
+                    FordgeWorks
+                  </div>
+                </Link>
               </div>
             </div>
 

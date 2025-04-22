@@ -629,7 +629,7 @@ export default function ForgeWorks() {
                 description="Custom intelligence products are built."
                 delay={0.6}
                 active
-                logoSrc="/FORGE (2).png"
+                logoSrc="/uploads/F (2).png"
               />
             </div>
 
@@ -671,7 +671,7 @@ export default function ForgeWorks() {
             <div className="relative flex justify-center items-center mb-12">
               <div className="relative w-80 md:w-96 h-auto">
                 <img
-                  src="/FORGE (1).png"
+                  src="/FORGE (3).png"
                   alt="FORGE WORKS Logo"
                   className="w-full h-auto object-contain"
                 />
@@ -712,13 +712,7 @@ export default function ForgeWorks() {
               </div>
 
               {/* Summit Core Card */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="bg-gradient-to-br from-black/80 to-black/40 p-6 rounded-lg border border-[#eba200]/20 backdrop-blur-sm hover:border-[#eba200]/40 transition-all duration-300 hover:shadow-[0_0_15px_rgba(235,162,0,0.2)]"
-              >
+              <div className="bg-gradient-to-br from-black/80 to-black/40 p-6 rounded-lg border border-[#eba200]/20 backdrop-blur-sm hover:border-[#eba200]/40 transition-all duration-300 hover:shadow-[0_0_15px_rgba(235,162,0,0.2)]">
                 <div className="flex flex-col items-center text-center">
                   <div className="w-24 h-24 mb-6 relative">
                     <img
@@ -735,16 +729,10 @@ export default function ForgeWorks() {
                     recommends optimal resource allocation and processes.
                   </p>
                 </div>
-              </motion.div>
+              </div>
 
               {/* Atlas Core Card */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                className="bg-gradient-to-br from-black/80 to-black/40 p-6 rounded-lg border border-[#eba200]/20 backdrop-blur-sm hover:border-[#eba200]/40 transition-all duration-300 hover:shadow-[0_0_15px_rgba(235,162,0,0.2)]"
-              >
+              <div className="bg-gradient-to-br from-black/80 to-black/40 p-6 rounded-lg border border-[#eba200]/20 backdrop-blur-sm hover:border-[#eba200]/40 transition-all duration-300 hover:shadow-[0_0_15px_rgba(235,162,0,0.2)]">
                 <div className="flex flex-col items-center text-center">
                   <div className="w-24 h-24 mb-6 relative">
                     <img
@@ -761,16 +749,10 @@ export default function ForgeWorks() {
                     scenarios and predicting outcomes with high fidelity.
                   </p>
                 </div>
-              </motion.div>
+              </div>
 
               {/* xFoundry Core Card */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.6 }}
-                className="bg-gradient-to-br from-black/80 to-black/40 p-6 rounded-lg border border-[#eba200]/20 backdrop-blur-sm hover:border-[#eba200]/40 transition-all duration-300 hover:shadow-[0_0_15px_rgba(235,162,0,0.2)]"
-              >
+              <div className="bg-gradient-to-br from-black/80 to-black/40 p-6 rounded-lg border border-[#eba200]/20 backdrop-blur-sm hover:border-[#eba200]/40 transition-all duration-300 hover:shadow-[0_0_15px_rgba(235,162,0,0.2)]">
                 <div className="flex flex-col items-center text-center">
                   <div className="w-24 h-24 mb-6 relative">
                     <img
@@ -789,7 +771,7 @@ export default function ForgeWorks() {
                     delivers operational intelligence with contextual relevance.
                   </p>
                 </div>
-              </motion.div>
+              </div>
             </div>
           </div>
         </section>
@@ -809,8 +791,7 @@ export default function ForgeWorks() {
           {/* Navigation/Title Bar - Desktop Only */}
           <div className="hidden md:flex justify-between items-center px-6 py-2 mb-16 border-y border-[#eba200]/30 bg-black/50 backdrop-blur-sm text-xs mx-auto max-w-screen-xl relative z-10">
             <div className="font-mono tracking-wider text-zinc-500">
-              <span className="text-[#eba200]">FWX-959M</span> RESTRICTED
-              ACCESS
+              <span className="text-[#eba200]">FWX-959M</span> RESTRICTED ACCESS
             </div>
             <div className="flex items-center space-x-1 font-mono tracking-wider">
               <span className="text-zinc-500">{"{"}</span>
@@ -828,39 +809,21 @@ export default function ForgeWorks() {
 
           <div className="container mx-auto px-4 max-w-screen-xl relative z-10">
             <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-4 mb-12">
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
-                className="flex items-center gap-4"
-              >
+              <div className="flex items-center gap-4">
                 <div className="h-12 w-2 bg-[#eba200]"></div>
                 <h2 className="text-3xl md:text-4xl font-bold text-white font-sentex">
                   WHO WE BUILD WITH
                 </h2>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="bg-black/40 border border-zinc-800 rounded px-3 py-1 font-mono text-xs text-zinc-400"
-              >
+              <div className="bg-black/40 border border-zinc-800 rounded px-3 py-1 font-mono text-xs text-zinc-400">
                 CLASSIFIED // OPERATIONAL PARTNERS ONLY
-              </motion.div>
+              </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
               {/* Left Column */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-                className="bg-zinc-950 border border-zinc-800 rounded-lg p-6 md:p-8 relative"
-              >
+              <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-6 md:p-8 relative">
                 {/* Technical corner decorations */}
                 <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#eba200]"></div>
                 <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#eba200]"></div>
@@ -875,43 +838,25 @@ export default function ForgeWorks() {
                 </div>
 
                 <ul className="space-y-4 ml-4">
-                  <motion.li
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.3 }}
-                    className="flex items-start gap-3"
-                  >
+                  <li className="flex items-start gap-3">
                     <span className="text-[#eba200] font-mono text-lg mt-0.5">
                       [01]
                     </span>
                     <span className="text-zinc-200">
                       Your team makes decisions under real operational pressure
                     </span>
-                  </motion.li>
+                  </li>
 
-                  <motion.li
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.4 }}
-                    className="flex items-start gap-3"
-                  >
+                  <li className="flex items-start gap-3">
                     <span className="text-[#eba200] font-mono text-lg mt-0.5">
                       [02]
                     </span>
                     <span className="text-zinc-200">
                       You&apos;ve outgrown dashboards and generic platforms
                     </span>
-                  </motion.li>
+                  </li>
 
-                  <motion.li
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.5 }}
-                    className="flex items-start gap-3"
-                  >
+                  <li className="flex items-start gap-3">
                     <span className="text-[#eba200] font-mono text-lg mt-0.5">
                       [03]
                     </span>
@@ -919,15 +864,9 @@ export default function ForgeWorks() {
                       Critical workflows still live in spreadsheets or tribal
                       knowledge
                     </span>
-                  </motion.li>
+                  </li>
 
-                  <motion.li
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.6 }}
-                    className="flex items-start gap-3"
-                  >
+                  <li className="flex items-start gap-3">
                     <span className="text-[#eba200] font-mono text-lg mt-0.5">
                       [04]
                     </span>
@@ -935,30 +874,18 @@ export default function ForgeWorks() {
                       You experience delays, rework, or incidents that
                       &apos;should&apos;ve been caught&apos;
                     </span>
-                  </motion.li>
+                  </li>
 
-                  <motion.li
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.7 }}
-                    className="flex items-start gap-3"
-                  >
+                  <li className="flex items-start gap-3">
                     <span className="text-[#eba200] font-mono text-lg mt-0.5">
                       [05]
                     </span>
                     <span className="text-zinc-200">
                       You need a system, not a service
                     </span>
-                  </motion.li>
+                  </li>
 
-                  <motion.li
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.8 }}
-                    className="flex items-start gap-3"
-                  >
+                  <li className="flex items-start gap-3">
                     <span className="text-[#eba200] font-mono text-lg mt-0.5">
                       [06]
                     </span>
@@ -966,15 +893,9 @@ export default function ForgeWorks() {
                       You want a model that adapts to the edge—not a rigid
                       template
                     </span>
-                  </motion.li>
+                  </li>
 
-                  <motion.li
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.9 }}
-                    className="flex items-start gap-3"
-                  >
+                  <li className="flex items-start gap-3">
                     <span className="text-[#eba200] font-mono text-lg mt-0.5">
                       [07]
                     </span>
@@ -982,18 +903,12 @@ export default function ForgeWorks() {
                       You understand that better software doesn&apos;t mean more
                       features—it means better decisions
                     </span>
-                  </motion.li>
+                  </li>
                 </ul>
-              </motion.div>
+              </div>
 
               {/* Right Column */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-                className="bg-zinc-950 border border-zinc-800 rounded-lg p-6 md:p-8 relative"
-              >
+              <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-6 md:p-8 relative">
                 {/* Technical corner decorations */}
                 <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#eba200]"></div>
                 <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#eba200]"></div>
@@ -1008,43 +923,25 @@ export default function ForgeWorks() {
                 </div>
 
                 <ul className="space-y-4 ml-4">
-                  <motion.li
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.3 }}
-                    className="flex items-start gap-3"
-                  >
+                  <li className="flex items-start gap-3">
                     <span className="text-[#eba200] font-mono text-lg mt-0.5">
                       [01]
                     </span>
                     <span className="text-zinc-200">
                       The complexity of your risk and execution structure
                     </span>
-                  </motion.li>
+                  </li>
 
-                  <motion.li
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.4 }}
-                    className="flex items-start gap-3"
-                  >
+                  <li className="flex items-start gap-3">
                     <span className="text-[#eba200] font-mono text-lg mt-0.5">
                       [02]
                     </span>
                     <span className="text-zinc-200">
                       The velocity at which decisions must be made
                     </span>
-                  </motion.li>
+                  </li>
 
-                  <motion.li
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.5 }}
-                    className="flex items-start gap-3"
-                  >
+                  <li className="flex items-start gap-3">
                     <span className="text-[#eba200] font-mono text-lg mt-0.5">
                       [03]
                     </span>
@@ -1052,15 +949,9 @@ export default function ForgeWorks() {
                       The ROI potential of embedding intelligence into your
                       operations
                     </span>
-                  </motion.li>
+                  </li>
 
-                  <motion.li
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.6 }}
-                    className="flex items-start gap-3"
-                  >
+                  <li className="flex items-start gap-3">
                     <span className="text-[#eba200] font-mono text-lg mt-0.5">
                       [04]
                     </span>
@@ -1068,15 +959,9 @@ export default function ForgeWorks() {
                       Leadership alignment and readiness to adopt decision-layer
                       systems
                     </span>
-                  </motion.li>
+                  </li>
 
-                  <motion.li
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.7 }}
-                    className="flex items-start gap-3"
-                  >
+                  <li className="flex items-start gap-3">
                     <span className="text-[#eba200] font-mono text-lg mt-0.5">
                       [05]
                     </span>
@@ -1084,15 +969,9 @@ export default function ForgeWorks() {
                       Data availability or the need to deploy MAC for signal
                       acquisition
                     </span>
-                  </motion.li>
+                  </li>
 
-                  <motion.li
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.8 }}
-                    className="flex items-start gap-3"
-                  >
+                  <li className="flex items-start gap-3">
                     <span className="text-[#eba200] font-mono text-lg mt-0.5">
                       [06]
                     </span>
@@ -1100,15 +979,9 @@ export default function ForgeWorks() {
                       How your environment interacts with our Cores: AIX,
                       Summit, Atlas, xFoundry
                     </span>
-                  </motion.li>
+                  </li>
 
-                  <motion.li
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: 0.9 }}
-                    className="flex items-start gap-3"
-                  >
+                  <li className="flex items-start gap-3">
                     <span className="text-[#eba200] font-mono text-lg mt-0.5">
                       [07]
                     </span>
@@ -1116,18 +989,12 @@ export default function ForgeWorks() {
                       Whether ForgeWorks will materially improve your
                       organizational resilience
                     </span>
-                  </motion.li>
+                  </li>
                 </ul>
-              </motion.div>
+              </div>
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="mt-16 flex justify-center"
-            >
+            <div className="mt-16 flex justify-center">
               <Button
                 className="px-8 py-3 text-sm bg-black hover:bg-zinc-900 text-[#eba200] font-mono font-bold transition-all border-2 border-[#eba200]/50 rounded-none relative group"
                 onClick={openApplicationDrawer}
@@ -1143,30 +1010,18 @@ export default function ForgeWorks() {
                   </span>
                 </span>
               </Button>
-            </motion.div>
+            </div>
           </div>
         </section>
 
         {/* Final CTA Section */}
         <section id="apply" className="py-24 bg-black">
           <div className="container mx-auto px-4 max-w-screen-xl">
-            <motion.h2
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-12 text-center"
-            >
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-12 text-center">
               If the mission is clear—we build.
-            </motion.h2>
+            </h2>
 
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="flex justify-center"
-            >
+            <div className="flex justify-center">
               <Button
                 size="lg"
                 onClick={openApplicationDrawer}
@@ -1175,18 +1030,12 @@ export default function ForgeWorks() {
                 Apply for ForgeWorks
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
-            </motion.div>
+            </div>
 
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-sm text-gray-400 text-center mt-8"
-            >
+            <p className="text-sm text-gray-400 text-center mt-8">
               Each intake is mission-limited. We assess fit, complexity, and
               operational return.
-            </motion.p>
+            </p>
           </div>
         </section>
 
@@ -1359,11 +1208,7 @@ function MissionStage({
   logoSrc?: string;
 }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay }}
+    <div
       className={`relative p-6 rounded-lg ${
         active
           ? "bg-[#eba200]/10 border border-[#eba200]/30"
@@ -1399,6 +1244,6 @@ function MissionStage({
         </h3>
         <p className="text-gray-400 text-sm">{description}</p>
       </div>
-    </motion.div>
+    </div>
   );
 }
