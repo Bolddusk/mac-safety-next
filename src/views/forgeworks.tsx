@@ -600,7 +600,6 @@ export default function ForgeWorks() {
                 number="01"
                 title="MAC Safety"
                 description="Friction is surfaced in the field."
-                delay={0}
                 logoSrc="/b (1).jpg"
               />
 
@@ -609,7 +608,6 @@ export default function ForgeWorks() {
                 number="02"
                 title="NIXN"
                 description="Intelligence is integrated at the edge."
-                delay={0.2}
                 logoSrc="/uploads/IMG_8888_1.webp"
               />
 
@@ -618,7 +616,6 @@ export default function ForgeWorks() {
                 number="03"
                 title="xOS"
                 description="Decision systems are deployed at scale."
-                delay={0.4}
                 logoSrc="/uploads/xos_logo.webp"
               />
 
@@ -627,7 +624,6 @@ export default function ForgeWorks() {
                 number="04"
                 title="ForgeWorks"
                 description="Custom intelligence products are built."
-                delay={0.6}
                 active
                 logoSrc="/uploads/F (2).png"
               />
@@ -1196,14 +1192,12 @@ function MissionStage({
   number,
   title,
   description,
-  delay,
   active,
   logoSrc,
 }: {
   number: string;
   title: string;
   description: string;
-  delay: number;
   active?: boolean;
   logoSrc?: string;
 }) {
