@@ -45,7 +45,7 @@ export default function Footer() {
                 </Link>
                 <Link href="/forgeworks">
                   <div className="text-gray-400 hover:text-white transition-colors cursor-pointer">
-                    FordgeWorks
+                    ForgeWorks
                   </div>
                 </Link>
               </div>

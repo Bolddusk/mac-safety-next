@@ -115,3 +115,24 @@ select + p {
     transform: translateY(-50px);
   }
 }
+
+.animate-scroll {
+  display: flex;
+  width: fit-content;
+  animation: scroll 40s linear infinite;
+}
+
+@media (max-width: 768px) {
+  .animate-scroll {
+    animation-duration: 25s;
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
