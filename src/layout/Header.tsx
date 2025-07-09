@@ -124,7 +124,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed w-full top-0 z-40 bg-black/80 backdrop-blur-sm border-b border-white/10">
+      <header className="fixed w-full top-0 z-40 bg-black/20 backdrop-blur-xl border-b border-white/10 before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent before:pointer-events-none after:absolute after:inset-0 after:bg-noise after:opacity-[0.02] after:pointer-events-none shadow-2xl shadow-black/20">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between relative">
           <Link href="/">
             <div className="flex items-center cursor-pointer -mt-2">
@@ -149,14 +149,14 @@ export default function Header() {
                 NIXN™
               </div>
             </Link>
-            <Link href="/forgeworks">
-              <div className="text-white hover:text-[#eba200] hover:shadow-[0_0_10px_rgba(235,162,0,0.5)] transition-all cursor-pointer">
-                ForgeWorks
-              </div>
-            </Link>
             <Link href="/xos">
               <div className="text-white hover:text-[#eba200] hover:shadow-[0_0_10px_rgba(235,162,0,0.5)] transition-all cursor-pointer">
                 xOS
+              </div>
+            </Link>
+            <Link href="/forgeworks">
+              <div className="text-white hover:text-[#eba200] hover:shadow-[0_0_10px_rgba(235,162,0,0.5)] transition-all cursor-pointer">
+                ForgeWorks
               </div>
             </Link>
             <DropdownMenu>
@@ -346,7 +346,7 @@ export default function Header() {
       {/* Mobile Menu Button - Fixed Bottom Left */}
       <button
         onClick={() => setIsMobileMenuOpen(true)}
-        className="md:hidden fixed bottom-4 left-4 z-50 p-3 bg-black/90 rounded-full border border-white/10 text-white hover:text-[#eba200] transition-colors"
+        className="md:hidden fixed bottom-4 left-4 z-50 p-3 bg-black/20 backdrop-blur-xl rounded-full border border-white/10 text-white hover:text-[#eba200] transition-colors before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent before:pointer-events-none before:rounded-full after:absolute after:inset-0 after:bg-noise after:opacity-[0.02] after:pointer-events-none after:rounded-full"
       >
         <Menu className="h-6 w-6" />
       </button>
@@ -355,7 +355,7 @@ export default function Header() {
       <Drawer open={isContactDrawerOpen} onOpenChange={setIsContactDrawerOpen}>
         <DrawerTrigger asChild>
           <Button
-            className="md:hidden fixed bottom-4 right-4 z-50 border-white text-white hover:bg-[#eba200] hover:border-[#eba200] hover:text-black hover:shadow-[0_0_15px_rgba(235,162,0,0.5)] transition-all"
+            className="md:hidden fixed bottom-4 right-4 z-50 border-white text-white hover:bg-[#eba200] hover:border-[#eba200] hover:text-black hover:shadow-[0_0_15px_rgba(235,162,0,0.5)] transition-all bg-black/20 backdrop-blur-xl before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent before:pointer-events-none after:absolute after:inset-0 after:bg-noise after:opacity-[0.02] after:pointer-events-none"
             variant="outline"
           >
             Get Started
@@ -510,7 +510,7 @@ export default function Header() {
 
       {/* Full Viewport Mobile Navigation Overlay */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-50 bg-black/95 md:hidden">
+        <div className="fixed inset-0 z-50 bg-black/20 backdrop-blur-xl md:hidden before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent before:pointer-events-none after:absolute after:inset-0 after:bg-noise after:opacity-[0.02] after:pointer-events-none">
           <div className="flex flex-col h-full">
             <div className="flex justify-end p-4">
               <button

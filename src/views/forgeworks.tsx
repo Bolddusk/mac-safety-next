@@ -648,12 +648,31 @@ export default function ForgeWorks() {
 
         {/* Embedded Cores Section */}
         <section className="py-20 bg-gradient-to-b from-black to-black/90">
-          {/* Navigation/Title Bar - Desktop Only */}
-          <div className="hidden md:flex justify-between items-center px-6 py-2 mb-8 border-y border-[#eba200]/20 bg-black text-xs mx-auto max-w-screen-xl">
+          {/* Navigation/Title Bar - Desktop */}
+          <div className="hidden md:flex justify-between items-center px-6 py-2 mb-8 border-y border-[#eba200]/20 bg-black/20 backdrop-blur-xl text-xs mx-auto max-w-screen-xl relative before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent before:pointer-events-none after:absolute after:inset-0 after:bg-noise after:opacity-[0.02] after:pointer-events-none shadow-lg shadow-black/20">
             <div className="font-mono tracking-wider text-gray-500">
               EMBEDDED CORES
             </div>
             <div className="flex items-center space-x-1 font-mono tracking-wider">
+              <span className="text-gray-500">{"{"}</span>
+              <span className="text-[#eba200] font-sentex">Forge</span>
+              <span className="text-white font-sentex">Works</span>
+              <span className="text-gray-500">{"}"}</span>
+            </div>
+            <div
+              className="font-mono tracking-wider text-[#eba200] hover:text-[#eba200]/80 transition-colors cursor-pointer"
+              onClick={openApplicationDrawer}
+            >
+              GET STARTED
+            </div>
+          </div>
+
+          {/* Navigation/Title Bar - Mobile */}
+          <div className="md:hidden flex flex-col items-center px-4 py-3 mb-6 border-y border-[#eba200]/20 bg-black/20 backdrop-blur-xl text-xs mx-auto max-w-screen-xl relative before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent before:pointer-events-none after:absolute after:inset-0 after:bg-noise after:opacity-[0.02] after:pointer-events-none shadow-lg shadow-black/20">
+            <div className="font-mono tracking-wider text-gray-500 mb-2">
+              EMBEDDED CORES
+            </div>
+            <div className="flex items-center space-x-1 font-mono tracking-wider mb-2">
               <span className="text-gray-500">{"{"}</span>
               <span className="text-[#eba200] font-sentex">Forge</span>
               <span className="text-white font-sentex">Works</span>
@@ -789,12 +808,33 @@ export default function ForgeWorks() {
           <div className="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-black via-[#eba200] to-black"></div>
           <div className="absolute bottom-2 left-0 w-full h-px bg-zinc-700"></div>
 
-          {/* Navigation/Title Bar - Desktop Only */}
-          <div className="hidden md:flex justify-between items-center px-6 py-2 mb-16 border-y border-[#eba200]/30 bg-black/50 backdrop-blur-sm text-xs mx-auto max-w-screen-xl relative z-10">
+          {/* Navigation/Title Bar - Desktop */}
+          <div className="hidden md:flex justify-between items-center px-6 py-2 mb-16 border-y border-[#eba200]/30 bg-black/20 backdrop-blur-xl text-xs mx-auto max-w-screen-xl relative z-10 before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent before:pointer-events-none after:absolute after:inset-0 after:bg-noise after:opacity-[0.02] after:pointer-events-none shadow-lg shadow-black/20">
             <div className="font-mono tracking-wider text-zinc-500">
-              <span className="text-[#eba200]">FWX-959M</span> RESTRICTED ACCESS
+              <span className="text-[#eba200]">FWX-959M</span> // RESTRICTED
+              ACCESS
             </div>
             <div className="flex items-center space-x-1 font-mono tracking-wider">
+              <span className="text-zinc-500">{"{"}</span>
+              <span className="text-[#eba200] font-sentex">Forge</span>
+              <span className="text-white font-sentex">Works</span>
+              <span className="text-zinc-500">{"}"}</span>
+            </div>
+            <div
+              className="font-mono tracking-wider text-[#eba200] hover:text-[#eba200]/80 transition-colors cursor-pointer"
+              onClick={openApplicationDrawer}
+            >
+              APPLY FOR ACCESS
+            </div>
+          </div>
+
+          {/* Navigation/Title Bar - Mobile */}
+          <div className="md:hidden flex flex-col items-center px-4 py-3 mb-8 border-y border-[#eba200]/30 bg-black/20 backdrop-blur-xl text-xs mx-auto max-w-screen-xl relative z-10 before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent before:pointer-events-none after:absolute after:inset-0 after:bg-noise after:opacity-[0.02] after:pointer-events-none shadow-lg shadow-black/20">
+            <div className="font-mono tracking-wider text-zinc-500 mb-2">
+              <span className="text-[#eba200]">FWX-959M</span> // RESTRICTED
+              ACCESS
+            </div>
+            <div className="flex items-center space-x-1 font-mono tracking-wider mb-2">
               <span className="text-zinc-500">{"{"}</span>
               <span className="text-[#eba200] font-sentex">Forge</span>
               <span className="text-white font-sentex">Works</span>
