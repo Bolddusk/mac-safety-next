@@ -346,7 +346,15 @@ export default function Header() {
       {/* Mobile Menu Button - Fixed Bottom Left */}
       <button
         onClick={() => setIsMobileMenuOpen(true)}
-        className="md:hidden fixed bottom-4 left-4 z-50 p-3 bg-black/90 rounded-full border border-white/10 text-white hover:text-[#eba200] transition-colors"
+        className="md:hidden fixed bottom-4 left-4 z-50 p-3 bg-black/20 backdrop-blur-xl rounded-full border border-white/10 text-white hover:text-[#eba200] transition-colors"
+        style={{
+          position: "fixed",
+          bottom: "1rem",
+          left: "1rem",
+          background: "rgba(0, 0, 0, 0.2)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+        }}
       >
         <Menu className="h-6 w-6" />
       </button>
@@ -357,6 +365,14 @@ export default function Header() {
           <Button
             className="md:hidden fixed bottom-4 right-4 z-50 border-white text-white hover:bg-[#eba200] hover:border-[#eba200] hover:text-black hover:shadow-[0_0_15px_rgba(235,162,0,0.5)] transition-all"
             variant="outline"
+            style={{
+              position: "fixed",
+              bottom: "1rem",
+              right: "1rem",
+              background: "rgba(0, 0, 0, 0.2)",
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)",
+            }}
           >
             Get Started
           </Button>
