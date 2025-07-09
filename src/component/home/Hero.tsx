@@ -54,7 +54,7 @@ export default function Hero() {
               <div className="heading flex gap-4 items-center my-5">
                 <Image
                   src={"/uploads/geometric-icon.webp"}
-                  alt={`People Icon`}
+                  alt={`Geometric Icon`}
                   width={100}
                   height={100}
                   loading="lazy"
