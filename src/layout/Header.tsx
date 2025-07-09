@@ -363,7 +363,7 @@ export default function Header() {
       <Drawer open={isContactDrawerOpen} onOpenChange={setIsContactDrawerOpen}>
         <DrawerTrigger asChild>
           <Button
-            className="md:hidden fixed bottom-4 right-4 z-50 border-white text-white hover:bg-[#eba200] hover:border-[#eba200] hover:text-black hover:shadow-[0_0_15px_rgba(235,162,0,0.5)] transition-all"
+            className="md:hidden fixed bottom-4 right-4 z-50 border-white text-white hover:bg-[#eba200] hover:border-[#eba200] hover:text-white hover:shadow-[0_0_15px_rgba(235,162,0,0.5)] transition-all"
             variant="outline"
             style={{
               position: "fixed",
