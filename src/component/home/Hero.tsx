@@ -53,7 +53,7 @@ export default function Hero() {
             <div className="heading-container font-bold font-furore w-[350px] sm:w-[600px] h-[80px] sm:h-[120px] ">
               <div className="heading flex gap-4 items-center my-5">
                 <Image
-                  src={"/uploads/People Icon.webp"}
+                  src={"/uploads/geometric-icon.webp"}
                   alt={`People Icon`}
                   width={100}
                   height={100}
