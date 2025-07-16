@@ -65,7 +65,7 @@ export const emailTemplate = (
           )}
         </div>
         <div class="footer">
-          Copyright © ${new Date().getFullYear()} Guard Connect, Inc. All Rights
+          Copyright © ${new Date().getFullYear()} MAC Safety, Inc. All Rights
           Reserved
         </div>
       </div>
