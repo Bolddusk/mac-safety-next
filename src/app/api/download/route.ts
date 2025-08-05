@@ -1,13 +1,6 @@
 import { NextResponse } from "next/server";
 import sgMail from "@sendgrid/mail";
-import { emailTemplate } from "../emailtemplate";
-
-const capitalizeWords = (str: string) => {
-  return str
-    .split(" ")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-};
+import { contactInfoEmail } from "./contactInfoEmail";
 
 export async function GET() {
   return NextResponse.json({ message: "Hello API is working" });
@@ -15,28 +8,23 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
-    const { serviceName, ...rest } = await request.json();
+    const { ...data } = await request.json();
 
-    const emailData = Object.entries(rest).map((el) => ({
-      label: capitalizeWords(el[0]),
-      value: capitalizeWords(el[1] as string),
-    }));
-
-    const email = emailTemplate(serviceName, emailData);
+    const email = await contactInfoEmail(data);
 
     sgMail.setApiKey(process.env.SEND_GRID_KEY!);
 
     const msg = {
       to: [
-        "kevin@macsafety.us",
-        "chris@macsafety.us",
+        // "kevin@macsafety.us",
+        // "chris@macsafety.us",
         "hamzajamil.easycode@gmail.com",
       ],
       from: {
         name: "MacSafety",
         email: "nixn@macintel.io",
       },
-      subject: serviceName,
+      subject: "Download Pdf",
       text: "Mac Safety",
       html: email,
     };
