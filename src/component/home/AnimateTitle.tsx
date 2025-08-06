@@ -11,7 +11,7 @@ const AnimateTitle = () => {
       setCurrentWord((prev) => (prev + 1) % words.length);
     }, 2000);
     return () => clearInterval(interval);
-  }, []);
+  }, [words.length]);
 
   const icons = [
     "/uploads/People Icon.webp",

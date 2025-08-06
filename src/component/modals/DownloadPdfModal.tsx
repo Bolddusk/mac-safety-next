@@ -5,7 +5,6 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from "@/component/ui/dialog";
 import {
   Form,
@@ -20,7 +19,6 @@ import { toast } from "@/component/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -37,7 +35,7 @@ export function DownloadPdfModal({
   setIsOpen,
 }: {
   isOpen: boolean;
-  setIsOpen: any;
+  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
   // const [isOpen, setIsOpen] = useState(false);
 

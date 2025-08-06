@@ -1,4 +1,9 @@
-export const contactInfoEmail = async (data: any) => {
+// @typescript-eslint/no-explicit-any
+export const contactInfoEmail = async (data: {
+  name: string;
+  phone: string;
+  company: string;
+}) => {
   const { name, phone, company } = data;
 
   return `<!DOCTYPE html>

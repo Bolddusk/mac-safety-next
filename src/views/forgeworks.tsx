@@ -811,8 +811,7 @@ export default function ForgeWorks() {
           {/* Navigation/Title Bar - Desktop */}
           <div className="hidden md:flex justify-between items-center px-6 py-2 mb-16 border-y border-[#eba200]/30 bg-black/20 backdrop-blur-xl text-xs mx-auto max-w-screen-xl relative z-10 before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent before:pointer-events-none after:absolute after:inset-0 after:bg-noise after:opacity-[0.02] after:pointer-events-none shadow-lg shadow-black/20">
             <div className="font-mono tracking-wider text-zinc-500">
-              <span className="text-[#eba200]">FWX-959M</span> // RESTRICTED
-              ACCESS
+              <span className="text-[#eba200]">FWX-959M</span> RESTRICTED ACCESS
             </div>
             <div className="flex items-center space-x-1 font-mono tracking-wider">
               <span className="text-zinc-500">{"{"}</span>
@@ -831,8 +830,7 @@ export default function ForgeWorks() {
           {/* Navigation/Title Bar - Mobile */}
           <div className="md:hidden flex flex-col items-center px-4 py-3 mb-8 border-y border-[#eba200]/30 bg-black/20 backdrop-blur-xl text-xs mx-auto max-w-screen-xl relative z-10 before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent before:pointer-events-none after:absolute after:inset-0 after:bg-noise after:opacity-[0.02] after:pointer-events-none shadow-lg shadow-black/20">
             <div className="font-mono tracking-wider text-zinc-500 mb-2">
-              <span className="text-[#eba200]">FWX-959M</span> // RESTRICTED
-              ACCESS
+              <span className="text-[#eba200]">FWX-959M</span> RESTRICTED ACCESS
             </div>
             <div className="flex items-center space-x-1 font-mono tracking-wider mb-2">
               <span className="text-zinc-500">{"{"}</span>
