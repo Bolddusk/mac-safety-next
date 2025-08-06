@@ -16,8 +16,8 @@ export async function POST(request: Request) {
 
     const msg = {
       to: [
-        // "kevin@macsafety.us",
-        // "chris@macsafety.us",
+        "kevin@macsafety.us",
+        "chris@macsafety.us",
         "hamzajamil.easycode@gmail.com",
       ],
       from: {
