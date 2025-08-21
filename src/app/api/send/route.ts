@@ -1,13 +1,5 @@
 import { NextResponse } from "next/server";
 import sgMail from "@sendgrid/mail";
-import { emailTemplate } from "../emailtemplate";
-
-const capitalizeWords = (str: string) => {
-  return str
-    .split(" ")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-};
 
 export async function GET() {
   return NextResponse.json({ message: "Hello API is working" });

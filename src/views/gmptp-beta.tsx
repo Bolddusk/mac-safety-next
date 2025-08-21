@@ -3,7 +3,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/component/ui/button";
 import { Input } from "@/component/ui/input";
-import { Textarea } from "@/component/ui/textarea";
 import {
   Form,
   FormControl,
