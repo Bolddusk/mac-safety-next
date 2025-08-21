@@ -75,7 +75,7 @@ const contactFormSchema = z.object({
 
 type ContactFormValues = z.infer<typeof contactFormSchema>;
 
-export default function Header() {
+export default function Header({ isShowBanner = true }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isContactDrawerOpen, setIsContactDrawerOpen] = useState(false);
   const [isDownloadPdfModalOpen, setIsDownloadPdfModalOpen] = useState(false);
@@ -127,19 +127,21 @@ export default function Header() {
   return (
     <>
       <header className="fixed w-full top-0 z-40 bg-black/20 backdrop-blur-xl border-b border-white/10 before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent before:pointer-events-none after:absolute after:inset-0 after:bg-noise after:opacity-[0.02] after:pointer-events-none shadow-2xl shadow-black/20">
-        <div className="p-1 bg-[#eba200]/30 backdrop-blur-xl  sticky z-50 top-0 flex justify-center">
-          <span
-            className="text-[0.8rem]"
-            onClick={() => {
-              setIsDownloadPdfModalOpen(true);
-            }}
-          >
-            Click to download{" "}
-            <strong className="transition-all duration-200 cursor-pointer hover:text-gray-400">
-              When Numbers Lie
-            </strong>
-          </span>
-        </div>
+        {isShowBanner && (
+          <div className="p-1 bg-[#eba200]/30 backdrop-blur-xl  sticky z-50 top-0 flex justify-center">
+            <span
+              className="text-[0.8rem]"
+              onClick={() => {
+                setIsDownloadPdfModalOpen(true);
+              }}
+            >
+              Click to download{" "}
+              <strong className="transition-all duration-200 cursor-pointer hover:text-gray-400">
+                When Numbers Lie
+              </strong>
+            </span>
+          </div>
+        )}
 
         <div className="container mx-auto px-4 h-16 flex items-center justify-between relative">
           <Link href="/">
