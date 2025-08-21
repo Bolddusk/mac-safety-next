@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function generateGMPTPBETATemplate(data: any) {
   return `<!DOCTYPE html>
   <html lang="en">

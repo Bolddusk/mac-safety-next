@@ -72,6 +72,7 @@ export default function GMPTPBeta() {
         description: "Please try again later.",
         variant: "destructive",
       });
+      console.log({ error });
     } finally {
       setIsSubmitting(false);
     }
