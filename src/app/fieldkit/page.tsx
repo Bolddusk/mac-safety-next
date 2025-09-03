@@ -2,7 +2,6 @@ import { Toaster } from "@/component/ui/toaster";
 import Footer from "@/layout/Footer";
 import Header from "@/layout/Header";
 import { queryClient } from "@/lib/queryClient";
-import Contact from "@/views/contact";
 import Fieldkit from "@/views/fieldkit";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Metadata } from "next";
