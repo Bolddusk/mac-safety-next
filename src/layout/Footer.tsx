@@ -172,6 +172,11 @@ export default function Footer() {
                     Offerings
                   </div>
                 </Link>
+                <Link href="/fieldkit">
+                  <div className="text-gray-400 hover:text-white transition-colors cursor-pointer">
+                    Fieldkit
+                  </div>
+                </Link>
                 <a
                   href="https://recruiting.paylocity.com/recruiting/jobs/All/8c011b1d-4712-473e-9117-e7b9376d11a1/MAC-SAFETY-INC"
                   target="_blank"
