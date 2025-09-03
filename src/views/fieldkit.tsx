@@ -238,6 +238,7 @@ function TypingAnimation() {
   );
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const downloadWhitepaper = (toast: any) => () => {
   toast({
     title: "Fiedlkit",
@@ -493,7 +494,7 @@ export default function Fieldkit() {
                 </h2>
                 <p className="text-xl text-gray-300 leading-relaxed max-w-3xl mx-auto">
                   FIELDKIT brings AI to the field physically in this
-                  revolutionary form factor, redefining what's possible for edge
+                  revolutionary form factor, redefining what&apos;s possible for edge
                   intelligence operations.
                 </p>
               </div>
@@ -635,7 +636,7 @@ export default function Fieldkit() {
               {/* Footnote */}
               <div className="text-center pt-8 border-t border-white/10">
                 <p className="text-gray-500 text-sm">
-                  Runtimes are scenario-dependent; "legacy cabinet" specs
+                  Runtimes are scenario-dependent; &apos;legacy cabinet&apos; specs
                   summarized from public datasheets.
                 </p>
               </div>
