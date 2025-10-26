@@ -24,8 +24,8 @@ const partners = [
     logo: "/uploads/meccon_industries_logo.webp",
   },
   {
-    name: "Pinnacol Assurance",
-    logo: "/uploads/pinnacol_assurance_logo.webp",
+    name: "Sargent",
+    logo: "/uploads/sargent.jpeg",
   },
   {
     name: "Range Resources",
