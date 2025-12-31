@@ -1,14 +1,12 @@
-"use client";
-
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 const pillars = [
-  { word: "People", delay: 0.6 },
-  { word: "Software", delay: 0.8 },
-  { word: "Systems", delay: 1.0 },
-  { word: "Hardware", delay: 1.2 },
+  { word: "People", delay: 0.6, href: "/industries" },
+  { word: "Software", delay: 0.8, href: "/nixn" },
+  { word: "Systems", delay: 1.0, href: "/forgeworks" },
+  { word: "Hardware", delay: 1.2, href: "/fieldkit" },
 ];
 
 export default function Hero() {
@@ -58,12 +56,15 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 shadow-lg mb-8"
             >
-              <span className="w-2 h-2 rounded-full bg-[#eba200]" />
-              <span className="text-gray-400 font-alliance text-xs md:text-sm">
-                Execution Infrastructure for High-Risk Work
-              </span>
+              <Link href="/alpha">
+                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-md border border-white/10 shadow-lg mb-8 hover:border-[#eba200]/50 hover:bg-[#eba200]/5 transition-all duration-300 cursor-pointer">
+                  <span className="w-2 h-2 rounded-full bg-[#eba200]" />
+                  <span className="text-gray-400 font-alliance text-xs md:text-sm">
+                    Execution Infrastructure for High-Risk Work
+                  </span>
+                </span>
+              </Link>
             </motion.div>
 
             {/* Main headline */}
@@ -99,7 +100,7 @@ export default function Hero() {
 
               {/* Animated pillars - single line on mobile */}
               <div className="flex justify-center gap-2 md:gap-4">
-                {pillars.map((pillar, index) => (
+                {pillars.map((pillar) => (
                   <motion.div
                     key={pillar.word}
                     initial={{ opacity: 0, scale: 0.8, y: 20 }}
@@ -110,16 +111,14 @@ export default function Hero() {
                       type: "spring",
                       stiffness: 100,
                     }}
-                    className="px-3 py-1.5 md:px-6 md:py-3 rounded-full bg-white/5 backdrop-blur-md border border-white/10 hover:border-[#eba200]/50 hover:bg-[#eba200]/5 shadow-lg transition-all duration-300 cursor-default"
                   >
-                    <span className="text-white font-alliance font-medium text-xs md:text-base whitespace-nowrap">
-                      {pillar.word}
-                    </span>
-                    {index < pillars.length - 1 && (
-                      <span className="hidden" aria-hidden="true">
-                        ,
+                    <Link href={pillar.href}>
+                      <span className="inline-block px-3 py-1.5 md:px-6 md:py-3 rounded-full bg-white/5 backdrop-blur-md border border-white/10 hover:border-[#eba200]/50 hover:bg-[#eba200]/5 shadow-lg transition-all duration-300 cursor-pointer">
+                        <span className="text-white font-alliance font-medium text-xs md:text-base whitespace-nowrap">
+                          {pillar.word}
+                        </span>
                       </span>
-                    )}
+                    </Link>
                   </motion.div>
                 ))}
               </div>
