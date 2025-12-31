@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { HardDrive, LucideIcon } from "lucide-react";
+import { LucideIcon } from "lucide-react";
 import Link from "next/link";
 
 interface Product {
@@ -34,7 +34,7 @@ const products: Product[] = [
     name: "Hardware",
     description:
       "Ruggedized field devices and sensors designed for high-risk environments. Purpose-built to capture data at the point of work.",
-    icon: HardDrive,
+    iconImage: "/uploads/wac-hardware-icon.png",
     href: "/fieldkit",
     image: "/uploads/hardware-fieldkit.png",
   },

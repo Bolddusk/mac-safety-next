@@ -1,9 +1,61 @@
-import ContactForm from "@/component/forms/ContactForm";
+"use client";
+
 import ContactSection from "@/component/home/ContactSection";
+import { motion } from "framer-motion";
 import { Button } from "@/component/ui/button";
 import { Dialog, DialogContent, DialogTrigger } from "@/component/ui/dialog";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/component/ui/form";
+import { Input } from "@/component/ui/input";
+import { Textarea } from "@/component/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/component/ui/select";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { useToast } from "@/component/hooks/use-toast";
+import { apiRequest } from "@/lib/queryClient";
+import { useMutation } from "@tanstack/react-query";
 
-import Footer from "@/layout/Footer";
+const industries = [
+  "Chemical Processing",
+  "Defense & Aerospace",
+  "Maritime",
+  "Mining",
+  "Power Generation",
+  "Renewable Energy",
+  "Telecommunications",
+  "Warehousing",
+  "Construction",
+  "Healthcare",
+  "Manufacturing",
+  "Oil & Gas",
+  "Rail",
+  "Steel",
+  "Water Treatment",
+];
+
+const contactFormSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  email: z.string().email("Invalid email address"),
+  company: z.string().min(1, "Company name is required"),
+  industry: z.string().min(1, "Please select an industry"),
+  message: z.string().min(10, "Message must be at least 10 characters"),
+  serviceName: z.string().min(1, "ServiceName is required"),
+});
+
+type ServiceRequestForm = z.infer<typeof contactFormSchema>;
 
 const offerings = [
   {
@@ -158,29 +210,214 @@ const offerings = [
   },
 ];
 
+function ContactForm({ onClose }: { onClose: () => void }) {
+  const { toast } = useToast();
+  const form = useForm<z.infer<typeof contactFormSchema>>({
+    resolver: zodResolver(contactFormSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      company: "",
+      industry: "",
+      message: "",
+      serviceName: "Offering",
+    },
+  });
+
+  const mutation = useMutation<
+    unknown, // Response type (unknown if not needed)
+    Error, // Error type
+    ServiceRequestForm // The expected type of 'data'
+  >({
+    mutationFn: async (data: ServiceRequestForm) => {
+      return await apiRequest("POST", "/api/message", data);
+    },
+    onSuccess: () => {
+      toast({
+        title: "Message Sent",
+        description: "We'll get back to you shortly.",
+        duration: 1000,
+      });
+      form.reset();
+      onClose()
+    },
+    onError: () => {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+        duration: 1000,
+      });
+    },
+  });
+
+  function onSubmit(values: z.infer<typeof contactFormSchema>) {
+    mutation.mutate(values);
+  }
+
+  return (
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-gray-300 font-alliance">
+                Name
+              </FormLabel>
+              <FormControl>
+                <Input
+                  placeholder="John Doe"
+                  {...field}
+                  className="bg-[#1f2024] border-gray-700 text-white font-alliance"
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-gray-300 font-alliance">
+                Email
+              </FormLabel>
+              <FormControl>
+                <Input
+                  placeholder="john@example.com"
+                  type="email"
+                  {...field}
+                  className="bg-[#1f2024] border-gray-700 text-white font-alliance"
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="company"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-gray-300 font-alliance">
+                Company
+              </FormLabel>
+              <FormControl>
+                <Input
+                  placeholder="Your Company"
+                  {...field}
+                  className="bg-[#1f2024] border-gray-700 text-white font-alliance"
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="industry"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-gray-300 font-alliance">
+                Industry
+              </FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger className="bg-[#1f2024] border-gray-700 text-white font-alliance">
+                    <SelectValue placeholder="Select an industry" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent className="bg-[#16171a] border-gray-800">
+                  {industries.map((industry) => (
+                    <SelectItem
+                      key={industry}
+                      value={industry}
+                      className="text-white hover:bg-white/10 font-alliance"
+                    >
+                      {industry}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="message"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-gray-300 font-alliance">
+                Message
+              </FormLabel>
+              <FormControl>
+                <Textarea
+                  placeholder="Tell us about your needs..."
+                  className="min-h-[100px] bg-[#1f2024] border-gray-700 text-white font-alliance"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <div className="flex justify-end gap-4">
+          <Button
+            type="button"
+            variant="outline"
+            onClick={onClose}
+            className="rounded-full border-gray-700 text-white hover:bg-white/10 font-alliance"
+          >
+            Cancel
+          </Button>
+          <Button
+            type="submit"
+            className="rounded-full bg-white text-black hover:bg-gray-100 font-alliance"
+          >
+            Submit
+          </Button>
+        </div>
+      </form>
+    </Form>
+  );
+}
+
 export default function Offerings() {
   return (
-    <div className="pt-16 min-h-screen bg-[#0D1117]">
+    <div className="pt-32 min-h-screen bg-[#0b0b0d] font-alliance">
       <main className="container mx-auto px-4 py-12 md:py-20">
         <div className="grid md:grid-cols-2 gap-8 items-center mb-16">
-          <div>
-            <h1 className="text-5xl md:text-7xl font-furore">
-              <span className="bg-gradient-to-r from-[#eba200] to-[#64FFDA] text-transparent bg-clip-text">
-                Offerings
-              </span>
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <span className="text-sm uppercase tracking-wider text-[#eba200] font-alliance">
+              Our Services
+            </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mt-2 font-alliance">
+              Offerings
             </h1>
-          </div>
-          <div>
-            <p className="text-2xl md:text-3xl font-light text-white leading-relaxed">
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <p className="text-xl md:text-2xl text-gray-400 leading-relaxed font-alliance">
               Our integrated solutions empower organizations across industries
               to proactively manage risk, enhance safety performance, and drive
               operational excellence.
             </p>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="prose prose-invert max-w-none mb-16">
-          <p className="text-lg md:text-xl text-gray-300">
+        <div className="mb-16">
+          <p className="text-lg text-gray-400 font-alliance">
             Whether through expert-led consulting, on-site services, or
             cutting-edge AI-driven platforms, we provide the tools and insights
             needed to solve the toughest safety and risk challenges—faster and
@@ -190,41 +427,50 @@ export default function Offerings() {
 
         <div className="grid gap-6 md:gap-8">
           {offerings.map((offering, index) => (
-            <div
-              key={`offering-${index}`}
-              className="group relative overflow-hidden rounded-lg border border-white/10 bg-black/20 p-6 hover:border-[#eba200]/40 hover:bg-[#eba200]/5 transition-all"
+            <motion.div
+              key={offering.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.05 }}
+              className="group relative overflow-hidden rounded-2xl border border-gray-800 bg-[#16171a] p-6 hover:border-gray-700 transition-all"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-[#eba200]/0 via-[#eba200]/5 to-[#eba200]/0 opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="relative flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                  <h3 className="text-xl font-semibold text-white mb-2">
+                  <h3 className="text-xl font-semibold text-white mb-2 font-alliance">
                     ↳ {offering.title}
                   </h3>
-                  <p className="text-gray-400">{offering.description}</p>
+                  <p className="text-gray-400 font-alliance">
+                    {offering.description}
+                  </p>
                 </div>
                 <Dialog>
                   <DialogTrigger asChild>
-                    <Button
-                      variant="outline"
-                      className="whitespace-nowrap border-white text-white hover:bg-[#eba200] hover:text-black hover:border-[#eba200] hover:shadow-[0_0_15px_rgba(235,162,0,0.5)]"
-                    >
+                    <Button className="whitespace-nowrap rounded-full bg-white text-black hover:bg-gray-100 font-alliance">
                       Learn More →
                     </Button>
                   </DialogTrigger>
-                  <DialogContent className="sm:max-w-[425px] text-white">
+                  <DialogContent className="sm:max-w-[425px] bg-[#16171a] border-gray-800">
                     <div className="p-6">
-                      <h2 className="text-2xl font-bold mb-6">Contact Us</h2>
-                      <ContactForm />
+                      <h2 className="text-2xl font-bold mb-6 text-white font-alliance">
+                        Contact Us
+                      </h2>
+                      <ContactForm
+                        onClose={() =>
+                          document
+                            .querySelector('[role="dialog"]')
+                            ?.closest("dialog")
+                            ?.close()
+                        }
+                      />
                     </div>
                   </DialogContent>
                 </Dialog>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </main>
       <ContactSection title="Get Started with MAC in Minutes" />
-      <Footer />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
@@ -40,17 +40,22 @@ import {
 } from "@/component/ui/select";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { useMutation } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
+import { useToast } from "@/component/hooks/use-toast";
 
 const serviceRequestSchema = z.object({
   name: z.string().min(1, "Name is required"),
   company: z.string().min(1, "Company name is required"),
   industry: z.string().min(1, "Please select an industry"),
   service: z.string().min(1, "Please select a service"),
+  serviceName: z.string().min(1, "ServiceName is required"),
 });
 
 type ServiceRequestForm = z.infer<typeof serviceRequestSchema>;
 
 export default function IndustriesPage() {
+  const { toast } = useToast();
   const pathname = usePathname();
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
@@ -61,13 +66,38 @@ export default function IndustriesPage() {
       company: "",
       industry: "",
       service: "",
+      serviceName: "Offering",
+    },
+  });
+
+  const mutation = useMutation<
+    unknown, // Response type (unknown if not needed)
+    Error, // Error type
+    ServiceRequestForm // The expected type of 'data'
+  >({
+    mutationFn: async (data: ServiceRequestForm) => {
+      return await apiRequest("POST", "/api/message", data);
+    },
+    onSuccess: () => {
+      toast({
+        title: "Message Sent",
+        description: "We'll get back to you shortly.",
+        duration: 1000,
+      });
+      form.reset();
+    },
+    onError: () => {
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+        duration: 1000,
+      });
     },
   });
 
   function onSubmit(data: ServiceRequestForm) {
-    console.log(data);
-    setIsDialogOpen(false);
-    form.reset();
+    mutation.mutate(data);
   }
 
   useEffect(() => {
@@ -669,8 +699,8 @@ export default function IndustriesPage() {
                 </h2>
                 <p className="text-xl text-gray-400 font-alliance">
                   Most firms send generalists into highly specialized
-                  environments. We don&apos;t. We have engineered a system where the
-                  right expertise is matched with the right industry, at the
+                  environments. We don&apos;t. We have engineered a system where
+                  the right expertise is matched with the right industry, at the
                   right time.
                 </p>
               </div>
@@ -759,10 +789,11 @@ export default function IndustriesPage() {
                           Industry-Specific Precision
                         </h3>
                         <p className="text-gray-400 font-alliance">
-                          We don&apos;t just drop a &apos;safety consultant&apos; into a
-                          manufacturing plant—we deploy an automotive risk
-                          strategist backed by real-time machine-learning models
-                          analyzing operator behavior and process safety trends.
+                          We don&apos;t just drop a &apos;safety
+                          consultant&apos; into a manufacturing plant—we deploy
+                          an automotive risk strategist backed by real-time
+                          machine-learning models analyzing operator behavior
+                          and process safety trends.
                         </p>
                       </div>
                     </div>
@@ -786,7 +817,8 @@ export default function IndustriesPage() {
 
                 <p className="text-xl font-semibold text-center pt-8 font-alliance">
                   <span className="text-[#eba200]">
-                    This isn&apos;t consulting. This is risk intelligence at scale.
+                    This isn&apos;t consulting. This is risk intelligence at
+                    scale.
                   </span>
                 </p>
               </div>
