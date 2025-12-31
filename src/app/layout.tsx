@@ -34,6 +34,40 @@ export default function RootLayout({
           }}
         />
 
+        {/* <!-- Open Graph Meta Tags --> */}
+        <meta
+          property="og:title"
+          content="MAC Safety | Closing the gap between intent and execution"
+        />
+        <meta
+          property="og:description"
+          content="MAC integrates people, software, systems, and hardware to expose, measure, and control the Unknown. Risk intelligence and operational safety solutions."
+        />
+        <meta
+          property="og:image"
+          content="https://mactest.replit.app/uploads/og-share-image.png"
+        />
+        <meta property="og:image:width" content="1080" />
+        <meta property="og:image:height" content="1080" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://mactest.replit.app" />
+        <meta property="og:site_name" content="MAC Safety" />
+
+        {/* <!-- Twitter Card Meta Tags --> */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="MAC Safety | Closing the gap between intent and execution"
+        />
+        <meta
+          name="twitter:description"
+          content="MAC integrates people, software, systems, and hardware to expose, measure, and control the Unknown."
+        />
+        <meta
+          name="twitter:image"
+          content="https://mactest.replit.app/uploads/og-share-image.png"
+        />
+
         <Script
           // async
           src="https://www.googletagmanager.com/gtag/js?id=G-SL56NBPRTS"
