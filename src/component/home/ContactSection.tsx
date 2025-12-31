@@ -1,12 +1,12 @@
-/* eslint-disable */
-"use client";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+"use client"
+
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
-import { useToast } from "@/component/hooks/use-toast";
 import {
   Form,
   FormControl,
@@ -18,7 +18,6 @@ import {
 import { Input } from "@/component/ui/input";
 import { Textarea } from "@/component/ui/textarea";
 import { Button } from "@/component/ui/button";
-import { HUDOverlay } from "@/component/ui/hud-overlay";
 import {
   Select,
   SelectContent,
@@ -27,7 +26,9 @@ import {
   SelectValue,
 } from "@/component/ui/select";
 import { RadioGroup, RadioGroupItem } from "@/component/ui/radio-group";
-import { Users, Binary } from "lucide-react";
+import { Users, Binary, ArrowLeft, ArrowRight, Send } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useToast } from "../hooks/use-toast";
 
 const serviceFormSchema = z.object({
   name: z.string().min(1, "Name is required"),
@@ -56,8 +57,6 @@ const softwareFormSchema = z.object({
 
 type FormType = "service" | "software" | null;
 
-type SoftwareFormValues = z.infer<typeof softwareFormSchema>;
-
 export default function ContactSection({ title }: { title?: string }) {
   const [formType, setFormType] = useState<FormType>(null);
   const { toast } = useToast();
@@ -72,18 +71,19 @@ export default function ContactSection({ title }: { title?: string }) {
       service: "",
       message: "",
       serviceName: "People Service",
+      
     },
   });
 
-  const softwareForm = useForm<SoftwareFormValues>({
+  const softwareForm = useForm({
     resolver: zodResolver(softwareFormSchema),
     defaultValues: {
       name: "",
       email: "",
       company: "",
       industry: "",
-      requestType: "demo",
-      platform: "NIXN",
+      requestType: "demo" as const,
+      platform: "NIXN" as const,
       message: "",
       serviceName: "Software Service",
     },
@@ -108,7 +108,6 @@ export default function ContactSection({ title }: { title?: string }) {
       });
     },
   });
-  
 
   const handleBack = () => {
     setFormType(null);
@@ -116,450 +115,425 @@ export default function ContactSection({ title }: { title?: string }) {
     if (formType === "software") softwareForm.reset();
   };
 
-  return (
-    <section id="contact" className="py-20 bg-[#0D1117]">
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold mb-12 text-center">
-          {title || (
-            <>
-              What can we help you{" "}
-              <span className="bg-gradient-to-r from-[#eba200] via-[#64FFDA] to-[#eba200] text-transparent bg-clip-text animate-gradient">
-                achieve
-              </span>
-              ?
-            </>
-          )}
-        </h2>
+  const inputStyles = "bg-[#1f2024] border-gray-700 text-white placeholder:text-gray-500 focus:border-[#eba200] focus:ring-[#eba200] rounded-xl";
+  const labelStyles = "text-gray-300 font-alliance";
 
-        <div className="w-full">
-          <HUDOverlay>
-            <div className="relative">
+  return (
+    <section id="contact" className="py-20 md:py-28 bg-[#0b0b0d]">
+      <div className="container mx-auto px-6 md:px-8">
+        <div className="max-w-3xl mx-auto">
+          {/* Header */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <p className="text-[#eba200] text-sm uppercase tracking-widest mb-4 font-alliance">
+              Get In Touch
+            </p>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 font-alliance">
+              {title || "How can we help?"}
+            </h2>
+            <p className="text-gray-400 font-alliance">
+              Select the option that best describes your needs
+            </p>
+          </motion.div>
+
+          {/* Form Container */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1 }}
+            className="bg-[#16171a] rounded-2xl border border-gray-800 overflow-hidden"
+          >
+            <AnimatePresence mode="wait">
               {!formType ? (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 md:p-12">
+                <motion.div
+                  key="options"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="grid grid-cols-1 md:grid-cols-2"
+                >
                   <button
                     onClick={() => setFormType("service")}
-                    className="group relative h-48 md:h-64 p-6 border-2 border-white/20 text-white rounded-md transition-all duration-300 overflow-hidden hover:border-[#eba200]/50 bg-[#0A192F]/40"
+                    className="group relative p-8 md:p-12 text-left hover:bg-gray-750 transition-colors border-b md:border-b-0 md:border-r border-gray-700"
+                    data-testid="button-people-services"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#eba200]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(100,255,218,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(100,255,218,0.03)_1px,transparent_1px)] bg-[size:24px_24px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-                    <div className="relative flex flex-col items-center justify-center h-full space-y-4">
-                      <Users className="w-12 h-12 md:w-16 md:h-16 text-[#eba200] group-hover:scale-110 transition-transform duration-300" />
-                      <div className="text-center">
-                        <h3 className="text-xl md:text-2xl font-bold mb-2">
-                          People Services
-                        </h3>
-                        <p className="text-sm md:text-base text-gray-400 max-w-[300px] mx-auto">
-                          Expert consultants and safety specialists for your
-                          mission-critical operations
-                        </p>
+                    <div className="flex flex-col items-center md:items-start text-center md:text-left">
+                      <div className="w-16 h-16 rounded-xl bg-[#eba200]/10 flex items-center justify-center mb-6 group-hover:bg-[#eba200]/20 transition-colors">
+                        <Users className="w-8 h-8 text-[#eba200]" />
+                      </div>
+                      <h3 className="text-xl font-bold text-white mb-2 font-alliance">People Services</h3>
+                      <p className="text-gray-400 text-sm font-alliance mb-4">
+                        Expert consultants and safety specialists for your mission-critical operations
+                      </p>
+                      <div className="flex items-center gap-2 text-[#eba200] text-sm font-alliance group-hover:gap-3 transition-all">
+                        Get Started <ArrowRight className="w-4 h-4" />
                       </div>
                     </div>
-
-                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#eba200] to-[#64FFDA] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
                   </button>
 
                   <button
                     onClick={() => setFormType("software")}
-                    className="group relative h-48 md:h-64 p-6 border-2 border-white/20 text-white rounded-md transition-all duration-300 overflow-hidden hover:border-[#64FFDA]/50 bg-[#0A192F]/40"
+                    className="group relative p-8 md:p-12 text-left hover:bg-gray-750 transition-colors"
+                    data-testid="button-software-solutions"
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#64FFDA]/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                    <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(100,255,218,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(100,255,218,0.03)_1px,transparent_1px)] bg-[size:24px_24px] opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-                    <div className="relative flex flex-col items-center justify-center h-full space-y-4">
-                      <Binary className="w-12 h-12 md:w-16 md:h-16 text-[#64FFDA] group-hover:scale-110 transition-transform duration-300" />
-                      <div className="text-center">
-                        <h3 className="text-xl md:text-2xl font-bold mb-2">
-                          Software Solutions
-                        </h3>
-                        <p className="text-sm md:text-base text-gray-400 max-w-[300px] mx-auto">
-                          Advanced AI-powered platforms for comprehensive risk
-                          management
-                        </p>
+                    <div className="flex flex-col items-center md:items-start text-center md:text-left">
+                      <div className="w-16 h-16 rounded-xl bg-[#64FFDA]/10 flex items-center justify-center mb-6 group-hover:bg-[#64FFDA]/20 transition-colors">
+                        <Binary className="w-8 h-8 text-[#64FFDA]" />
+                      </div>
+                      <h3 className="text-xl font-bold text-white mb-2 font-alliance">Software Solutions</h3>
+                      <p className="text-gray-400 text-sm font-alliance mb-4">
+                        AI-powered platforms for comprehensive risk management
+                      </p>
+                      <div className="flex items-center gap-2 text-[#64FFDA] text-sm font-alliance group-hover:gap-3 transition-all">
+                        Get Started <ArrowRight className="w-4 h-4" />
                       </div>
                     </div>
-
-                    <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[#64FFDA] to-[#eba200] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
                   </button>
-                </div>
+                </motion.div>
               ) : formType === "service" ? (
-                <Form {...serviceForm}>
-                  <form
-                    onSubmit={serviceForm.handleSubmit((data) =>
-                      mutation.mutate({ ...data, type: "service" })
-                    )}
-                    className="space-y-6 p-6"
-                  >
-                    <FormField
-                      control={serviceForm.control}
-                      name="name"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Name</FormLabel>
-                          <FormControl>
-                            <Input
-                              {...field}
-                              className="bg-[#233554]/20 border-[#233554]"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={serviceForm.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Email</FormLabel>
-                          <FormControl>
-                            <Input
-                              {...field}
-                              type="email"
-                              className="bg-[#233554]/20 border-[#233554]"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={serviceForm.control}
-                      name="company"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Company</FormLabel>
-                          <FormControl>
-                            <Input
-                              {...field}
-                              className="bg-[#233554]/20 border-[#233554]"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={serviceForm.control}
-                      name="industry"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Industry</FormLabel>
-                          <FormControl>
-                            <Select
-                              onValueChange={field.onChange}
-                              value={field.value}
-                            >
-                              <SelectTrigger className="bg-[#233554]/20 border-[#233554]">
-                                <SelectValue placeholder="Select industry" />
-                              </SelectTrigger>
-                              <SelectContent>
-                                <SelectItem value="construction">
-                                  Construction
-                                </SelectItem>
-                                <SelectItem value="steel">Steel</SelectItem>
-                                <SelectItem value="mining">Mining</SelectItem>
-                                <SelectItem value="healthcare">
-                                  Healthcare
-                                </SelectItem>
-                                <SelectItem value="energy">Energy</SelectItem>
-                                <SelectItem value="defense">Defense</SelectItem>
-                                <SelectItem value="transportation">
-                                  Transportation
-                                </SelectItem>
-                                <SelectItem value="manufacturing">
-                                  Manufacturing
-                                </SelectItem>
-                              </SelectContent>
-                            </Select>
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={serviceForm.control}
-                      name="service"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Service Type</FormLabel>
-                          <FormControl>
-                            <Select
-                              onValueChange={field.onChange}
-                              value={field.value}
-                            >
-                              <SelectTrigger className="bg-[#233554]/20 border-[#233554]">
-                                <SelectValue placeholder="Select service" />
-                              </SelectTrigger>
-                              <SelectContent>
-                                <SelectItem value="staffing">
-                                  Project Staffing
-                                </SelectItem>
-                                <SelectItem value="training">
-                                  Training
-                                </SelectItem>
-                                <SelectItem value="consulting">
-                                  Consulting
-                                </SelectItem>
-                                <SelectItem value="risk-management">
-                                  Risk Management
-                                </SelectItem>
-                                <SelectItem value="other">
-                                  Other Service
-                                </SelectItem>
-                              </SelectContent>
-                            </Select>
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={serviceForm.control}
-                      name="message"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Message</FormLabel>
-                          <FormControl>
-                            <Textarea
-                              {...field}
-                              className="bg-[#233554]/20 border-[#233554]"
-                              rows={5}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <div className="flex gap-4">
-                      <Button
-                        type="button"
-                        variant="outline"
-                        onClick={handleBack}
-                        className="flex-1 border-white text-white hover:bg-[#eba200] hover:border-[#eba200] hover:text-black hover:shadow-[0_0_15px_rgba(235,162,0,0.5)]"
-                      >
-                        Back
-                      </Button>
+                <motion.div
+                  key="service-form"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  className="p-8 md:p-12"
+                >
+                  <div className="flex items-center gap-4 mb-8">
+                    <button 
+                      onClick={handleBack}
+                      className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
+                    >
+                      <ArrowLeft className="w-5 h-5 text-gray-400" />
+                    </button>
+                    <h3 className="text-xl font-bold text-white font-alliance">People Services Inquiry</h3>
+                  </div>
+
+                  <Form {...serviceForm}>
+                    <form onSubmit={serviceForm.handleSubmit((data) => mutation.mutate({ ...data, type: "service" }))} className="space-y-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <FormField
+                          control={serviceForm.control}
+                          name="name"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className={labelStyles}>Name</FormLabel>
+                              <FormControl>
+                                <Input {...field} className={inputStyles} data-testid="input-name" />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={serviceForm.control}
+                          name="email"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className={labelStyles}>Email</FormLabel>
+                              <FormControl>
+                                <Input {...field} type="email" className={inputStyles} data-testid="input-email" />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <FormField
+                          control={serviceForm.control}
+                          name="company"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className={labelStyles}>Company</FormLabel>
+                              <FormControl>
+                                <Input {...field} className={inputStyles} data-testid="input-company" />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={serviceForm.control}
+                          name="industry"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className={labelStyles}>Industry</FormLabel>
+                              <FormControl>
+                                <Select onValueChange={field.onChange} value={field.value}>
+                                  <SelectTrigger className={inputStyles} data-testid="select-industry">
+                                    <SelectValue placeholder="Select industry" />
+                                  </SelectTrigger>
+                                  <SelectContent className="bg-gray-800 border-gray-700">
+                                    <SelectItem value="construction" className="text-white">Construction</SelectItem>
+                                    <SelectItem value="steel" className="text-white">Steel</SelectItem>
+                                    <SelectItem value="mining" className="text-white">Mining</SelectItem>
+                                    <SelectItem value="healthcare" className="text-white">Healthcare</SelectItem>
+                                    <SelectItem value="energy" className="text-white">Energy</SelectItem>
+                                    <SelectItem value="defense" className="text-white">Defense</SelectItem>
+                                    <SelectItem value="transportation" className="text-white">Transportation</SelectItem>
+                                    <SelectItem value="manufacturing" className="text-white">Manufacturing</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <FormField
+                        control={serviceForm.control}
+                        name="service"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className={labelStyles}>Service Type</FormLabel>
+                            <FormControl>
+                              <Select onValueChange={field.onChange} value={field.value}>
+                                <SelectTrigger className={inputStyles} data-testid="select-service">
+                                  <SelectValue placeholder="Select service" />
+                                </SelectTrigger>
+                                <SelectContent className="bg-gray-800 border-gray-700">
+                                  <SelectItem value="staffing" className="text-white">Project Staffing</SelectItem>
+                                  <SelectItem value="training" className="text-white">Training</SelectItem>
+                                  <SelectItem value="consulting" className="text-white">Consulting</SelectItem>
+                                  <SelectItem value="risk-management" className="text-white">Risk Management</SelectItem>
+                                  <SelectItem value="other" className="text-white">Other Service</SelectItem>
+                                </SelectContent>
+                              </Select>
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={serviceForm.control}
+                        name="message"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className={labelStyles}>Message</FormLabel>
+                            <FormControl>
+                              <Textarea {...field} className={inputStyles} rows={4} data-testid="textarea-message" />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
                       <Button
                         type="submit"
-                        className="flex-1 bg-[#64FFDA] text-[#0A192F] hover:bg-[#64FFDA]/80"
+                        className="w-full bg-[#eba200] hover:bg-[#d49400] text-black font-semibold py-6 rounded-full font-alliance"
                         disabled={mutation.isPending}
+                        data-testid="button-submit"
                       >
-                        {mutation.isPending ? "Sending..." : "Send Message"}
+                        {mutation.isPending ? "Sending..." : (
+                          <span className="flex items-center justify-center gap-2">
+                            Send Message <Send className="w-4 h-4" />
+                          </span>
+                        )}
                       </Button>
-                    </div>
-                  </form>
-                </Form>
+                    </form>
+                  </Form>
+                </motion.div>
               ) : (
-                <Form {...softwareForm}>
-                  <form
-                    onSubmit={softwareForm.handleSubmit((data) =>
-                      mutation.mutate({ ...data, type: "software" })
-                    )}
-                    className="space-y-6 p-6"
-                  >
-                    <FormField
-                      control={softwareForm.control}
-                      name="name"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Name</FormLabel>
-                          <FormControl>
-                            <Input
-                              {...field}
-                              className="bg-[#233554]/20 border-[#233554]"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={softwareForm.control}
-                      name="email"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Email</FormLabel>
-                          <FormControl>
-                            <Input
-                              {...field}
-                              type="email"
-                              className="bg-[#233554]/20 border-[#233554]"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={softwareForm.control}
-                      name="company"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Company</FormLabel>
-                          <FormControl>
-                            <Input
-                              {...field}
-                              className="bg-[#233554]/20 border-[#233554]"
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={softwareForm.control}
-                      name="industry"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Industry</FormLabel>
-                          <FormControl>
-                            <Select
-                              onValueChange={field.onChange}
-                              value={field.value}
-                            >
-                              <SelectTrigger className="bg-[#233554]/20 border-[#233554]">
-                                <SelectValue placeholder="Select industry" />
-                              </SelectTrigger>
-                              <SelectContent>
-                                <SelectItem value="construction">
-                                  Construction
-                                </SelectItem>
-                                <SelectItem value="steel">Steel</SelectItem>
-                                <SelectItem value="mining">Mining</SelectItem>
-                                <SelectItem value="healthcare">
-                                  Healthcare
-                                </SelectItem>
-                                <SelectItem value="energy">Energy</SelectItem>
-                                <SelectItem value="defense">Defense</SelectItem>
-                                <SelectItem value="transportation">
-                                  Transportation
-                                </SelectItem>
-                                <SelectItem value="manufacturing">
-                                  Manufacturing
-                                </SelectItem>
-                              </SelectContent>
-                            </Select>
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={softwareForm.control}
-                      name="requestType"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>What would you like to do?</FormLabel>
-                          <FormControl>
-                            <RadioGroup
-                              onValueChange={field.onChange}
-                              value={field.value}
-                              className="flex gap-4"
-                            >
-                              <FormItem className="flex items-center space-x-3 space-y-0">
-                                <FormControl>
-                                  <RadioGroupItem value="demo" />
-                                </FormControl>
-                                <FormLabel className="font-normal">
-                                  Schedule a Demo
-                                </FormLabel>
-                              </FormItem>
-                              <FormItem className="flex items-center space-x-3 space-y-0">
-                                <FormControl>
-                                  <RadioGroupItem value="learn" />
-                                </FormControl>
-                                <FormLabel className="font-normal">
-                                  Learn More
-                                </FormLabel>
-                              </FormItem>
-                            </RadioGroup>
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={softwareForm.control}
-                      name="platform"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Platform</FormLabel>
-                          <FormControl>
-                            <RadioGroup
-                              onValueChange={field.onChange}
-                              value={field.value}
-                              className="flex gap-4"
-                            >
-                              <FormItem className="flex items-center space-x-3 space-y-0">
-                                <FormControl>
-                                  <RadioGroupItem value="NIXN" />
-                                </FormControl>
-                                <FormLabel className="font-normal">
-                                  NIXN
-                                </FormLabel>
-                              </FormItem>
-                              <FormItem className="flex items-center space-x-3 space-y-0">
-                                <FormControl>
-                                  <RadioGroupItem value="xOS" />
-                                </FormControl>
-                                <FormLabel className="font-normal">
-                                  xOS
-                                </FormLabel>
-                              </FormItem>
-                              <FormItem className="flex items-center space-x-3 space-y-0">
-                                <FormControl>
-                                  <RadioGroupItem value="both" />
-                                </FormControl>
-                                <FormLabel className="font-normal">
-                                  Both
-                                </FormLabel>
-                              </FormItem>
-                            </RadioGroup>
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <FormField
-                      control={softwareForm.control}
-                      name="message"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel>Message</FormLabel>
-                          <FormControl>
-                            <Textarea
-                              {...field}
-                              className="bg-[#233554]/20 border-[#233554]"
-                              rows={5}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
-                    <div className="flex gap-4">
-                      <Button
-                        type="button"
-                        variant="outline"
-                        onClick={handleBack}
-                        className="flex-1 border-white text-white hover:bg-[#eba200] hover:border-[#eba200] hover:text-black hover:shadow-[0_0_15px_rgba(235,162,0,0.5)]"
-                      >
-                        Back
-                      </Button>
+                <motion.div
+                  key="software-form"
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  className="p-8 md:p-12"
+                >
+                  <div className="flex items-center gap-4 mb-8">
+                    <button 
+                      onClick={handleBack}
+                      className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
+                    >
+                      <ArrowLeft className="w-5 h-5 text-gray-400" />
+                    </button>
+                    <h3 className="text-xl font-bold text-white font-alliance">Software Solutions Inquiry</h3>
+                  </div>
+
+                  <Form {...softwareForm}>
+                    <form onSubmit={softwareForm.handleSubmit((data) => mutation.mutate({ ...data, type: "software" }))} className="space-y-6">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <FormField
+                          control={softwareForm.control}
+                          name="name"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className={labelStyles}>Name</FormLabel>
+                              <FormControl>
+                                <Input {...field} className={inputStyles} data-testid="input-name" />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={softwareForm.control}
+                          name="email"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className={labelStyles}>Email</FormLabel>
+                              <FormControl>
+                                <Input {...field} type="email" className={inputStyles} data-testid="input-email" />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <FormField
+                          control={softwareForm.control}
+                          name="company"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className={labelStyles}>Company</FormLabel>
+                              <FormControl>
+                                <Input {...field} className={inputStyles} data-testid="input-company" />
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                        <FormField
+                          control={softwareForm.control}
+                          name="industry"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel className={labelStyles}>Industry</FormLabel>
+                              <FormControl>
+                                <Select onValueChange={field.onChange} value={field.value}>
+                                  <SelectTrigger className={inputStyles} data-testid="select-industry">
+                                    <SelectValue placeholder="Select industry" />
+                                  </SelectTrigger>
+                                  <SelectContent className="bg-gray-800 border-gray-700">
+                                    <SelectItem value="construction" className="text-white">Construction</SelectItem>
+                                    <SelectItem value="steel" className="text-white">Steel</SelectItem>
+                                    <SelectItem value="mining" className="text-white">Mining</SelectItem>
+                                    <SelectItem value="healthcare" className="text-white">Healthcare</SelectItem>
+                                    <SelectItem value="energy" className="text-white">Energy</SelectItem>
+                                    <SelectItem value="defense" className="text-white">Defense</SelectItem>
+                                    <SelectItem value="transportation" className="text-white">Transportation</SelectItem>
+                                    <SelectItem value="manufacturing" className="text-white">Manufacturing</SelectItem>
+                                  </SelectContent>
+                                </Select>
+                              </FormControl>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                      <FormField
+                        control={softwareForm.control}
+                        name="requestType"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className={labelStyles}>What would you like to do?</FormLabel>
+                            <FormControl>
+                              <RadioGroup
+                                onValueChange={field.onChange}
+                                value={field.value}
+                                className="flex gap-6"
+                              >
+                                <FormItem className="flex items-center space-x-3 space-y-0">
+                                  <FormControl>
+                                    <RadioGroupItem value="demo" className="border-gray-600 text-[#64FFDA]" />
+                                  </FormControl>
+                                  <FormLabel className="font-normal text-gray-300">
+                                    Schedule a Demo
+                                  </FormLabel>
+                                </FormItem>
+                                <FormItem className="flex items-center space-x-3 space-y-0">
+                                  <FormControl>
+                                    <RadioGroupItem value="learn" className="border-gray-600 text-[#64FFDA]" />
+                                  </FormControl>
+                                  <FormLabel className="font-normal text-gray-300">
+                                    Learn More
+                                  </FormLabel>
+                                </FormItem>
+                              </RadioGroup>
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={softwareForm.control}
+                        name="platform"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className={labelStyles}>Platform</FormLabel>
+                            <FormControl>
+                              <RadioGroup
+                                onValueChange={field.onChange}
+                                value={field.value}
+                                className="flex gap-6"
+                              >
+                                <FormItem className="flex items-center space-x-3 space-y-0">
+                                  <FormControl>
+                                    <RadioGroupItem value="NIXN" className="border-gray-600 text-[#64FFDA]" />
+                                  </FormControl>
+                                  <FormLabel className="font-normal text-gray-300">
+                                    NIXN
+                                  </FormLabel>
+                                </FormItem>
+                                <FormItem className="flex items-center space-x-3 space-y-0">
+                                  <FormControl>
+                                    <RadioGroupItem value="xOS" className="border-gray-600 text-[#64FFDA]" />
+                                  </FormControl>
+                                  <FormLabel className="font-normal text-gray-300">
+                                    xOS
+                                  </FormLabel>
+                                </FormItem>
+                                <FormItem className="flex items-center space-x-3 space-y-0">
+                                  <FormControl>
+                                    <RadioGroupItem value="both" className="border-gray-600 text-[#64FFDA]" />
+                                  </FormControl>
+                                  <FormLabel className="font-normal text-gray-300">
+                                    Both
+                                  </FormLabel>
+                                </FormItem>
+                              </RadioGroup>
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={softwareForm.control}
+                        name="message"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className={labelStyles}>Message</FormLabel>
+                            <FormControl>
+                              <Textarea {...field} className={inputStyles} rows={4} data-testid="textarea-message" />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
                       <Button
                         type="submit"
-                        className="flex-1 bg-[#64FFDA] text-[#0A192F] hover:bg-[#64FFDA]/80"
+                        className="w-full bg-[#64FFDA] hover:bg-[#50e6c2] text-gray-900 font-semibold py-6 rounded-full font-alliance"
                         disabled={mutation.isPending}
+                        data-testid="button-submit"
                       >
-                        {mutation.isPending ? "Sending..." : "Send Message"}
+                        {mutation.isPending ? "Sending..." : (
+                          <span className="flex items-center justify-center gap-2">
+                            Send Message <Send className="w-4 h-4" />
+                          </span>
+                        )}
                       </Button>
-                    </div>
-                  </form>
-                </Form>
+                    </form>
+                  </Form>
+                </motion.div>
               )}
-            </div>
-          </HUDOverlay>
+            </AnimatePresence>
+          </motion.div>
         </div>
       </div>
     </section>

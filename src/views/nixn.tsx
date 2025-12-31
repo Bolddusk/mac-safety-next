@@ -1,30 +1,30 @@
+"use client"
+ 
 import Footer from "@/layout/Footer";
-import ImapactSection from "@/component/nixn/ImpactSection";
-import HowItWorks from "@/component/nixn/HowItWorks";
-import ArmFramework from "@/component/nixn/ArmFramework";
-import Features from "@/component/nixn/Features";
-import HeroSection from "@/component/nixn/HeroSection";
-
+import NIXNPage from "@/component/nixn/Nixn";
 
 export default function Nixn() {
   return (
-    <div className="min-h-screen bg-black">
+    <div className="min-h-screen bg-[#0b0b0d]">
       {/* Hero Section - Mobile Optimized */}
-      <HeroSection />
+      {/* <HeroSection /> */}
 
       {/* Features Section - Mobile Optimized */}
-      <Features />
+      {/* <Features /> */}
 
       {/* How NIXN Works Section */}
-      <HowItWorks />
+      {/* <HowItWorks /> */}
 
       {/* ARM Framework Section */}
-      <ArmFramework />
+      {/* <ArmFramework /> */}
 
       {/* Proven Impact Section */}
-      <ImapactSection />
+      {/* <ImapactSection /> */}
 
       {/* Add Footer */}
+
+      <NIXNPage />
+
       <Footer />
     </div>
   );

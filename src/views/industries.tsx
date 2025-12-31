@@ -1,41 +1,86 @@
+"use client"
+
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { Shield } from "lucide-react";
+import { SparklesCore } from "@/component/ui/Sparkles";
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/component/ui/accordion";
-import { HUDOverlay } from "@/component/ui/hud-overlay";
 import { Button } from "@/component/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/component/ui/dialog";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/component/ui/form";
+import { Input } from "@/component/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/component/ui/select";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
-import Footer from "@/layout/Footer";
-import IndustrialForm from "@/component/forms/IndustrialForm";
-import Image from "next/image";
 
-// Update industryImages mapping
-const industryImages = {
-  airline: "airline_industry.webp",
-  auto: "auto_industry.webp",
-  chemical: "chemical_processing_industry.webp",
-  construction: "construction_industry.webp",
-  "data-centers": "data_center.webp",
-  defense: "defense_aerospace_indsustry.webp",
-  healthcare: "healthcare_industry.webp",
-  insurance: "insurance_industry.webp",
-  "life-science": "life_science_industry.webp",
-  manufacturing: "manufacturing_industry.webp",
-  maritime: "maritime_industry.webp",
-  mining: "mining.webp",
-  "oil-gas": "oil_gas_industry.webp",
-  power: "utilies_industry.webp",
-  rail: "rail_industry.webp",
-  renewable: "renewable.webp",
-  steel: "steel_mill_industry.webp",
-  telecom: "telecommunications_tower.webp",
-  warehouse: "warehouse_logistics_industry.webp",
-};
+const serviceRequestSchema = z.object({
+  name: z.string().min(1, "Name is required"),
+  company: z.string().min(1, "Company name is required"),
+  industry: z.string().min(1, "Please select an industry"),
+  service: z.string().min(1, "Please select a service"),
+});
+
+type ServiceRequestForm = z.infer<typeof serviceRequestSchema>;
 
 export default function IndustriesPage() {
+  const pathname = usePathname();
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const form = useForm<ServiceRequestForm>({
+    resolver: zodResolver(serviceRequestSchema),
+    defaultValues: {
+      name: "",
+      company: "",
+      industry: "",
+      service: "",
+    },
+  });
+
+  function onSubmit(data: ServiceRequestForm) {
+    console.log(data);
+    setIsDialogOpen(false);
+    form.reset();
+  }
+
+  useEffect(() => {
+    if (pathname.includes("#")) {
+      const id = pathname.split("#")[1];
+      const accordionTrigger = document.getElementById(`accordion-${id}`);
+      if (accordionTrigger) {
+        accordionTrigger.click();
+        accordionTrigger.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  }, [pathname]);
+
   const industries = [
     {
       id: "airline",
@@ -48,6 +93,10 @@ export default function IndustriesPage() {
         "Real-time contractor compliance tracking",
         "Faster issue resolution with AI-driven insights",
       ],
+      cta: {
+        text: "Learn More",
+        link: "/industries/airline",
+      },
     },
     {
       id: "auto",
@@ -60,6 +109,10 @@ export default function IndustriesPage() {
         "Zero unplanned stoppages from safety-related incidents",
         "Better OSHA compliance, lower recordable rates",
       ],
+      cta: {
+        text: "Learn More",
+        link: "/industries/auto",
+      },
     },
     {
       id: "construction",
@@ -72,6 +125,10 @@ export default function IndustriesPage() {
         "Lower EMR scores → reduced insurance costs",
         "275% increase in near-miss reporting → better hazard awareness",
       ],
+      cta: {
+        text: "Learn More",
+        link: "/industries/construction",
+      },
     },
     {
       id: "data-centers",
@@ -84,6 +141,10 @@ export default function IndustriesPage() {
         "AI-driven analytics prevent high-risk incidents before they occur",
         "Faster compliance tracking → reduced project delays",
       ],
+      cta: {
+        text: "Learn More",
+        link: "/industries/data-centers",
+      },
     },
     {
       id: "healthcare",
@@ -96,6 +157,10 @@ export default function IndustriesPage() {
         "Advanced risk controls for infection prevention",
         "98% compliance with healthcare safety standards",
       ],
+      cta: {
+        text: "Learn More",
+        link: "/industries/healthcare",
+      },
     },
     {
       id: "insurance",
@@ -108,6 +173,10 @@ export default function IndustriesPage() {
         "More accurate risk pricing → lower loss ratios",
         "Better risk visibility for insureds and brokers",
       ],
+      cta: {
+        text: "Learn More",
+        link: "/industries/insurance",
+      },
     },
     {
       id: "life-science",
@@ -120,6 +189,10 @@ export default function IndustriesPage() {
         "AI-driven risk detection for biosafety environments",
         "Lower insurance costs through predictive analytics",
       ],
+      cta: {
+        text: "Learn More",
+        link: "/industries/life-science",
+      },
     },
     {
       id: "manufacturing",
@@ -132,6 +205,10 @@ export default function IndustriesPage() {
         "AI-driven safety insights increase workforce efficiency",
         "Fewer ergonomic injuries → reduced compensation claims",
       ],
+      cta: {
+        text: "Learn More",
+        link: "/industries/manufacturing",
+      },
     },
     {
       id: "oil-gas",
@@ -144,6 +221,10 @@ export default function IndustriesPage() {
         "Real-time hazard detection for high-risk environments",
         "Enhanced regulatory compliance and reduced fines",
       ],
+      cta: {
+        text: "Learn More",
+        link: "/industries/oil-gas",
+      },
     },
     {
       id: "rail",
@@ -156,6 +237,10 @@ export default function IndustriesPage() {
         "Real-time hazard detection for electrical & confined space work",
         "Fewer FRA compliance issues → reduced regulatory fines",
       ],
+      cta: {
+        text: "Learn More",
+        link: "/industries/rail",
+      },
     },
     {
       id: "steel",
@@ -168,6 +253,10 @@ export default function IndustriesPage() {
         "Lower LOTO-related incidents through AI-based compliance tracking",
         "Fewer OSHA citations → direct cost savings",
       ],
+      cta: {
+        text: "Learn More",
+        link: "/industries/steel",
+      },
     },
     {
       id: "chemical",
@@ -180,6 +269,10 @@ export default function IndustriesPage() {
         "Comprehensive HAZMAT training programs",
         "AI-driven PSM compliance tracking",
       ],
+      cta: {
+        text: "Learn More",
+        link: "/industries/chemical",
+      },
     },
     {
       id: "defense",
@@ -192,6 +285,10 @@ export default function IndustriesPage() {
         "Security-cleared safety professionals",
         "Integration with military safety standards",
       ],
+      cta: {
+        text: "Learn More",
+        link: "/industries/defense",
+      },
     },
     {
       id: "maritime",
@@ -204,6 +301,10 @@ export default function IndustriesPage() {
         "Comprehensive confined space monitoring",
         "Advanced shipyard risk management",
       ],
+      cta: {
+        text: "Learn More",
+        link: "/industries/maritime",
+      },
     },
     {
       id: "mining",
@@ -216,6 +317,10 @@ export default function IndustriesPage() {
         "Advanced ventilation safety tracking",
         "Reduction in regulatory violations",
       ],
+      cta: {
+        text: "Learn More",
+        link: "/industries/mining",
+      },
     },
     {
       id: "power",
@@ -228,6 +333,10 @@ export default function IndustriesPage() {
         "Real-time weather risk monitoring",
         "Improved grid security measures",
       ],
+      cta: {
+        text: "Learn More",
+        link: "/industries/power",
+      },
     },
     {
       id: "renewable",
@@ -240,6 +349,10 @@ export default function IndustriesPage() {
         "Enhanced remote site safety management",
         "Improved environmental compliance",
       ],
+      cta: {
+        text: "Learn More",
+        link: "/industries/renewable",
+      },
     },
     {
       id: "telecom",
@@ -252,6 +365,10 @@ export default function IndustriesPage() {
         "Real-time remote site monitoring",
         "Predictive hazard prevention",
       ],
+      cta: {
+        text: "Learn More",
+        link: "/industries/telecom",
+      },
     },
     {
       id: "warehouse",
@@ -264,34 +381,56 @@ export default function IndustriesPage() {
         "Optimized material handling procedures",
         "Reduced workplace injuries",
       ],
+      cta: {
+        text: "Learn More",
+        link: "/industries/warehousing",
+      },
     },
   ];
 
   return (
-    <div className="min-h-screen bg-[#0D1117]">
-      <section className="pt-24 pb-20 relative overflow-hidden">
+    <div className="min-h-screen bg-[#0b0b0d]">
+      <section className="pt-32 pb-20 relative overflow-hidden bg-[#0b0b0d]">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="flex flex-col md:flex-row items-center gap-12">
               <div className="w-full md:w-1/3 relative">
-                <div className="absolute inset-0 bg-[#eba200] blur-[20px] opacity-30 rounded-full"></div>
-                <Image
-                  src="/uploads/People Icon.webp"
-                  alt="MAC Safety Icon"
-                  width={256} // Default size (w-64 in Tailwind)
-                  height={256} // Default size (h-64 in Tailwind)
-                  className="relative w-48 h-48 md:w-64 md:h-64 mx-auto object-contain rounded-2xl"
+                <div className="absolute inset-0 w-full h-full">
+                  <SparklesCore
+                    id="industries-sparkles"
+                    background="transparent"
+                    minSize={0.4}
+                    maxSize={1.4}
+                    particleDensity={100}
+                    className="w-full h-full"
+                    particleColor="#eba200"
+                  />
+                </div>
+                <img
+                  src="/uploads/geometric-icon.jpg"
+                  alt="Geometric Icon"
+                  className="relative w-48 h-48 md:w-64 md:h-64 mx-auto object-contain rounded-2xl z-10"
                 />
               </div>
               <div className="w-full md:w-2/3 space-y-6">
-                <h1 className="text-4xl md:text-5xl font-bold">
+                <motion.h1
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                  className="text-4xl md:text-5xl font-bold text-white font-alliance"
+                >
                   Safety Consulting Is{" "}
                   <span className="text-[#eba200]">Broken</span>.
                   <br />
                   We Rebuilt It.
-                </h1>
-                <div className="space-y-4">
-                  <div className="text-gray-400 space-y-4">
+                </motion.h1>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  className="space-y-4"
+                >
+                  <div className="text-gray-400 space-y-4 font-alliance">
                     <p>
                       The traditional safety consulting model is outdated. It
                       operates on disconnected silos—randomized placements,
@@ -309,51 +448,242 @@ export default function IndustriesPage() {
                     </p>
                   </div>
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <IndustrialForm />
+                    <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                      <DialogTrigger asChild>
+                        <Button className="rounded-full bg-white text-black px-8 py-3 font-medium hover:bg-gray-100 transition-all font-alliance">
+                          Request People Services
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="bg-[#16171a] border-gray-800">
+                        <DialogHeader>
+                          <DialogTitle className="text-2xl font-bold text-white font-alliance">
+                            Request Services
+                          </DialogTitle>
+                          <DialogDescription className="text-gray-400 font-alliance">
+                            Fill out the form below to request our services.
+                            We&apos;ll get back to you within 24 hours.
+                          </DialogDescription>
+                        </DialogHeader>
+                        <Form {...form}>
+                          <form
+                            onSubmit={form.handleSubmit(onSubmit)}
+                            className="space-y-6"
+                          >
+                            <FormField
+                              control={form.control}
+                              name="name"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel className="text-gray-300 font-alliance">
+                                    Name
+                                  </FormLabel>
+                                  <FormControl>
+                                    <Input
+                                      placeholder="Your name"
+                                      {...field}
+                                      className="bg-[#16171a] border-gray-700 text-white placeholder:text-gray-500 font-alliance"
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                            <FormField
+                              control={form.control}
+                              name="company"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel className="text-gray-300 font-alliance">
+                                    Company
+                                  </FormLabel>
+                                  <FormControl>
+                                    <Input
+                                      placeholder="Your company"
+                                      {...field}
+                                      className="bg-[#16171a] border-gray-700 text-white placeholder:text-gray-500 font-alliance"
+                                    />
+                                  </FormControl>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                            <FormField
+                              control={form.control}
+                              name="industry"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel className="text-gray-300 font-alliance">
+                                    Industry
+                                  </FormLabel>
+                                  <Select
+                                    onValueChange={field.onChange}
+                                    defaultValue={field.value}
+                                  >
+                                    <FormControl>
+                                      <SelectTrigger className="bg-[#16171a] border-gray-700 text-white font-alliance">
+                                        <SelectValue placeholder="Select an industry" />
+                                      </SelectTrigger>
+                                    </FormControl>
+                                    <SelectContent className="bg-[#16171a] border-gray-800">
+                                      <SelectItem value="airline">
+                                        Airports & Capital Projects
+                                      </SelectItem>
+                                      <SelectItem value="auto">
+                                        Automotive
+                                      </SelectItem>
+                                      <SelectItem value="construction">
+                                        Construction
+                                      </SelectItem>
+                                      <SelectItem value="data-centers">
+                                        Data Centers
+                                      </SelectItem>
+                                      <SelectItem value="healthcare">
+                                        Healthcare
+                                      </SelectItem>
+                                      <SelectItem value="insurance">
+                                        Insurance
+                                      </SelectItem>
+                                      <SelectItem value="life-science">
+                                        Life Sciences
+                                      </SelectItem>
+                                      <SelectItem value="manufacturing">
+                                        Manufacturing
+                                      </SelectItem>
+                                      <SelectItem value="oil-gas">
+                                        Oil & Gas
+                                      </SelectItem>
+                                      <SelectItem value="rail">Rail</SelectItem>
+                                      <SelectItem value="steel">
+                                        Steel
+                                      </SelectItem>
+                                      <SelectItem value="chemical">
+                                        Chemical Processing & Refining
+                                      </SelectItem>
+                                      <SelectItem value="defense">
+                                        Defense & Aerospace
+                                      </SelectItem>
+                                      <SelectItem value="maritime">
+                                        Maritime & Shipbuilding
+                                      </SelectItem>
+                                      <SelectItem value="mining">
+                                        Mining & Quarrying
+                                      </SelectItem>
+                                      <SelectItem value="power">
+                                        Utilities & Power Generation
+                                      </SelectItem>
+                                      <SelectItem value="renewable">
+                                        Renewable Energy
+                                      </SelectItem>
+                                      <SelectItem value="telecom">
+                                        Telecommunications & 5G Infrastructure
+                                      </SelectItem>
+                                      <SelectItem value="warehouse">
+                                        Warehousing & Logistics
+                                      </SelectItem>
+                                    </SelectContent>
+                                  </Select>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                            <FormField
+                              control={form.control}
+                              name="service"
+                              render={({ field }) => (
+                                <FormItem>
+                                  <FormLabel className="text-gray-300 font-alliance">
+                                    Service
+                                  </FormLabel>
+                                  <Select
+                                    onValueChange={field.onChange}
+                                    defaultValue={field.value}
+                                  >
+                                    <FormControl>
+                                      <SelectTrigger className="bg-[#16171a] border-gray-700 text-white font-alliance">
+                                        <SelectValue placeholder="Select a service" />
+                                      </SelectTrigger>
+                                    </FormControl>
+                                    <SelectContent className="bg-[#16171a] border-gray-800">
+                                      <SelectItem value="project-staffing">
+                                        Project Staffing
+                                      </SelectItem>
+                                      <SelectItem value="risk-management">
+                                        Risk Management
+                                      </SelectItem>
+                                      <SelectItem value="training">
+                                        Training
+                                      </SelectItem>
+                                      <SelectItem value="assessment">
+                                        Assessment
+                                      </SelectItem>
+                                      <SelectItem value="program-buildout">
+                                        Program Buildout
+                                      </SelectItem>
+                                      <SelectItem value="other">
+                                        Other
+                                      </SelectItem>
+                                    </SelectContent>
+                                  </Select>
+                                  <FormMessage />
+                                </FormItem>
+                              )}
+                            />
+                            <Button
+                              type="submit"
+                              className="w-full rounded-full bg-white text-black font-medium hover:bg-gray-100 transition-all font-alliance"
+                            >
+                              Submit Request
+                            </Button>
+                          </form>
+                        </Form>
+                      </DialogContent>
+                    </Dialog>
                     <Link href="/offerings">
-                      <Button
-                        variant="outline"
-                        className="border-white text-white hover:bg-[#eba200] hover:text-black hover:border-[#eba200] hover:shadow-[0_0_15px_rgba(235,162,0,0.5)]"
-                      >
+                      <Button className="rounded-full border-2 border-white text-white px-8 py-3 font-medium hover:bg-white hover:text-black transition-all font-alliance bg-transparent">
                         View Offerings
                       </Button>
                     </Link>
                   </div>
-                </div>
+                </motion.div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-[#0D1117]">
+      <section className="py-20 bg-[#0b0b0d]">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div className="space-y-12">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              className="space-y-12"
+            >
               <div className="space-y-6">
-                <h2 className="text-3xl md:text-4xl font-bold">
+                <h2 className="text-3xl md:text-4xl font-bold text-white font-alliance">
                   The MAC Safety Ecosystem:{" "}
-                  <span className="bg-gradient-to-r from-[#eba200] via-[#64FFDA] to-[#eba200] text-transparent bg-clip-text animate-gradient">
+                  <span className="text-[#eba200]">
                     The Right Expertise, Deployed at Scale
                   </span>
                 </h2>
-                <p className="text-xl text-gray-400">
+                <p className="text-xl text-gray-400 font-alliance">
                   Most firms send generalists into highly specialized
-                  environments. We don&apos;t. We have engineered a system where
-                  the right expertise is matched with the right industry, at the
+                  environments. We don&apos;t. We have engineered a system where the
+                  right expertise is matched with the right industry, at the
                   right time.
                 </p>
               </div>
 
-              <HUDOverlay>
-                <div className="space-y-6 p-6">
-                  <div className="flex items-start gap-4 p-6 bg-black/40 border border-white/10 rounded-lg hover:border-[#eba200]/40 hover:bg-[#eba200]/10 transition-all group">
-                    <span className="text-2xl">🔹</span>
+              <div className="bg-[#16171a] border border-gray-800 rounded-2xl p-6 md:p-8">
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4 p-6 bg-[#0b0b0d] border border-gray-800 rounded-xl hover:border-[#eba200]/40 transition-all group">
+                    <span className="text-2xl text-[#eba200]">●</span>
                     <div>
-                      <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-[#eba200]">
+                      <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-[#eba200] font-alliance">
                         Embedded Intelligence
                       </h3>
-                      <p className="text-gray-400">
+                      <p className="text-gray-400 font-alliance">
                         Every MAC Safety consultant is backed by NIXN & NIXNos,
                         ensuring their decisions are driven by real-time,
                         predictive risk data—not just gut instinct.
@@ -361,14 +691,14 @@ export default function IndustriesPage() {
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4 p-6 bg-black/40 border border-white/10 rounded-lg hover:border-[#eba200]/40 hover:bg-[#eba200]/10 transition-all group">
-                    <span className="text-2xl">🔹</span>
+                  <div className="flex items-start gap-4 p-6 bg-[#0b0b0d] border border-gray-800 rounded-xl hover:border-[#eba200]/40 transition-all group">
+                    <span className="text-2xl text-[#eba200]">●</span>
                     <div>
-                      <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-[#eba200]">
+                      <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-[#eba200] font-alliance">
                         Precision Deployment
                       </h3>
-                      <p className="text-gray-400">
-                        Our system does&apos;t just place consultants—it
+                      <p className="text-gray-400 font-alliance">
+                        Our system doesn&apos;t just place consultants—it
                         strategically deploys them based on real risk data,
                         ensuring that those with deep industry knowledge are
                         embedded where they deliver the highest impact.
@@ -376,13 +706,13 @@ export default function IndustriesPage() {
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-4 p-6 bg-black/40 border border-white/10 rounded-lg hover:border-[#eba200]/40 hover:bg-[#eba200]/10 transition-all group">
-                    <span className="text-2xl">🔹</span>
+                  <div className="flex items-start gap-4 p-6 bg-[#0b0b0d] border border-gray-800 rounded-xl hover:border-[#eba200]/40 transition-all group">
+                    <span className="text-2xl text-[#eba200]">●</span>
                     <div>
-                      <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-[#eba200]">
+                      <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-[#eba200] font-alliance">
                         Feedback Loops & Compounding Intelligence
                       </h3>
-                      <p className="text-gray-400">
+                      <p className="text-gray-400 font-alliance">
                         Unlike traditional firms that deliver one-off reports,
                         our ecosystem continuously refines itself. Every
                         insight, every risk assessment, and every project feeds
@@ -392,29 +722,29 @@ export default function IndustriesPage() {
                     </div>
                   </div>
                 </div>
-              </HUDOverlay>
+              </div>
 
               <div className="space-y-6 pt-8">
-                <h2 className="text-3xl font-bold">
+                <h2 className="text-3xl font-bold text-white font-alliance">
                   The Result:{" "}
-                  <span className="bg-gradient-to-r from-[#eba200] via-[#64FFDA] to-[#eba200] text-transparent bg-clip-text animate-gradient">
+                  <span className="text-[#eba200]">
                     Exponential Leverage, Not Incremental Improvement
                   </span>
                 </h2>
-                <p className="text-xl text-gray-400">
+                <p className="text-xl text-gray-400 font-alliance">
                   Traditional safety firms operate linearly—more consultants,
                   more hours, more reports. We operate exponentially.
                 </p>
 
-                <HUDOverlay>
-                  <div className="space-y-6 p-6">
-                    <div className="flex items-start gap-4 p-6 bg-black/40 border border-white/10 rounded-lg hover:border-[#64FFDA]/40 hover:bg-[#64FFDA]/10 transition-all group">
-                      <span className="text-2xl">🔹</span>
+                <div className="bg-[#16171a] border border-gray-800 rounded-2xl p-6 md:p-8">
+                  <div className="space-y-6">
+                    <div className="flex items-start gap-4 p-6 bg-[#0b0b0d] border border-gray-800 rounded-xl hover:border-[#eba200]/40 transition-all group">
+                      <span className="text-2xl text-[#eba200]">●</span>
                       <div>
-                        <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-[#64FFDA]">
+                        <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-[#eba200] font-alliance">
                           10x Output
                         </h3>
-                        <p className="text-gray-400">
+                        <p className="text-gray-400 font-alliance">
                           Every MAC Safety consultant is amplified by AI-powered
                           insights, making them far more effective than any
                           standalone specialist.
@@ -422,29 +752,28 @@ export default function IndustriesPage() {
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-4 p-6 bg-black/40 border border-white/10 rounded-lg hover:border-[#64FFDA]/40 hover:bg-[#64FFDA]/10 transition-all group">
-                      <span className="text-2xl">🔹</span>
+                    <div className="flex items-start gap-4 p-6 bg-[#0b0b0d] border border-gray-800 rounded-xl hover:border-[#eba200]/40 transition-all group">
+                      <span className="text-2xl text-[#eba200]">●</span>
                       <div>
-                        <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-[#64FFDA]">
+                        <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-[#eba200] font-alliance">
                           Industry-Specific Precision
                         </h3>
-                        <p className="text-gray-400">
-                          We don&apos;t just drop a &apos;safety
-                          consultant&apos; into a manufacturing plant—we deploy
-                          an automotive risk strategist backed by real-time
-                          machine-learning models analyzing operator behavior
-                          and process safety trends.
+                        <p className="text-gray-400 font-alliance">
+                          We don&apos;t just drop a &apos;safety consultant&apos; into a
+                          manufacturing plant—we deploy an automotive risk
+                          strategist backed by real-time machine-learning models
+                          analyzing operator behavior and process safety trends.
                         </p>
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-4 p-6 bg-black/40 border border-white/10 rounded-lg hover:border-[#64FFDA]/40 hover:bg-[#64FFDA]/10 transition-all group">
-                      <span className="text-2xl">🔹</span>
+                    <div className="flex items-start gap-4 p-6 bg-[#0b0b0d] border border-gray-800 rounded-xl hover:border-[#eba200]/40 transition-all group">
+                      <span className="text-2xl text-[#eba200]">●</span>
                       <div>
-                        <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-[#64FFDA]">
+                        <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-[#eba200] font-alliance">
                           Continuous Evolution
                         </h3>
-                        <p className="text-gray-400">
+                        <p className="text-gray-400 font-alliance">
                           Every project, every data point, and every risk
                           mitigated strengthens our intelligence network, making
                           each deployment smarter, faster, and more effective
@@ -453,104 +782,94 @@ export default function IndustriesPage() {
                       </div>
                     </div>
                   </div>
-                </HUDOverlay>
+                </div>
 
-                <p className="text-xl font-semibold text-center pt-8">
-                  <span className="bg-gradient-to-r from-[#eba200] via-[#64FFDA] to-[#eba200] text-transparent bg-clip-text animate-gradient">
-                    This isn&apos;t consulting. This is risk intelligence at
-                    scale.
+                <p className="text-xl font-semibold text-center pt-8 font-alliance">
+                  <span className="text-[#eba200]">
+                    This isn&apos;t consulting. This is risk intelligence at scale.
                   </span>
                 </p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      <div className="pt-24">
+      <section className="py-24 bg-[#0b0b0d]">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
-            <div>
-              <h1 className="text-4xl font-bold mb-8 flex items-center gap-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <h1 className="text-4xl font-bold mb-8 flex items-center gap-4 text-white font-alliance">
                 <Shield className="w-8 h-8 text-[#eba200]" />
                 Industry Solutions
               </h1>
-              <p className="text-xl text-gray-400 mb-12">
+              <p className="text-xl text-gray-400 mb-12 font-alliance">
                 Explore our specialized safety and compliance solutions across
                 various industries
               </p>
-            </div>
+            </motion.div>
 
-            <div className="space-y-6 mb-24">
+            <Accordion type="single" collapsible className="w-full space-y-4">
               {industries.map((industry) => (
-                <div key={industry.id}>
-                  <Accordion type="single" collapsible>
-                    <AccordionItem value={industry.id} className="border-none">
-                      <AccordionTrigger
-                        id={`accordion-${industry.id}`}
-                        className="group rounded-lg bg-[#1B2434] hover:bg-[#233554] transition-all duration-300"
-                      >
-                        <div className="w-full">
-                          <div className="relative h-48 wfull rounded-t-lg overflow-hidden">
-                            <Image
-                              src={`/uploads/${
-                                industryImages[
-                                  industry.id as keyof typeof industryImages
-                                ]
-                              }`}
-                              alt={`${industry.title} industry`}
-                              width={500} // Adjust width as needed
-                              height={500} // Adjust height as needed
-                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                            />
-                            <div className="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-colors" />
-                            <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-                              <h3 className="text-xl font-semibold text-white group-hover:text-[#eba200] transition-colors">
-                                {industry.title}
-                              </h3>
-                              <p className="text-sm text-gray-300">
-                                {industry.subtitle}
-                              </p>
-                            </div>
-                          </div>
+                <AccordionItem
+                  key={industry.id}
+                  value={industry.id}
+                  className="bg-[#16171a] border border-gray-800 rounded-2xl overflow-hidden hover:border-gray-700 transition-colors"
+                >
+                  <AccordionTrigger
+                    id={`accordion-${industry.id}`}
+                    className="px-6 py-4 text-left hover:no-underline hover:bg-[#1f2024] [&[data-state=open]]:bg-[#1f2024]"
+                  >
+                    <div>
+                      <h3 className="text-xl font-semibold text-white font-alliance">
+                        {industry.title}
+                      </h3>
+                      <p className="text-sm text-gray-400 font-alliance">
+                        {industry.subtitle}
+                      </p>
+                    </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-6 py-4 bg-[#16171a]">
+                    <div className="space-y-4">
+                      <p className="text-gray-400 whitespace-pre-line font-alliance">
+                        {industry.description}
+                      </p>
+                      <div className="space-y-2">
+                        <h4 className="font-semibold text-[#eba200] font-alliance">
+                          Key Impacts:
+                        </h4>
+                        <ul className="list-disc list-inside space-y-1">
+                          {industry.impacts.map((impact, index) => (
+                            <li
+                              key={index}
+                              className="text-gray-400 font-alliance"
+                            >
+                              {impact}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                      {industry.cta && (
+                        <div className="mt-6">
+                          <Link href={industry.cta.link}>
+                            <Button className="rounded-full bg-white text-black px-8 py-3 font-medium hover:bg-gray-100 transition-all font-alliance">
+                              {industry.cta.text}
+                            </Button>
+                          </Link>
                         </div>
-                      </AccordionTrigger>
-                      <AccordionContent className="pt-6 pb-4 px-4 bg-[#1B2434] rounded-b-lg">
-                        <div className="space-y-6">
-                          <div className="text-gray-300 space-y-4">
-                            {industry.description
-                              .split("\n\n")
-                              .map((paragraph, idx) => (
-                                <p key={idx}>{paragraph}</p>
-                              ))}
-                          </div>
-                          <div className="space-y-4">
-                            <h4 className="text-lg font-semibold text-[#64FFDA]">
-                              Impact
-                            </h4>
-                            <ul className="space-y-3">
-                              {industry.impacts.map((impact, idx) => (
-                                <li
-                                  key={idx}
-                                  className="flex items-center gap-2 text-white"
-                                >
-                                  <div className="w-2 h-2 bg-[#eba200] rounded-full" />
-                                  {impact}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        </div>
-                      </AccordionContent>
-                    </AccordionItem>
-                  </Accordion>
-                </div>
+                      )}
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
               ))}
-            </div>
+            </Accordion>
           </div>
         </div>
-      </div>
-      <Footer />
+      </section>
     </div>
   );
 }

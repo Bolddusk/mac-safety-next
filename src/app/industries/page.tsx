@@ -1,3 +1,4 @@
+import Footer from "@/layout/Footer";
 import Header from "@/layout/Header";
 import { queryClient } from "@/lib/queryClient";
 import IndustriesPage from "@/views/industries";
@@ -19,6 +20,7 @@ export default function Index() {
       <div className="min-h-screen bg-[#0D1117] text-white">
         <Header />
         <IndustriesPage />
+        <Footer />
       </div>
     </QueryClientProvider>
   );

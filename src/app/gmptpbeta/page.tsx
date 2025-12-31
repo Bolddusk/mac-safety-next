@@ -19,7 +19,7 @@ export default function Index() {
   return (
     <QueryClientProvider client={queryClient}>
       <div className="min-h-screen bg-[#0D1117] text-white">
-        <Header isShowBanner={false} />
+        <Header />
         <GMPTPBeta />
         <Footer />
         <Toaster />

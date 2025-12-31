@@ -1,11 +1,14 @@
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/component/ui/tabs";
-import { Card, CardContent } from "@/component/ui/card";
-import Footer from "@/layout/Footer";
+"use client"
+
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { DottedSurface } from "@/component/ui/DottedSurface";
+import { Target, TrendingUp, Zap } from "lucide-react";
 
 const partnerData = [
   {
     id: "gm",
-    name: "MAC + GM",
+    name: "General Motors",
     partner:
       "General Motors is a global leader in automotive manufacturing and sustainable mobility solutions.",
     challenge:
@@ -17,7 +20,7 @@ const partnerData = [
   },
   {
     id: "mbta",
-    name: "MAC + MBTA",
+    name: "MBTA",
     partner:
       "Massachusetts Bay Transportation Authority operates one of the largest public transit systems in the United States.",
     challenge:
@@ -29,7 +32,7 @@ const partnerData = [
   },
   {
     id: "range",
-    name: "MAC + Range Resources",
+    name: "Range Resources",
     partner:
       "Range Resources is a leading U.S. natural gas and oil exploration and production company.",
     challenge:
@@ -41,7 +44,7 @@ const partnerData = [
   },
   {
     id: "marathon",
-    name: "MAC + Marathon",
+    name: "Marathon",
     partner:
       "Marathon Petroleum Corporation is one of the largest petroleum refining companies in the United States.",
     challenge:
@@ -53,7 +56,7 @@ const partnerData = [
   },
   {
     id: "pinnacol",
-    name: "MAC + Pinnacol",
+    name: "Pinnacol",
     partner:
       "Pinnacol Assurance is Colorado's leading workers' compensation insurance provider.",
     challenge:
@@ -66,93 +69,215 @@ const partnerData = [
 ];
 
 export default function ImpactStudies() {
+  const [activePartner, setActivePartner] = useState(0);
+
   return (
-    <div className="min-h-screen bg-[#0D1117]">
+    <div className="min-h-screen bg-[#0b0b0d]">
       {/* Hero Section */}
-      <div className="relative py-20 overflow-hidden pt-16">
-        <div className="absolute inset-0 bg-gradient-to-r from-[#eba200]/10 to-[#64FFDA]/10" />
-        <div className="container mx-auto px-4 relative">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#eba200] to-[#64FFDA] bg-clip-text text-transparent mb-6 pt-10">
-              Real Intelligence. Proven Impact.
-            </h1>
-            <p className="text-lg md:text-xl text-gray-300 mb-4">
-              We don&apos;t just track safety—we transform it.
-            </p>
-            <p className="text-md md:text-lg text-gray-400">
-              Explore how MAC&apos;s expertise and technology drive measurable
-              results across industries.
-            </p>
-          </div>
+      <section className="relative min-h-[60vh] flex items-center justify-center bg-[#0b0b0d] overflow-hidden pt-24 pb-16">
+        <DottedSurface />
+
+        <div className="container mx-auto px-6 md:px-8 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="mb-6"
+            >
+              <span className="inline-block px-4 py-2 bg-[#eba200]/10 border border-[#eba200]/20 rounded-full text-[#eba200] text-sm font-alliance tracking-wide">
+                Case Studies
+              </span>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="text-4xl md:text-6xl font-bold text-white mb-6 font-alliance leading-tight"
+            >
+              Real Intelligence.
+              <br />
+              <span className="text-gray-400">Proven Impact.</span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto font-alliance"
+            >
+              We don&apos;t just track safety—we transform it. Explore how MAC&apos;s
+              expertise and technology drive measurable results across
+              industries.
+            </motion.p>
+          </motion.div>
         </div>
-      </div>
+      </section>
 
-      {/* Customer Highlights Section */}
-      <div className="container mx-auto px-4 py-12">
-        <h2 className="text-3xl font-bold mb-8 text-center">
-          Customer Highlights
-        </h2>
+      {/* Partner Studies Section */}
+      <section className="py-20 md:py-28 bg-[#16171a]">
+        <div className="container mx-auto px-6 md:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <span className="text-[#eba200] font-semibold text-sm tracking-wide uppercase mb-4 block font-alliance">
+              Customer Highlights
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 font-alliance">
+              Partnerships That Deliver
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto font-alliance">
+              From Fortune 500 companies to regional leaders, we&apos;ve helped
+              organizations transform their safety operations.
+            </p>
+          </motion.div>
 
-        <Tabs defaultValue="gm" className="w-full">
-          <div className="relative mb-24 sm:mb-32">
-            <TabsList className="flex flex-wrap justify-center gap-3 sm:gap-4 bg-transparent">
-              {partnerData.map((partner) => (
-                <TabsTrigger
-                  key={partner.id}
-                  value={partner.id}
-                  className="px-3 sm:px-6 py-2 text-sm sm:text-base rounded-full border border-white/10 bg-black/50 text-white hover:bg-[#eba200] hover:text-black hover:border-[#eba200] transition-all data-[state=active]:bg-[#eba200] data-[state=active]:text-black data-[state=active]:border-[#eba200]"
-                >
-                  {partner.name}
-                </TabsTrigger>
-              ))}
-            </TabsList>
+          {/* Partner Tabs */}
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-2 md:gap-3 mb-12 max-w-4xl mx-auto">
+            {partnerData.map((partner, index) => (
+              <button
+                key={partner.id}
+                onClick={() => setActivePartner(index)}
+                className={`px-3 py-2.5 md:px-5 md:py-3 rounded-full font-alliance font-medium text-sm md:text-base transition-all ${
+                  activePartner === index
+                    ? "bg-[#eba200] text-black"
+                    : "bg-white/5 text-gray-300 hover:bg-white/10 border border-white/10"
+                }`}
+                data-testid={`button-partner-${partner.id}`}
+              >
+                {partner.name}
+              </button>
+            ))}
           </div>
 
-          {partnerData.map((partner) => (
-            <TabsContent key={partner.id} value={partner.id} className="mt-0">
-              <div className="grid gap-6">
-                <Card className="bg-black/50 border-white/10">
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold text-[#eba200] mb-4">
-                      Partner
-                    </h3>
-                    <p className="text-gray-300">{partner.partner}</p>
-                  </CardContent>
-                </Card>
+          {/* Active Partner Content */}
+          <motion.div
+            key={activePartner}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="max-w-5xl mx-auto"
+          >
+            <div className="bg-[#0b0b0d] border border-gray-800 rounded-3xl overflow-hidden p-8 md:p-12">
+              {/* Partner Header */}
+              <div className="flex items-center gap-3 mb-8">
+                <span className="px-4 py-1.5 bg-[#eba200]/10 border border-[#eba200]/20 rounded-full text-[#eba200] text-sm font-alliance font-medium">
+                  MAC + {partnerData[activePartner].name}
+                </span>
+              </div>
 
-                <Card className="bg-black/50 border-white/10">
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold text-[#eba200] mb-4">
+              {/* Partner Description */}
+              <p className="text-gray-300 font-alliance text-lg mb-10 max-w-3xl">
+                {partnerData[activePartner].partner}
+              </p>
+
+              {/* Content Grid */}
+              <div className="grid md:grid-cols-2 gap-6">
+                {/* Challenge */}
+                <div className="bg-[#16171a] border border-gray-800 rounded-2xl p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-lg bg-[#eba200]/10 flex items-center justify-center">
+                      <Target className="w-5 h-5 text-[#eba200]" />
+                    </div>
+                    <h3 className="text-lg font-bold text-white font-alliance">
                       Challenge
                     </h3>
-                    <p className="text-gray-300">{partner.challenge}</p>
-                  </CardContent>
-                </Card>
+                  </div>
+                  <p className="text-gray-400 font-alliance">
+                    {partnerData[activePartner].challenge}
+                  </p>
+                </div>
 
-                <Card className="bg-black/50 border-white/10">
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold text-[#64FFDA] mb-4">
+                {/* Solution */}
+                <div className="bg-[#16171a] border border-gray-800 rounded-2xl p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 rounded-lg bg-[#eba200]/10 flex items-center justify-center">
+                      <Zap className="w-5 h-5 text-[#eba200]" />
+                    </div>
+                    <h3 className="text-lg font-bold text-white font-alliance">
                       Solution
                     </h3>
-                    <p className="text-gray-300">{partner.solution}</p>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-black/50 border-white/10">
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold text-[#64FFDA] mb-4">
-                      Impact
-                    </h3>
-                    <p className="text-gray-300">{partner.impact}</p>
-                  </CardContent>
-                </Card>
+                  </div>
+                  <p className="text-gray-400 font-alliance">
+                    {partnerData[activePartner].solution}
+                  </p>
+                </div>
               </div>
-            </TabsContent>
-          ))}
-        </Tabs>
-      </div>
 
-      <Footer />
+              {/* Impact Section */}
+              <div className="mt-6 bg-[#eba200]/5 border border-[#eba200]/20 rounded-2xl p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-10 h-10 rounded-lg bg-[#eba200]/20 flex items-center justify-center">
+                    <TrendingUp className="w-5 h-5 text-[#eba200]" />
+                  </div>
+                  <h3 className="text-lg font-bold text-[#eba200] font-alliance">
+                    Impact
+                  </h3>
+                </div>
+                <p className="text-gray-300 font-alliance">
+                  {partnerData[activePartner].impact}
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-16 md:py-20 bg-[#0b0b0d]">
+        <div className="container mx-auto px-6 md:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto"
+          >
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-[#eba200] mb-2 font-alliance">
+                30+
+              </div>
+              <div className="text-gray-400 font-alliance text-sm">
+                Enterprise Partners
+              </div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-white mb-2 font-alliance">
+                40%
+              </div>
+              <div className="text-gray-400 font-alliance text-sm">
+                Avg. Incident Reduction
+              </div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-white mb-2 font-alliance">
+                85%
+              </div>
+              <div className="text-gray-400 font-alliance text-sm">
+                Client Retention
+              </div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl md:text-4xl font-bold text-white mb-2 font-alliance">
+                10M+
+              </div>
+              <div className="text-gray-400 font-alliance text-sm">
+                Safety Records Processed
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
     </div>
   );
 }

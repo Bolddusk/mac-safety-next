@@ -1,4 +1,5 @@
 import { Toaster } from "@/component/ui/toaster";
+import Footer from "@/layout/Footer";
 import Header from "@/layout/Header";
 import { queryClient } from "@/lib/queryClient";
 import Contact from "@/views/contact";
@@ -19,6 +20,7 @@ export default function Index() {
       <div className="min-h-screen bg-[#0D1117] text-white">
         <Header />
         <Contact />
+        <Footer />
         <Toaster />
       </div>
     </QueryClientProvider>

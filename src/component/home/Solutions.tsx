@@ -1,119 +1,107 @@
-import Image from "next/image";
-import { HUDOverlay } from "../ui/hud-overlay";
-import { Quote } from "lucide-react";
+"use client"
+ 
+import { motion } from "framer-motion";
+import { 
+  Plane, Car, HardHat, Server, Heart, ScrollText, TestTube, Cog, 
+  Flame, Train, Construction, Warehouse, Radio, Zap, Wind, Anchor, Mountain, Rocket
+} from "lucide-react";
+import Link from "next/link";
+import Testimonial from "./Testimonial";
 
-const partners = [
-  {
-    name: "General Motors",
-    logo: "/uploads/GM.webp",
-  },
-  {
-    name: "Hitachi",
-    logo: "/uploads/hitachi_logo.webp",
-  },
-  {
-    name: "Marathon Petroleum Corporation",
-    logo: "/uploads/marathon_petroleum_company_logo.webp",
-  },
-  {
-    name: "MBTA",
-    logo: "/uploads/mbta_logo.webp",
-  },
-  {
-    name: "Meccon Industries",
-    logo: "/uploads/meccon_industries_logo.webp",
-  },
-  {
-    name: "Sargent",
-    logo: "/uploads/sargent.jpeg",
-  },
-  {
-    name: "Range Resources",
-    logo: "/uploads/range_resources_logo.webp",
-  },
-  {
-    name: "Tenaris",
-    logo: "/uploads/tenaris.webp",
-  },
-  {
-    name: "Williams",
-    logo: "/uploads/williams.webp",
-  },
-  {
-    name: "WTW Corporate",
-    logo: "/uploads/wtwcorporate_logo.webp",
-  },
+const industries = [
+  { title: "Airline", icon: Plane },
+  { title: "Auto", icon: Car },
+  { title: "Construction", icon: HardHat },
+  { title: "Data Centers", icon: Server },
+  { title: "Healthcare", icon: Heart },
+  { title: "Insurance", icon: ScrollText },
+  { title: "Life Science", icon: TestTube },
+  { title: "Manufacturing", icon: Cog },
+  { title: "Oil & Gas", icon: Flame },
+  { title: "Rail", icon: Train },
+  { title: "Steel", icon: Construction },
+  { title: "Chemical Processing", icon: TestTube },
+  { title: "Defense & Aerospace", icon: Rocket },
+  { title: "Maritime", icon: Anchor },
+  { title: "Mining", icon: Mountain },
+  { title: "Power Generation", icon: Zap },
+  { title: "Renewable Energy", icon: Wind },
+  { title: "Telecommunications", icon: Radio },
+  { title: "Warehousing", icon: Warehouse },
 ];
 
 export default function Solutions() {
   return (
-    <section className="bg-[#0D1117]">
-      {/* Partners Section */}
-      <div id="partners" className="py-12 sm:py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-10 sm:mb-12">Our Partners</h2>
+    <>
+      {/* Industries Section - Charcoal surface */}
+      <section className="py-20 md:py-28 bg-[#16171a]">
+        <div className="container mx-auto px-6 md:px-8">
+          <div className="text-center mb-16">
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-[#eba200] text-sm uppercase tracking-widest mb-4 font-alliance"
+            >
+              Industries We Serve
+            </motion.p>
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="text-3xl md:text-4xl lg:text-5xl font-bold text-white font-alliance"
+            >
+              Expertise Across Sectors
+            </motion.h2>
+          </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8">
-            {partners.map((partner, index) => (
-              <div
-                key={`home-partner-${index}`}
-                className="flex items-center justify-center p-4 sm:p-6"
+          {/* Industries Grid */}
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 md:gap-6"
+          >
+            {industries.map((industry, index) => (
+              <motion.div
+                key={industry.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.02 }}
               >
-                <Image
-                  src={partner.logo}
-                  alt={`${partner.name} logo`}
-                  width={100} // Adjust width as needed
-                  height={64} // Adjust height as needed (16 * 4)
-                  className="max-h-16 sm:max-h-20 w-auto object-contain filter hover:brightness-110 opacity-80 hover:opacity-100 transition-all duration-300"
-                  style={{ objectFit: "contain" }}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Testimonial Section */}
-      <div className="py-12 sm:py-16 border-t border-white/10">
-        <div className="container mx-auto px-4">
-          <div>
-            <HUDOverlay className="relative max-w-4xl mx-auto">
-              <div className="absolute -top-6 left-8">
-                <Quote className="w-12 h-12 text-[#eba200] opacity-50" />
-              </div>
-              <div className="pt-8 px-6 sm:px-10">
-                <blockquote className="text-lg sm:text-xl text-gray-300 leading-relaxed">
-                  MAC Safety Inc. has been instrumental in supporting General
-                  Motors&apos; capital programs, particularly in the
-                  construction of new battery facilities. By providing
-                  specialized personnel, leveraging comprehensive data
-                  analytics, and deploying advanced software solutions, MAC
-                  Safety ensures that GM&apos;s projects are executed
-                  efficiently and safely. Their integrated approach has become
-                  an essential component of GM&apos;s daily operations,
-                  contributing significantly to the successful expansion of
-                  GM&apos;s electric vehicle infrastructure.
-                </blockquote>
-                <div className="mt-6 flex items-center gap-4 border-t border-white/10 pt-6">
-                  <Image
-                    src="/uploads/GM.webp"
-                    alt="General Motors logo"
-                    width={48} // Equivalent to w-12 (12 * 4px)
-                    height={48} // Equivalent to h-12 (12 * 4px)
-                    className="object-contain"
-                  />
-                  <div>
-                    <div className="text-[#eba200] font-semibold">
-                      General Motors Capital Programs Leader
-                    </div>
-                    <div className="text-gray-400 text-sm">General Motors</div>
+                <Link href={`/industries#${industry.title.toLowerCase().replace(/\s+/g, '-').replace('&', '')}`}>
+                  <div 
+                    className="group flex flex-col items-center justify-center p-4 md:p-6 bg-[#1f2024] rounded-xl border border-gray-800 hover:border-[#eba200]/50 transition-all duration-300 cursor-pointer"
+                    data-testid={`card-industry-${industry.title.toLowerCase().replace(/\s+/g, '-')}`}
+                  >
+                    <industry.icon className="w-6 h-6 md:w-8 md:h-8 text-gray-500 group-hover:text-[#eba200] transition-colors mb-2 md:mb-3" />
+                    <span className="text-xs md:text-sm text-gray-400 group-hover:text-white font-alliance text-center transition-colors">
+                      {industry.title}
+                    </span>
                   </div>
-                </div>
-              </div>
-            </HUDOverlay>
-          </div>
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center mt-12"
+          >
+            <Link href="/industries">
+              <button className="px-8 py-4 border-2 border-white/30 text-white font-alliance font-semibold rounded-full hover:border-white hover:bg-white/5 transition-all duration-300">
+                View All Industries
+              </button>
+            </Link>
+          </motion.div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      <Testimonial />
+    </>
   );
 }

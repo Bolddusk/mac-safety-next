@@ -63,7 +63,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date().toISOString(),
     },
     {
-      url: "https://macsafety.com/industries/defence",
+      url: "https://macsafety.com/industries/defense",
       lastModified: new Date().toISOString(),
     },
     {
@@ -115,7 +115,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date().toISOString(),
     },
     {
-      url: "https://macsafety.com/industries/warehouse",
+      url: "https://macsafety.com/industries/warehousing",
       lastModified: new Date().toISOString(),
     },
   ];

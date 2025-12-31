@@ -1,13 +1,77 @@
-"use client";
-import React, { useState } from "react";
+"use client"
+
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import { Button } from "@/component/ui/button";
+import {
+  ArrowRight,
+  Zap,
+  Target,
+  BarChart3,
+  FileText,
+  Code2,
+  Database,
+  Layers,
+  Users,
+  Building2,
+  Truck,
+  HardHat,
+  Factory,
+} from "lucide-react";
+import { DottedSurface } from "@/component/ui/DottedSurface";
 import ForgeWorksApplicationDrawer from "@/component/drawer/ForgeWorksApplicationDrawer";
-import Footer from "@/layout/Footer";
+
+const integrations = [
+  { name: "Procore", category: "Construction" },
+  { name: "Autodesk", category: "Design" },
+  { name: "QuickBooks", category: "Finance" },
+  { name: "Samsara", category: "Fleet" },
+  { name: "Salesforce", category: "CRM" },
+  { name: "SAP", category: "ERP" },
+];
+
+const caseStudies = [
+  {
+    id: 1,
+    company: "TJD Energy",
+    title: "Operations Command Center",
+    description:
+      "Complete field operations platform with real-time workload orchestration, crew deployment tracking, fleet management, and safety compliance.",
+    image: "/uploads/forgeworks-tjd-energy.png",
+    modules: ["Fleet", "HR", "Finance", "Safety", "Maintenance"],
+  },
+  {
+    id: 2,
+    company: "General Motors",
+    title: "PTP Management System",
+    description:
+      "Permit-to-proceed platform with facilities mapping, multi-site user management, and approval workflow automation.",
+    image: "/uploads/forgeworks-barton-malow.png",
+    modules: ["Permits", "Facilities", "Users", "Approvals"],
+  },
+  {
+    id: 3,
+    company: "Aggregates",
+    title: "Production & Fleet Dashboard",
+    description:
+      "End-to-end operations dashboard tracking quotes, production volumes, fleet utilization, and driver safety across multiple facilities.",
+    image: "/uploads/forgeworks-aggregates.png",
+    modules: ["Quotes", "Production", "Fleet", "Safety Alerts"],
+  },
+  {
+    id: 4,
+    company: "Route Optimization",
+    title: "Transportation Safety Platform",
+    description:
+      "Driver safety index tracking, route risk analysis, and real-time map previews with facility management for healthcare transportation operations.",
+    image: "/uploads/forgeworks-route-optimization.png",
+    modules: ["Driver Safety", "Route Risk", "Mapping", "Facilities"],
+  },
+];
 
 export default function ForgeWorks() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [activeCase, setActiveCase] = useState(0);
 
   const openApplicationDrawer = () => {
     setIsDrawerOpen(true);
@@ -18,1269 +82,631 @@ export default function ForgeWorks() {
   };
 
   return (
-    <>
-      <div className="min-h-screen bg-black pt-16">
-        {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-b from-black via-zinc-950 to-black">
-          {/* Redacted document background elements */}
-          <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-            {/* Top secret stamp */}
-            <div className="absolute top-10 right-10 rotate-[-20deg] opacity-10 hidden md:block">
-              <div className="border-4 border-red-600 rounded px-4 py-2 text-red-600 font-bold text-xl tracking-widest">
-                TOP SECRET
-              </div>
-            </div>
+    <div className="min-h-screen bg-[#0b0b0d]">
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 md:pb-32 bg-[#0b0b0d] overflow-hidden">
+        <DottedSurface />
 
-            {/* Redaction lines */}
-            <div className="absolute top-1/4 w-full">
-              <div className="h-8 bg-black/80 mx-16 my-2 opacity-10"></div>
-              <div className="h-4 bg-black/80 mx-24 my-3 opacity-10"></div>
-              <div className="h-6 bg-black/80 mx-20 my-2 opacity-10"></div>
-            </div>
-
-            <div className="absolute bottom-1/4 w-full">
-              <div className="h-6 bg-black/80 mx-24 my-2 opacity-10"></div>
-              <div className="h-4 bg-black/80 mx-16 my-3 opacity-10"></div>
-              <div className="h-8 bg-black/80 mx-20 my-2 opacity-10"></div>
-            </div>
-
-            {/* Classified markings */}
-            <div className="absolute bottom-10 left-10 opacity-20 hidden md:block">
-              <div className="text-red-600 text-xs font-mono tracking-wider">
-                CLASSIFIED // NOFORN // MAC-SAFETY CONTROLLED
-              </div>
-            </div>
-
-            {/* Document Code */}
-            <div className="absolute top-10 left-10 opacity-20 hidden md:block">
-              <div className="text-gray-400 text-xs font-mono tracking-wider">
-                FORGE-WORKS-FWX-959M-ALPHA
-              </div>
-            </div>
-          </div>
-
-          {/* Blueprint background with DARPA-style tech elements */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute inset-0 z-0 opacity-100">
-              <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                  <pattern
-                    id="darkGrid"
-                    width="20"
-                    height="20"
-                    patternUnits="userSpaceOnUse"
-                  >
-                    <path
-                      d="M 20 0 L 0 0 0 20"
-                      fill="none"
-                      stroke="#ffffff08"
-                      strokeWidth="0.5"
-                    />
-                  </pattern>
-                  <filter id="scanline">
-                    <feTurbulence
-                      baseFrequency="0.01 0.5"
-                      seed="0"
-                      type="fractalNoise"
-                      result="noise"
-                      numOctaves="1"
-                    />
-                    <feDisplacementMap
-                      in="SourceGraphic"
-                      in2="noise"
-                      scale="2"
-                      xChannelSelector="R"
-                      yChannelSelector="G"
-                    />
-                  </filter>
-                  <filter id="glow">
-                    <feGaussianBlur stdDeviation="2.5" result="blur" />
-                    <feComposite
-                      in="SourceGraphic"
-                      in2="blur"
-                      operator="over"
-                    />
-                  </filter>
-                </defs>
-
-                {/* Dark background with grid */}
-                <rect width="100%" height="100%" fill="#000" />
-                <rect width="100%" height="100%" fill="url(#darkGrid)" />
-
-                {/* Hexagonal pattern for DARPA-like tech feel */}
-                <pattern
-                  id="hexPattern"
-                  width="50"
-                  height="86.6"
-                  patternUnits="userSpaceOnUse"
-                >
-                  <path
-                    d="M25,0 L50,43.3 L25,86.6 L0,43.3 Z"
-                    fill="none"
-                    stroke="#eba20025"
-                    strokeWidth="0.5"
-                  />
-                </pattern>
-                <rect
-                  width="100%"
-                  height="100%"
-                  fill="url(#hexPattern)"
-                  opacity="0.5"
-                />
-
-                {/* Scanning effect line */}
-                <rect width="100%" height="2" fill="#eba20030" opacity="0.8">
-                  <animate
-                    attributeName="y"
-                    from="-2"
-                    to="100%"
-                    dur="8s"
-                    repeatCount="indefinite"
-                  />
-                </rect>
-
-                {/* HUD Elements */}
-                <g opacity="0.3" className="hidden md:block">
-                  {/* Corner brackets */}
-                  <path
-                    d="M 20 20 L 20 40 L 40 40"
-                    stroke="#eba200"
-                    strokeWidth="1"
-                    fill="none"
-                  />
-                  <path
-                    d="M 20 calc(100% - 20) L 20 calc(100% - 40) L 40 calc(100% - 40)"
-                    stroke="#eba200"
-                    strokeWidth="1"
-                    fill="none"
-                  />
-                  <path
-                    d="M calc(100% - 20) 20 L calc(100% - 20) 40 L calc(100% - 40) 40"
-                    stroke="#eba200"
-                    strokeWidth="1"
-                    fill="none"
-                  />
-                  <path
-                    d="M calc(100% - 20) calc(100% - 20) L calc(100% - 20) calc(100% - 40) L calc(100% - 40) calc(100% - 40)"
-                    stroke="#eba200"
-                    strokeWidth="1"
-                    fill="none"
-                  />
-
-                  {/* Targeting elements */}
-                  <circle
-                    cx="50%"
-                    cy="50%"
-                    r="100"
-                    stroke="#eba20050"
-                    strokeWidth="1"
-                    fill="none"
-                  />
-                  <circle
-                    cx="50%"
-                    cy="50%"
-                    r="150"
-                    stroke="#eba20030"
-                    strokeWidth="0.5"
-                    fill="none"
-                    strokeDasharray="5,5"
-                  >
-                    <animate
-                      attributeName="r"
-                      values="150;155;150"
-                      dur="4s"
-                      repeatCount="indefinite"
-                    />
-                  </circle>
-
-                  {/* Crosshair */}
-                  <line
-                    x1="50%"
-                    y1="calc(50% - 50)"
-                    x2="50%"
-                    y2="calc(50% - 10)"
-                    stroke="#eba20060"
-                    strokeWidth="1"
-                  />
-                  <line
-                    x1="50%"
-                    y1="calc(50% + 10)"
-                    x2="50%"
-                    y2="calc(50% + 50)"
-                    stroke="#eba20060"
-                    strokeWidth="1"
-                  />
-                  <line
-                    x1="calc(50% - 50)"
-                    y1="50%"
-                    x2="calc(50% - 10)"
-                    y2="50%"
-                    stroke="#eba20060"
-                    strokeWidth="1"
-                  />
-                  <line
-                    x1="calc(50% + 10)"
-                    y1="50%"
-                    x2="calc(50% + 50)"
-                    y2="50%"
-                    stroke="#eba20060"
-                    strokeWidth="1"
-                  />
-
-                  {/* Data points */}
-                  <circle cx="25%" cy="25%" r="3" fill="#eba200">
-                    <animate
-                      attributeName="opacity"
-                      values="0.3;0.9;0.3"
-                      dur="3s"
-                      repeatCount="indefinite"
-                    />
-                  </circle>
-                  <circle cx="75%" cy="25%" r="3" fill="#eba200">
-                    <animate
-                      attributeName="opacity"
-                      values="0.3;0.9;0.3"
-                      dur="2.7s"
-                      repeatCount="indefinite"
-                    />
-                  </circle>
-                  <circle cx="25%" cy="75%" r="3" fill="#eba200">
-                    <animate
-                      attributeName="opacity"
-                      values="0.3;0.9;0.3"
-                      dur="3.3s"
-                      repeatCount="indefinite"
-                    />
-                  </circle>
-                  <circle cx="75%" cy="75%" r="3" fill="#eba200">
-                    <animate
-                      attributeName="opacity"
-                      values="0.3;0.9;0.3"
-                      dur="3.5s"
-                      repeatCount="indefinite"
-                    />
-                  </circle>
-
-                  {/* Tech indicators */}
-                  <g fill="#eba20080" fontFamily="monospace" fontSize="8">
-                    <text x="25%" y="22%" textAnchor="middle">
-                      SECTOR A1
-                    </text>
-                    <text x="75%" y="22%" textAnchor="middle">
-                      SECTOR B1
-                    </text>
-                    <text x="25%" y="78%" textAnchor="middle">
-                      SECTOR A2
-                    </text>
-                    <text x="75%" y="78%" textAnchor="middle">
-                      SECTOR B2
-                    </text>
-                  </g>
-
-                  {/* HUD Data */}
-                  <g
-                    fill="#eba20070"
-                    fontFamily="monospace"
-                    fontSize="6"
-                    opacity="0.8"
-                  >
-                    <text x="20" y="70">
-                      CONFIDENTIAL:BLK-001
-                    </text>
-                    <text x="20" y="80">
-                      CLEARANCE:MAC-FORGE-ALPHA
-                    </text>
-                    <text x="20" y="90">
-                      PROGRAM:DECISION-LAYER
-                    </text>
-                    <text x="calc(100% - 120)" y="70" textAnchor="end">
-                      SUBJECT:FORGE-DEPLOYMENT
-                    </text>
-                    <text x="calc(100% - 120)" y="80" textAnchor="end">
-                      STATUS:OPERATIONAL
-                    </text>
-                    <text x="calc(100% - 120)" y="90" textAnchor="end">
-                      BREACH-PROTOCOL:INACTIVE
-                    </text>
-                  </g>
-                </g>
-
-                {/* Central node */}
-                <g>
-                  <circle
-                    cx="50%"
-                    cy="50%"
-                    r="60"
-                    fill="none"
-                    stroke="#eba20040"
-                    strokeWidth="1"
-                  >
-                    <animate
-                      attributeName="r"
-                      values="55;65;55"
-                      dur="10s"
-                      repeatCount="indefinite"
-                    />
-                  </circle>
-                  <circle
-                    cx="50%"
-                    cy="50%"
-                    r="40"
-                    fill="none"
-                    stroke="#eba20060"
-                    strokeWidth="1"
-                  >
-                    <animate
-                      attributeName="r"
-                      values="35;45;35"
-                      dur="8s"
-                      repeatCount="indefinite"
-                    />
-                  </circle>
-                  <circle
-                    cx="50%"
-                    cy="50%"
-                    r="20"
-                    fill="none"
-                    stroke="#eba20080"
-                    strokeWidth="1"
-                  >
-                    <animate
-                      attributeName="r"
-                      values="18;22;18"
-                      dur="6s"
-                      repeatCount="indefinite"
-                    />
-                  </circle>
-                  <circle cx="50%" cy="50%" r="5" fill="#eba200" opacity="0.8">
-                    <animate
-                      attributeName="opacity"
-                      values="0.6;1;0.6"
-                      dur="4s"
-                      repeatCount="indefinite"
-                    />
-                  </circle>
-                </g>
-
-                {/* Security scan lines */}
-                <g opacity="0.2">
-                  <line
-                    x1="0"
-                    y1="35%"
-                    x2="100%"
-                    y2="35%"
-                    stroke="#eba200"
-                    strokeWidth="1"
-                    strokeDasharray="1,3"
-                  >
-                    <animate
-                      attributeName="y1"
-                      values="35%;37%;35%"
-                      dur="4s"
-                      repeatCount="indefinite"
-                    />
-                    <animate
-                      attributeName="y2"
-                      values="35%;37%;35%"
-                      dur="4s"
-                      repeatCount="indefinite"
-                    />
-                  </line>
-                  <line
-                    x1="0"
-                    y1="65%"
-                    x2="100%"
-                    y2="65%"
-                    stroke="#eba200"
-                    strokeWidth="1"
-                    strokeDasharray="1,3"
-                  >
-                    <animate
-                      attributeName="y1"
-                      values="65%;63%;65%"
-                      dur="4s"
-                      repeatCount="indefinite"
-                    />
-                    <animate
-                      attributeName="y2"
-                      values="65%;63%;65%"
-                      dur="4s"
-                      repeatCount="indefinite"
-                    />
-                  </line>
-                </g>
-
-                {/* Code snippets */}
-                <g
-                  fill="#eba20030"
-                  fontFamily="monospace"
-                  fontSize="5"
-                  className="hidden md:block"
-                >
-                  <text x="10%" y="20%" opacity="0.3">
-                    01100110 01101111 01110010 01100111 01100101
-                  </text>
-                  <text x="15%" y="22%" opacity="0.3">
-                    01110111 01101111 01110010 01101011 01110011
-                  </text>
-                  <text x="70%" y="60%" opacity="0.3">
-                    01110011 01111001 01110011 01110100 01100101 01101101
-                  </text>
-                  <text x="65%" y="62%" opacity="0.3">
-                    01100100 01100101 01100011 01101001 01110011 01101001
-                    01101111 01101110
-                  </text>
-                </g>
-              </svg>
-            </div>
-          </div>
-
-          <div className="container mx-auto px-4 z-10 text-center relative">
-            <div className="max-w-4xl mx-auto backdrop-blur-[2px] p-8 rounded-lg border border-zinc-800/30">
-              {/* Project Code */}
-              <div className="mb-2">
-                <span className="text-[#eba200] text-xs font-mono tracking-[0.3em] opacity-70">
-                  PROJECT: FWX-959M
-                </span>
-              </div>
-
-              <h1 className="mb-6 relative mx-auto w-full text-center">
-                <img src="/forge-work.png" />
-                <div className="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#eba200] to-transparent"></div>
-              </h1>
-
-              {/* <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 relative mx-auto font-sentex w-full text-center">
-                ForgeWorks
-                <div className="absolute -bottom-1 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#eba200] to-transparent"></div>
-              </h1> */}
-
-              <p className="text-xl md:text-2xl text-gray-300 mb-6 font-mono tracking-wide">
-                <span className="bg-[#eba200]/10 px-2 rounded">
-                  Where decision systems are built—not bought.
-                </span>
-              </p>
-
-              <p className="text-base md:text-lg text-gray-400 mb-12 max-w-2xl mx-auto font-light">
-                A precision deployment program for operators who need more than
-                insight.
-                <span className="block mt-2 text-[#eba200]/80">
-                  You bring the complexity. We bring the build.
-                </span>
-              </p>
-
-              <div>
-                <Button
-                  size="lg"
-                  onClick={openApplicationDrawer}
-                  className="bg-[#eba200] text-black hover:bg-[#eba200]/90 hover:shadow-[0_0_20px_rgba(235,162,0,0.4)] font-mono uppercase tracking-wider"
-                >
-                  Apply for ForgeWorks
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </div>
-
-              <div className="mt-8 text-zinc-500 text-xs font-mono">
-                ACCESS LEVEL: RESTRICTED
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Current Batch Section */}
-        <section className="py-16 bg-black border-y border-zinc-900">
-          <div className="container mx-auto px-4">
-            <h2 className="text-2xl md:text-3xl font-bold text-white mb-10 text-left">
-              Current Batch
-            </h2>
-
-            {/* Scrolling logos container */}
-            <div className="overflow-hidden relative">
-              {/* Gradient overlays for smooth fade effect on edges */}
-              <div className="absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-black to-transparent z-10"></div>
-              <div className="absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-black to-transparent z-10"></div>
-
-              {/* First row of logos - will scroll horizontally */}
-              <div className="flex items-center py-8 animate-scroll whitespace-nowrap">
-                <div className="inline-flex justify-center items-center bg-zinc-900/50 p-4 rounded-lg border border-zinc-800 h-24 mx-5 w-48">
-                  <img
-                    src="/uploads/1.png"
-                    alt="Sevita"
-                    className="h-10 md:h-12 object-contain"
-                  />
-                </div>
-                <div className="inline-flex justify-center items-center bg-zinc-900/50 p-4 rounded-lg border border-zinc-800 h-24 mx-5 w-48">
-                  <img
-                    src="/uploads/2.png"
-                    alt="Bryan Materials Group"
-                    className="h-10 md:h-12 object-contain"
-                  />
-                </div>
-                <div className="inline-flex justify-center items-center bg-zinc-900/50 p-4 rounded-lg border border-zinc-800 h-24 mx-5 w-48">
-                  <img
-                    src="/uploads/3.png"
-                    alt="Techint"
-                    className="h-10 md:h-12 object-contain"
-                  />
-                </div>
-                <div className="inline-flex justify-center items-center bg-zinc-900/50 p-4 rounded-lg border border-zinc-800 h-24 mx-5 w-48">
-                  <img
-                    src="/uploads/4.png"
-                    alt="Heartland Fabrication"
-                    className="h-10 md:h-12 object-contain"
-                  />
-                </div>
-                <div className="inline-flex justify-center items-center bg-zinc-900/50 p-4 rounded-lg border border-zinc-800 h-24 mx-5 w-48">
-                  <img
-                    src="/uploads/5.png"
-                    alt="Sargent"
-                    className="h-10 md:h-12 object-contain"
-                  />
-                </div>
-                <div className="inline-flex justify-center items-center bg-zinc-900/50 p-4 rounded-lg border border-zinc-800 h-24 mx-5 w-48">
-                  <img
-                    src="/uploads/6.png"
-                    alt="Maritime Partner"
-                    className="h-10 md:h-12 object-contain"
-                  />
-                </div>
-
-                {/* Duplicated logos for seamless scrolling */}
-                <div className="inline-flex justify-center items-center bg-zinc-900/50 p-4 rounded-lg border border-zinc-800 h-24 mx-5 w-48">
-                  <img
-                    src="/uploads/1.png"
-                    alt="Sevita"
-                    className="h-10 md:h-12 object-contain"
-                  />
-                </div>
-                <div className="inline-flex justify-center items-center bg-zinc-900/50 p-4 rounded-lg border border-zinc-800 h-24 mx-5 w-48">
-                  <img
-                    src="/uploads/2.png"
-                    alt="Bryan Materials Group"
-                    className="h-10 md:h-12 object-contain"
-                  />
-                </div>
-                <div className="inline-flex justify-center items-center bg-zinc-900/50 p-4 rounded-lg border border-zinc-800 h-24 mx-5 w-48">
-                  <img
-                    src="/uploads/3.png"
-                    alt="Techint"
-                    className="h-10 md:h-12 object-contain"
-                  />
-                </div>
-                <div className="inline-flex justify-center items-center bg-zinc-900/50 p-4 rounded-lg border border-zinc-800 h-24 mx-5 w-48">
-                  <img
-                    src="/uploads/4.png"
-                    alt="Heartland Fabrication"
-                    className="h-10 md:h-12 object-contain"
-                  />
-                </div>
-                <div className="inline-flex justify-center items-center bg-zinc-900/50 p-4 rounded-lg border border-zinc-800 h-24 mx-5 w-48">
-                  <img
-                    src="/uploads/5.png"
-                    alt="Sargent"
-                    className="h-10 md:h-12 object-contain"
-                  />
-                </div>
-                <div className="inline-flex justify-center items-center bg-zinc-900/50 p-4 rounded-lg border border-zinc-800 h-24 mx-5 w-48">
-                  <img
-                    src="/uploads/6.png"
-                    alt="Maritime Partner"
-                    className="h-10 md:h-12 object-contain"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Mission Chain Section */}
-        <section className="py-20 bg-black">
-          <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-12 text-center">
-              The Operational Intelligence Journey
-            </h2>
-
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-              {/* Stage 1: MAC Safety */}
-              <MissionStage
-                number="01"
-                title="MAC Safety"
-                description="Friction is surfaced in the field."
-                logoSrc="/b (1).jpg"
-              />
-
-              {/* Stage 2: NIXN */}
-              <MissionStage
-                number="02"
-                title="NIXN"
-                description="Intelligence is integrated at the edge."
-                logoSrc="/uploads/IMG_8888_1.webp"
-              />
-
-              {/* Stage 3: xOS */}
-              <MissionStage
-                number="03"
-                title="xOS"
-                description="Decision systems are deployed at scale."
-                logoSrc="/uploads/xos_logo.webp"
-              />
-
-              {/* Stage 4: ForgeWorks */}
-              <MissionStage
-                number="04"
-                title="ForgeWorks"
-                description="Custom intelligence products are built."
-                active
-                logoSrc="/uploads/F (2).png"
-              />
-            </div>
-
-            {/* Connection Lines */}
-            <div className="hidden md:block relative max-w-6xl mx-auto">
-              <div className="absolute top-[-120px] left-[12.5%] right-[12.5%] h-[2px] bg-gradient-to-r from-[#eba200]/80 via-[#eba200] to-[#eba200]/80"></div>
-
-              {/* Animated Pulses */}
-              <div className="absolute top-[-124px] left-[25%] h-[10px] w-[10px] rounded-full bg-[#eba200]" />
-              <div className="absolute top-[-124px] left-[50%] h-[10px] w-[10px] rounded-full bg-[#eba200]" />
-              <div className="absolute top-[-124px] left-[75%] h-[10px] w-[10px] rounded-full bg-[#eba200]" />
-            </div>
-          </div>
-        </section>
-
-        {/* Embedded Cores Section */}
-        <section className="py-20 bg-gradient-to-b from-black to-black/90">
-          {/* Navigation/Title Bar - Desktop */}
-          <div className="hidden md:flex justify-between items-center px-6 py-2 mb-8 border-y border-[#eba200]/20 bg-black/20 backdrop-blur-xl text-xs mx-auto max-w-screen-xl relative before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent before:pointer-events-none after:absolute after:inset-0 after:bg-noise after:opacity-[0.02] after:pointer-events-none shadow-lg shadow-black/20">
-            <div className="font-mono tracking-wider text-gray-500">
-              EMBEDDED CORES
-            </div>
-            <div className="flex items-center space-x-1 font-mono tracking-wider">
-              <span className="text-gray-500">{"{"}</span>
-              <span className="text-[#eba200] font-sentex">Forge</span>
-              <span className="text-white font-sentex">Works</span>
-              <span className="text-gray-500">{"}"}</span>
-            </div>
-            <div
-              className="font-mono tracking-wider text-[#eba200] hover:text-[#eba200]/80 transition-colors cursor-pointer"
-              onClick={openApplicationDrawer}
+        <div className="container mx-auto px-6 md:px-8 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-5xl mx-auto text-center"
+          >
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.2 }}
+              className="mb-6 flex flex-wrap justify-center gap-3"
             >
-              GET STARTED
-            </div>
-          </div>
+              <span className="inline-block px-4 py-2 bg-[#eba200]/10 border border-[#eba200]/20 rounded-full text-[#eba200] text-sm font-alliance tracking-wide">
+                Software Development
+              </span>
+              <span className="inline-block px-4 py-2 bg-white/5 border border-white/10 rounded-full text-gray-300 text-sm font-alliance tracking-wide">
+                Carnegie Mellon Engineers
+              </span>
+            </motion.div>
 
-          {/* Navigation/Title Bar - Mobile */}
-          <div className="md:hidden flex flex-col items-center px-4 py-3 mb-6 border-y border-[#eba200]/20 bg-black/20 backdrop-blur-xl text-xs mx-auto max-w-screen-xl relative before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent before:pointer-events-none after:absolute after:inset-0 after:bg-noise after:opacity-[0.02] after:pointer-events-none shadow-lg shadow-black/20">
-            <div className="font-mono tracking-wider text-gray-500 mb-2">
-              EMBEDDED CORES
-            </div>
-            <div className="flex items-center space-x-1 font-mono tracking-wider mb-2">
-              <span className="text-gray-500">{"{"}</span>
-              <span className="text-[#eba200] font-sentex">Forge</span>
-              <span className="text-white font-sentex">Works</span>
-              <span className="text-gray-500">{"}"}</span>
-            </div>
-            <div
-              className="font-mono tracking-wider text-[#eba200] hover:text-[#eba200]/80 transition-colors cursor-pointer"
-              onClick={openApplicationDrawer}
+            <motion.h1
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1 }}
+              className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 font-alliance"
             >
-              GET STARTED
-            </div>
-          </div>
+              ForgeWorks
+            </motion.h1>
 
-          <div className="container mx-auto px-4">
-            {/* FORGE Logo */}
-            <div className="relative flex justify-center items-center mb-12">
-              <div className="relative w-80 md:w-96 h-auto">
-                <img
-                  src="/FORGE (3).png"
-                  alt="FORGE WORKS Logo"
-                  className="w-full h-auto object-contain"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-[#eba200]/0 via-[#eba200]/20 to-[#eba200]/0 filter blur-lg opacity-30 -z-10"></div>
-              </div>
-            </div>
-
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 text-center">
-              We don&apos;t integrate. We embed.
-            </h2>
-
-            <p className="text-lg text-gray-300 max-w-3xl mx-auto text-center mb-16">
-              ForgeWorks constructs bespoke decision systems using our embedded
-              Cores: AIX (Cognition), Summit (Optimization), Atlas (Simulation),
-              and xFoundry (Precision Documentation).
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto">
-              {/* AIX Core Card */}
-              <div className="bg-gradient-to-br from-black/80 to-black/40 p-6 rounded-lg border border-[#eba200]/20 backdrop-blur-sm hover:border-[#eba200]/40 transition-all duration-300 hover:shadow-[0_0_15px_rgba(235,162,0,0.2)]">
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-24 h-24 mb-6 relative">
-                    <img
-                      src="/uploads/aix-logo.webp"
-                      alt="AIX Logo"
-                      className="w-full h-full object-contain relative z-10"
-                    />
-                    <div className="absolute inset-0 bg-[#eba200] filter blur-xl opacity-20 rounded-full"></div>
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">AIX</h3>
-                  <p className="text-gray-400 mb-4">Cognition</p>
-                  <p className="text-sm text-gray-300">
-                    Advanced intelligence engine that processes complex
-                    operational data, identifies patterns, and delivers
-                    contextual insights.
-                  </p>
-                </div>
-              </div>
-
-              {/* Summit Core Card */}
-              <div className="bg-gradient-to-br from-black/80 to-black/40 p-6 rounded-lg border border-[#eba200]/20 backdrop-blur-sm hover:border-[#eba200]/40 transition-all duration-300 hover:shadow-[0_0_15px_rgba(235,162,0,0.2)]">
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-24 h-24 mb-6 relative">
-                    <img
-                      src="/uploads/summit-logo.webp"
-                      alt="Summit Logo"
-                      className="w-full h-full object-contain relative z-10"
-                    />
-                    <div className="absolute inset-0 bg-[#eba200] filter blur-xl opacity-20 rounded-full"></div>
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Summit</h3>
-                  <p className="text-gray-400 mb-4">Optimization</p>
-                  <p className="text-sm text-gray-300">
-                    Decision optimization framework that evaluates scenarios and
-                    recommends optimal resource allocation and processes.
-                  </p>
-                </div>
-              </div>
-
-              {/* Atlas Core Card */}
-              <div className="bg-gradient-to-br from-black/80 to-black/40 p-6 rounded-lg border border-[#eba200]/20 backdrop-blur-sm hover:border-[#eba200]/40 transition-all duration-300 hover:shadow-[0_0_15px_rgba(235,162,0,0.2)]">
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-24 h-24 mb-6 relative">
-                    <img
-                      src="/uploads/atlas-logo.webp"
-                      alt="Atlas Logo"
-                      className="w-full h-full object-contain relative z-10"
-                    />
-                    <div className="absolute inset-0 bg-[#eba200] filter blur-xl opacity-20 rounded-full"></div>
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Atlas</h3>
-                  <p className="text-gray-400 mb-4">Simulation</p>
-                  <p className="text-sm text-gray-300">
-                    Digital twin environment for modeling complex operational
-                    scenarios and predicting outcomes with high fidelity.
-                  </p>
-                </div>
-              </div>
-
-              {/* xFoundry Core Card */}
-              <div className="bg-gradient-to-br from-black/80 to-black/40 p-6 rounded-lg border border-[#eba200]/20 backdrop-blur-sm hover:border-[#eba200]/40 transition-all duration-300 hover:shadow-[0_0_15px_rgba(235,162,0,0.2)]">
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-24 h-24 mb-6 relative">
-                    <img
-                      src="/uploads/xfoundry-logo.webp"
-                      alt="xFoundry Logo"
-                      className="w-full h-full object-contain relative z-10"
-                    />
-                    <div className="absolute inset-0 bg-[#eba200] filter blur-xl opacity-20 rounded-full"></div>
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">
-                    xFoundry
-                  </h3>
-                  <p className="text-gray-400 mb-4">Precision Documentation</p>
-                  <p className="text-sm text-gray-300">
-                    Knowledge management system that captures, organizes, and
-                    delivers operational intelligence with contextual relevance.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Criteria/Assessment Section */}
-        {/* Who We Build With Section - DARPA Style */}
-        <section className="py-20 bg-zinc-900 relative overflow-hidden">
-          {/* Background grid pattern for technical feel */}
-          <div className="absolute inset-0 bg-grid-pattern opacity-30"></div>
-
-          {/* Technical decorative elements */}
-          <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-black via-[#eba200] to-black"></div>
-          <div className="absolute top-2 left-0 w-full h-px bg-zinc-700"></div>
-          <div className="absolute bottom-0 left-0 w-full h-2 bg-gradient-to-r from-black via-[#eba200] to-black"></div>
-          <div className="absolute bottom-2 left-0 w-full h-px bg-zinc-700"></div>
-
-          {/* Navigation/Title Bar - Desktop */}
-          <div className="hidden md:flex justify-between items-center px-6 py-2 mb-16 border-y border-[#eba200]/30 bg-black/20 backdrop-blur-xl text-xs mx-auto max-w-screen-xl relative z-10 before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent before:pointer-events-none after:absolute after:inset-0 after:bg-noise after:opacity-[0.02] after:pointer-events-none shadow-lg shadow-black/20">
-            <div className="font-mono tracking-wider text-zinc-500">
-              <span className="text-[#eba200]">FWX-959M</span> RESTRICTED ACCESS
-            </div>
-            <div className="flex items-center space-x-1 font-mono tracking-wider">
-              <span className="text-zinc-500">{"{"}</span>
-              <span className="text-[#eba200] font-sentex">Forge</span>
-              <span className="text-white font-sentex">Works</span>
-              <span className="text-zinc-500">{"}"}</span>
-            </div>
-            <div
-              className="font-mono tracking-wider text-[#eba200] hover:text-[#eba200]/80 transition-colors cursor-pointer"
-              onClick={openApplicationDrawer}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-xl md:text-2xl text-gray-300 mb-4 font-alliance"
             >
-              APPLY FOR ACCESS
-            </div>
-          </div>
+              The development arm of MAC.
+            </motion.p>
 
-          {/* Navigation/Title Bar - Mobile */}
-          <div className="md:hidden flex flex-col items-center px-4 py-3 mb-8 border-y border-[#eba200]/30 bg-black/20 backdrop-blur-xl text-xs mx-auto max-w-screen-xl relative z-10 before:absolute before:inset-0 before:bg-gradient-to-b before:from-white/5 before:to-transparent before:pointer-events-none after:absolute after:inset-0 after:bg-noise after:opacity-[0.02] after:pointer-events-none shadow-lg shadow-black/20">
-            <div className="font-mono tracking-wider text-zinc-500 mb-2">
-              <span className="text-[#eba200]">FWX-959M</span> RESTRICTED ACCESS
-            </div>
-            <div className="flex items-center space-x-1 font-mono tracking-wider mb-2">
-              <span className="text-zinc-500">{"{"}</span>
-              <span className="text-[#eba200] font-sentex">Forge</span>
-              <span className="text-white font-sentex">Works</span>
-              <span className="text-zinc-500">{"}"}</span>
-            </div>
-            <div
-              className="font-mono tracking-wider text-[#eba200] hover:text-[#eba200]/80 transition-colors cursor-pointer"
-              onClick={openApplicationDrawer}
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="text-lg text-gray-400 mb-10 max-w-3xl mx-auto font-alliance"
             >
-              APPLY FOR ACCESS
-            </div>
-          </div>
+              A team of developers and data scientists from Carnegie Mellon,
+              rebuilding historically left-behind tech stacks into world-class
+              decision systems. We centralize your software. We build what
+              you&apos;re missing.
+            </motion.p>
 
-          <div className="container mx-auto px-4 max-w-screen-xl relative z-10">
-            <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-4 mb-12">
-              <div className="flex items-center gap-4">
-                <div className="h-12 w-2 bg-[#eba200]"></div>
-                <h2 className="text-3xl md:text-4xl font-bold text-white font-sentex">
-                  WHO WE BUILD WITH
-                </h2>
-              </div>
-
-              <div className="bg-black/40 border border-zinc-800 rounded px-3 py-1 font-mono text-xs text-zinc-400">
-                CLASSIFIED // OPERATIONAL PARTNERS ONLY
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-              {/* Left Column */}
-              <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-6 md:p-8 relative">
-                {/* Technical corner decorations */}
-                <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#eba200]"></div>
-                <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#eba200]"></div>
-                <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-[#eba200]"></div>
-                <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[#eba200]"></div>
-
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="h-8 w-1 bg-[#eba200]"></div>
-                  <h3 className="text-xl font-mono text-white font-bold tracking-wider">
-                    OPERATOR PROFILE
-                  </h3>
-                </div>
-
-                <ul className="space-y-4 ml-4">
-                  <li className="flex items-start gap-3">
-                    <span className="text-[#eba200] font-mono text-lg mt-0.5">
-                      [01]
-                    </span>
-                    <span className="text-zinc-200">
-                      Your team makes decisions under real operational pressure
-                    </span>
-                  </li>
-
-                  <li className="flex items-start gap-3">
-                    <span className="text-[#eba200] font-mono text-lg mt-0.5">
-                      [02]
-                    </span>
-                    <span className="text-zinc-200">
-                      You&apos;ve outgrown dashboards and generic platforms
-                    </span>
-                  </li>
-
-                  <li className="flex items-start gap-3">
-                    <span className="text-[#eba200] font-mono text-lg mt-0.5">
-                      [03]
-                    </span>
-                    <span className="text-zinc-200">
-                      Critical workflows still live in spreadsheets or tribal
-                      knowledge
-                    </span>
-                  </li>
-
-                  <li className="flex items-start gap-3">
-                    <span className="text-[#eba200] font-mono text-lg mt-0.5">
-                      [04]
-                    </span>
-                    <span className="text-zinc-200">
-                      You experience delays, rework, or incidents that
-                      &apos;should&apos;ve been caught&apos;
-                    </span>
-                  </li>
-
-                  <li className="flex items-start gap-3">
-                    <span className="text-[#eba200] font-mono text-lg mt-0.5">
-                      [05]
-                    </span>
-                    <span className="text-zinc-200">
-                      You need a system, not a service
-                    </span>
-                  </li>
-
-                  <li className="flex items-start gap-3">
-                    <span className="text-[#eba200] font-mono text-lg mt-0.5">
-                      [06]
-                    </span>
-                    <span className="text-zinc-200">
-                      You want a model that adapts to the edge—not a rigid
-                      template
-                    </span>
-                  </li>
-
-                  <li className="flex items-start gap-3">
-                    <span className="text-[#eba200] font-mono text-lg mt-0.5">
-                      [07]
-                    </span>
-                    <span className="text-zinc-200">
-                      You understand that better software doesn&apos;t mean more
-                      features—it means better decisions
-                    </span>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Right Column */}
-              <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-6 md:p-8 relative">
-                {/* Technical corner decorations */}
-                <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-[#eba200]"></div>
-                <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-[#eba200]"></div>
-                <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-[#eba200]"></div>
-                <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-[#eba200]"></div>
-
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="h-8 w-1 bg-[#eba200]"></div>
-                  <h3 className="text-xl font-mono text-white font-bold tracking-wider">
-                    ASSESSMENT PROTOCOL
-                  </h3>
-                </div>
-
-                <ul className="space-y-4 ml-4">
-                  <li className="flex items-start gap-3">
-                    <span className="text-[#eba200] font-mono text-lg mt-0.5">
-                      [01]
-                    </span>
-                    <span className="text-zinc-200">
-                      The complexity of your risk and execution structure
-                    </span>
-                  </li>
-
-                  <li className="flex items-start gap-3">
-                    <span className="text-[#eba200] font-mono text-lg mt-0.5">
-                      [02]
-                    </span>
-                    <span className="text-zinc-200">
-                      The velocity at which decisions must be made
-                    </span>
-                  </li>
-
-                  <li className="flex items-start gap-3">
-                    <span className="text-[#eba200] font-mono text-lg mt-0.5">
-                      [03]
-                    </span>
-                    <span className="text-zinc-200">
-                      The ROI potential of embedding intelligence into your
-                      operations
-                    </span>
-                  </li>
-
-                  <li className="flex items-start gap-3">
-                    <span className="text-[#eba200] font-mono text-lg mt-0.5">
-                      [04]
-                    </span>
-                    <span className="text-zinc-200">
-                      Leadership alignment and readiness to adopt decision-layer
-                      systems
-                    </span>
-                  </li>
-
-                  <li className="flex items-start gap-3">
-                    <span className="text-[#eba200] font-mono text-lg mt-0.5">
-                      [05]
-                    </span>
-                    <span className="text-zinc-200">
-                      Data availability or the need to deploy MAC for signal
-                      acquisition
-                    </span>
-                  </li>
-
-                  <li className="flex items-start gap-3">
-                    <span className="text-[#eba200] font-mono text-lg mt-0.5">
-                      [06]
-                    </span>
-                    <span className="text-zinc-200">
-                      How your environment interacts with our Cores: AIX,
-                      Summit, Atlas, xFoundry
-                    </span>
-                  </li>
-
-                  <li className="flex items-start gap-3">
-                    <span className="text-[#eba200] font-mono text-lg mt-0.5">
-                      [07]
-                    </span>
-                    <span className="text-zinc-200">
-                      Whether ForgeWorks will materially improve your
-                      organizational resilience
-                    </span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="mt-16 flex justify-center">
-              <Button
-                className="px-8 py-3 text-sm bg-black hover:bg-zinc-900 text-[#eba200] font-mono font-bold transition-all border-2 border-[#eba200]/50 rounded-none relative group"
-                onClick={openApplicationDrawer}
-              >
-                <div className="absolute -top-px -left-px w-3 h-3 border-t-2 border-l-2 border-[#eba200] transform transition-all group-hover:w-4 group-hover:h-4"></div>
-                <div className="absolute -top-px -right-px w-3 h-3 border-t-2 border-r-2 border-[#eba200] transform transition-all group-hover:w-4 group-hover:h-4"></div>
-                <div className="absolute -bottom-px -left-px w-3 h-3 border-b-2 border-l-2 border-[#eba200] transform transition-all group-hover:w-4 group-hover:h-4"></div>
-                <div className="absolute -bottom-px -right-px w-3 h-3 border-b-2 border-r-2 border-[#eba200] transform transition-all group-hover:w-4 group-hover:h-4"></div>
-                <span className="flex items-center gap-3">
-                  <span>REQUEST ACCESS</span>
-                  <span className="text-xs opacity-80 tracking-wider bg-[#eba200]/10 px-2 py-1">
-                    FWX-959M
-                  </span>
-                </span>
-              </Button>
-            </div>
-          </div>
-        </section>
-
-        {/* Final CTA Section */}
-        <section id="apply" className="py-24 bg-black">
-          <div className="container mx-auto px-4 max-w-screen-xl">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-12 text-center">
-              If the mission is clear—we build.
-            </h2>
-
-            <div className="flex justify-center">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+            >
               <Button
                 size="lg"
                 onClick={openApplicationDrawer}
-                className="bg-[#eba200] text-black hover:bg-[#eba200]/90 hover:shadow-[0_0_20px_rgba(235,162,0,0.5)] px-10 py-6 text-lg"
+                className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-3 font-alliance font-medium"
+                data-testid="button-apply-hero"
               >
-                Apply for ForgeWorks
-                <ArrowRight className="ml-2 h-5 w-5" />
+                Start a Project
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
-            </div>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-gray-600 text-white hover:bg-white/10 rounded-full px-8 py-3 font-alliance font-medium"
+                onClick={() =>
+                  document
+                    .getElementById("showcase")
+                    ?.scrollIntoView({ behavior: "smooth" })
+                }
+                data-testid="button-learn-more"
+              >
+                See Our Work
+              </Button>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
 
-            <p className="text-sm text-gray-400 text-center mt-8">
-              Each intake is mission-limited. We assess fit, complexity, and
-              operational return.
+      {/* What We Do Section */}
+      <section className="py-16 md:py-20 bg-[#16171a]">
+        <div className="container mx-auto px-6 md:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-alliance">
+              What We Build
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto font-alliance">
+              When companies lack the systems they need, we build them from
+              scratch. When they have scattered tools, we unify them.
             </p>
-          </div>
-        </section>
+          </motion.div>
 
-        {/* Closing Mission Block */}
-        <section className="py-32 bg-zinc-900 relative overflow-hidden">
-          {/* Blueprint/schematic background overlay */}
-          <div className="absolute inset-0 opacity-10">
-            <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <pattern
-                  id="blueprint-grid"
-                  width="100"
-                  height="100"
-                  patternUnits="userSpaceOnUse"
-                >
-                  <path
-                    d="M 100 0 L 0 0 0 100"
-                    fill="none"
-                    stroke="#ffffff"
-                    strokeWidth="0.5"
-                  />
-                </pattern>
-                <pattern
-                  id="circles"
-                  width="60"
-                  height="60"
-                  patternUnits="userSpaceOnUse"
-                >
-                  <circle
-                    cx="30"
-                    cy="30"
-                    r="20"
-                    fill="none"
-                    stroke="#eba200"
-                    strokeWidth="0.5"
-                  />
-                </pattern>
-                <pattern
-                  id="technical-lines"
-                  width="200"
-                  height="200"
-                  patternUnits="userSpaceOnUse"
-                >
-                  <line
-                    x1="0"
-                    y1="100"
-                    x2="200"
-                    y2="100"
-                    stroke="#eba200"
-                    strokeWidth="0.5"
-                    strokeDasharray="5,10"
-                  />
-                  <line
-                    x1="100"
-                    y1="0"
-                    x2="100"
-                    y2="200"
-                    stroke="#eba200"
-                    strokeWidth="0.5"
-                    strokeDasharray="5,10"
-                  />
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#blueprint-grid)" />
-              <rect
-                width="100%"
-                height="100%"
-                fill="url(#circles)"
-                opacity="0.1"
-              />
-              <rect
-                width="100%"
-                height="100%"
-                fill="url(#technical-lines)"
-                opacity="0.05"
-              />
-
-              {/* Industrial texture elements */}
-              <g opacity="0.1">
-                <rect x="10%" y="10%" width="80%" height="1" fill="#eba200" />
-                <rect x="10%" y="90%" width="80%" height="1" fill="#eba200" />
-                <rect x="10%" y="10%" width="1" height="80%" fill="#eba200" />
-                <rect x="90%" y="10%" width="1" height="80%" fill="#eba200" />
-              </g>
-            </svg>
-          </div>
-
-          <div className="container mx-auto px-4 max-w-4xl relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 1 }}
-              className="text-center space-y-10"
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="bg-[#0b0b0d] border border-gray-800 rounded-2xl p-8"
             >
-              <p className="text-lg md:text-xl text-white leading-relaxed">
-                In the early days of American industry, the forge was where raw
-                material met intent—
-                <br />
-                where heat, pressure, and discipline transformed iron into
-                infrastructure.
+              <div className="w-14 h-14 rounded-xl bg-[#eba200]/10 flex items-center justify-center mb-6">
+                <Layers className="w-7 h-7 text-[#eba200]" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3 font-alliance">
+                Integration
+              </h3>
+              <p className="text-gray-400 font-alliance">
+                Connect Procore, Autodesk, QuickBooks, Samsara, and dozens more
+                into a unified operational layer.
               </p>
+            </motion.div>
 
-              <p className="text-lg md:text-xl text-white leading-relaxed">
-                Today, ForgeWorks carries that same spirit forward.
-                <br />
-                <span className="font-mono italic">
-                  Not with steel—but with systems.
-                </span>
-                <br />
-                <span className="font-mono italic">
-                  Not with fire—but with intelligence.
-                </span>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="bg-[#0b0b0d] border border-gray-800 rounded-2xl p-8"
+            >
+              <div className="w-14 h-14 rounded-xl bg-[#eba200]/10 flex items-center justify-center mb-6">
+                <Code2 className="w-7 h-7 text-[#eba200]" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3 font-alliance">
+                Custom Builds
+              </h3>
+              <p className="text-gray-400 font-alliance">
+                CRMs, project management, fleet tracking, camera systems—if you
+                need it and it doesn&apos;t exist, we build it.
               </p>
+            </motion.div>
 
-              <p className="text-lg md:text-xl text-white leading-relaxed">
-                We embed decision systems inside the institutions that build,
-                power, and protect this country.
-                <br />
-                We do it with speed, precision, and unrelenting clarity.
-                <br />
-                We do it to generate Alpha—not for speculation, but for
-                sovereignty.
-              </p>
-
-              <p className="text-lg md:text-xl text-white leading-relaxed">
-                <span className="font-mono">
-                  This isn&apos;t software. It&apos;s statecraft for operators.
-                </span>
-                <br />
-                This is ForgeWorks.
-              </p>
-
-              <p className="text-lg md:text-xl leading-relaxed">
-                And if you&apos;re building what matters—
-                <br />
-                <span className="text-[#eba200] font-bold">
-                  We&apos;re already building with you.
-                </span>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="bg-[#0b0b0d] border border-gray-800 rounded-2xl p-8"
+            >
+              <div className="w-14 h-14 rounded-xl bg-[#eba200]/10 flex items-center justify-center mb-6">
+                <Database className="w-7 h-7 text-[#eba200]" />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3 font-alliance">
+                Centralization
+              </h3>
+              <p className="text-gray-400 font-alliance">
+                Transform fragmented spreadsheets and tribal knowledge into
+                centralized, intelligent decision systems.
               </p>
             </motion.div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* Application Drawer */}
-        <ForgeWorksApplicationDrawer
-          isOpen={isDrawerOpen}
-          onClose={closeApplicationDrawer}
-        />
-      </div>
-      <Footer />
-    </>
+      {/* Showcase Section */}
+      <section id="showcase" className="py-20 md:py-28 bg-[#0b0b0d]">
+        <div className="container mx-auto px-6 md:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <span className="text-[#eba200] font-semibold text-sm tracking-wide uppercase mb-4 block font-alliance">
+              Real Systems. Real Operators.
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 font-alliance">
+              Built by ForgeWorks
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto font-alliance">
+              These aren&apos;t mockups. These are production systems running
+              operations today.
+            </p>
+          </motion.div>
+
+          {/* Case Study Tabs */}
+          <div className="grid grid-cols-2 gap-2 md:flex md:flex-wrap md:justify-center md:gap-3 mb-10 max-w-sm md:max-w-none mx-auto">
+            {caseStudies.map((cs, index) => (
+              <button
+                key={cs.id}
+                onClick={() => setActiveCase(index)}
+                className={`px-3 py-2 md:px-5 md:py-2.5 rounded-full font-alliance font-medium text-sm md:text-base transition-all ${
+                  activeCase === index
+                    ? "bg-[#eba200] text-black"
+                    : "bg-white/5 text-gray-300 hover:bg-white/10 border border-white/10"
+                }`}
+              >
+                {cs.company}
+              </button>
+            ))}
+          </div>
+
+          {/* Active Case Study */}
+          <motion.div
+            key={activeCase}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="max-w-6xl mx-auto"
+          >
+            <div className="bg-[#16171a] border border-gray-800 rounded-3xl overflow-hidden">
+              {/* Screenshot */}
+              <div className="relative">
+                <img
+                  src={caseStudies[activeCase].image}
+                  alt={`${caseStudies[activeCase].company} - ${caseStudies[activeCase].title}`}
+                  className="w-full h-auto"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#16171a] via-transparent to-transparent" />
+              </div>
+
+              {/* Case Study Info */}
+              <div className="p-8 md:p-10 -mt-16 relative z-10">
+                <div className="flex flex-wrap items-center gap-3 mb-4">
+                  <span className="px-3 py-1 bg-[#eba200]/10 border border-[#eba200]/20 rounded-full text-[#eba200] text-sm font-alliance">
+                    {caseStudies[activeCase].company}
+                  </span>
+                  {caseStudies[activeCase].modules.map((mod) => (
+                    <span
+                      key={mod}
+                      className="px-3 py-1 bg-white/5 border border-white/10 rounded-full text-gray-400 text-xs font-alliance"
+                    >
+                      {mod}
+                    </span>
+                  ))}
+                </div>
+
+                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 font-alliance">
+                  {caseStudies[activeCase].title}
+                </h3>
+
+                <p className="text-gray-400 font-alliance max-w-3xl">
+                  {caseStudies[activeCase].description}
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Integration Partners Section */}
+      <section className="py-16 md:py-20 bg-[#16171a]">
+        <div className="container mx-auto px-6 md:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-alliance">
+              We Integrate With Everything
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto font-alliance">
+              Your tools don&apos;t have to be siloed. We connect them into one
+              intelligent platform.
+            </p>
+          </motion.div>
+
+          <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
+            {integrations.map((int, index) => (
+              <motion.div
+                key={int.name}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+                className="bg-[#0b0b0d] border border-gray-800 rounded-xl px-6 py-4 hover:border-[#eba200]/30 transition-all"
+              >
+                <span className="text-white font-alliance font-medium">
+                  {int.name}
+                </span>
+                <span className="text-gray-500 font-alliance text-sm ml-2">
+                  • {int.category}
+                </span>
+              </motion.div>
+            ))}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: 0.3 }}
+              className="bg-[#eba200]/10 border border-[#eba200]/20 rounded-xl px-6 py-4"
+            >
+              <span className="text-[#eba200] font-alliance font-medium">
+                + 50 More
+              </span>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Current Batch Section */}
+      <section className="py-16 bg-[#0b0b0d]">
+        <div className="container mx-auto px-6 md:px-8">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-10"
+          >
+            <h2 className="text-2xl md:text-3xl font-bold text-white font-alliance">
+              Current Batch
+            </h2>
+            <p className="text-gray-400 mt-2 font-alliance">
+              Organizations currently building with ForgeWorks
+            </p>
+          </motion.div>
+
+          <div className="overflow-hidden relative">
+            <div className="absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-[#0b0b0d] to-transparent z-10"></div>
+            <div className="absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-[#0b0b0d] to-transparent z-10"></div>
+
+            <div className="flex items-center py-6 animate-scroll whitespace-nowrap">
+              {[1, 2, 3, 4, 5, 6].map((num) => (
+                <div
+                  key={num}
+                  className="inline-flex justify-center items-center bg-[#16171a] p-6 rounded-2xl border border-gray-800 h-20 mx-4 w-44 shadow-sm"
+                >
+                  <img
+                    src={`/uploads/${num}.png`}
+                    alt={`Partner ${num}`}
+                    className="h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                  />
+                </div>
+              ))}
+              {[1, 2, 3, 4, 5, 6].map((num) => (
+                <div
+                  key={`dup-${num}`}
+                  className="inline-flex justify-center items-center bg-[#16171a] p-6 rounded-2xl border border-gray-800 h-20 mx-4 w-44 shadow-sm"
+                >
+                  <img
+                    src={`/uploads/${num}.png`}
+                    alt={`Partner ${num}`}
+                    className="h-10 object-contain grayscale hover:grayscale-0 transition-all duration-300"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section className="py-20 md:py-24 bg-[#16171a]">
+        <div className="container mx-auto px-6 md:px-8 max-w-5xl">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="text-[#eba200] font-semibold text-sm tracking-wide uppercase mb-4 block font-alliance">
+                The Team
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 font-alliance">
+                Carnegie Mellon Engineers
+              </h2>
+              <p className="text-gray-400 font-alliance mb-6">
+                ForgeWorks is staffed by developers and data scientists from
+                Carnegie Mellon University—one of the world&apos;s leading
+                institutions for computer science and machine learning.
+              </p>
+              <p className="text-gray-400 font-alliance">
+                We don&apos;t just build software. We engineer decision systems that
+                transform how operators work, built on rigorous foundations in
+                AI, optimization, and systems design.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="grid grid-cols-2 gap-4"
+            >
+              <div className="bg-[#0b0b0d] border border-gray-800 rounded-2xl p-6 text-center">
+                <div className="w-12 h-12 rounded-xl bg-[#eba200]/10 flex items-center justify-center mx-auto mb-4">
+                  <Code2 className="w-6 h-6 text-[#eba200]" />
+                </div>
+                <div className="text-2xl font-bold text-white font-alliance mb-1">
+                  12+
+                </div>
+                <div className="text-gray-400 text-sm font-alliance">
+                  Full-Stack Engineers
+                </div>
+              </div>
+              <div className="bg-[#0b0b0d] border border-gray-800 rounded-2xl p-6 text-center">
+                <div className="w-12 h-12 rounded-xl bg-[#eba200]/10 flex items-center justify-center mx-auto mb-4">
+                  <Database className="w-6 h-6 text-[#eba200]" />
+                </div>
+                <div className="text-2xl font-bold text-white font-alliance mb-1">
+                  5+
+                </div>
+                <div className="text-gray-400 text-sm font-alliance">
+                  Data Scientists
+                </div>
+              </div>
+              <div className="bg-[#0b0b0d] border border-gray-800 rounded-2xl p-6 text-center">
+                <div className="w-12 h-12 rounded-xl bg-[#eba200]/10 flex items-center justify-center mx-auto mb-4">
+                  <Building2 className="w-6 h-6 text-[#eba200]" />
+                </div>
+                <div className="text-2xl font-bold text-white font-alliance mb-1">
+                  40+
+                </div>
+                <div className="text-gray-400 text-sm font-alliance">
+                  Systems Built
+                </div>
+              </div>
+              <div className="bg-[#0b0b0d] border border-gray-800 rounded-2xl p-6 text-center">
+                <div className="w-12 h-12 rounded-xl bg-[#eba200]/10 flex items-center justify-center mx-auto mb-4">
+                  <Users className="w-6 h-6 text-[#eba200]" />
+                </div>
+                <div className="text-2xl font-bold text-white font-alliance mb-1">
+                  10K+
+                </div>
+                <div className="text-gray-400 text-sm font-alliance">
+                  Active Users
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Industries Section */}
+      <section className="py-16 md:py-20 bg-[#0b0b0d]">
+        <div className="container mx-auto px-6 md:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-alliance">
+              Industries We Transform
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto font-alliance">
+              From energy to construction to aggregates—we specialize in
+              operational industries where decisions matter.
+            </p>
+          </motion.div>
+
+          <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto">
+            {[
+              { icon: Factory, name: "Energy" },
+              { icon: HardHat, name: "Construction" },
+              { icon: Truck, name: "Trucking & Fleet" },
+              { icon: Building2, name: "Aggregates" },
+              { icon: Zap, name: "Utilities" },
+              { icon: Target, name: "Manufacturing" },
+            ].map((ind, index) => (
+              <motion.div
+                key={ind.name}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: index * 0.05 }}
+                className="flex items-center gap-3 bg-[#16171a] border border-gray-800 rounded-xl px-5 py-4"
+              >
+                <ind.icon className="w-5 h-5 text-[#eba200]" />
+                <span className="text-white font-alliance">{ind.name}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Embedded Cores Section */}
+      <section className="py-20 md:py-24 bg-[#16171a]">
+        <div className="container mx-auto px-6 md:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-alliance">
+              Powered by Our Cores
+            </h2>
+            <p className="text-lg text-gray-400 max-w-3xl mx-auto font-alliance">
+              Every ForgeWorks system is built on our embedded intelligence
+              engines: AIX, Summit, Atlas, and xFoundry.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 max-w-6xl mx-auto">
+            <CoreCard
+              icon={<Zap className="w-8 h-8 text-[#eba200]" />}
+              title="AIX"
+              subtitle="Cognition"
+              description="Advanced intelligence engine for pattern recognition and contextual insights."
+              delay={0}
+            />
+            <CoreCard
+              icon={<Target className="w-8 h-8 text-[#eba200]" />}
+              title="Summit"
+              subtitle="Optimization"
+              description="Decision optimization for resource allocation and process efficiency."
+              delay={0.1}
+            />
+            <CoreCard
+              icon={<BarChart3 className="w-8 h-8 text-[#eba200]" />}
+              title="Atlas"
+              subtitle="Simulation"
+              description="Digital twin modeling for predicting operational outcomes."
+              delay={0.2}
+            />
+            <CoreCard
+              icon={<FileText className="w-8 h-8 text-[#eba200]" />}
+              title="xFoundry"
+              subtitle="Documentation"
+              description="Knowledge management with contextual relevance."
+              delay={0.3}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA Section */}
+      <section id="apply" className="py-24 bg-[#0b0b0d]">
+        <div className="container mx-auto px-6 md:px-8 max-w-4xl text-center">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 font-alliance"
+          >
+            Ready to rebuild your tech stack?
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-lg text-gray-400 mb-10 max-w-2xl mx-auto font-alliance"
+          >
+            ForgeWorks is a high-touch partnership. We embed with your team and
+            build decision systems tailored to your operations.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+          >
+            <Button
+              size="lg"
+              onClick={openApplicationDrawer}
+              className="bg-white text-black hover:bg-gray-100 rounded-full px-10 py-4 font-alliance font-medium text-lg"
+              data-testid="button-apply-cta"
+            >
+              Start a Project
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </motion.div>
+        </div>
+      </section>
+
+      <ForgeWorksApplicationDrawer
+        isOpen={isDrawerOpen}
+        onClose={closeApplicationDrawer}
+      />
+    </div>
   );
 }
 
-// Mission Stage Component
-function MissionStage({
-  number,
+function CoreCard({
+  icon,
   title,
+  subtitle,
   description,
-  active,
-  logoSrc,
+  delay,
 }: {
-  number: string;
+  icon: React.ReactNode;
   title: string;
+  subtitle: string;
   description: string;
-  active?: boolean;
-  logoSrc?: string;
+  delay: number;
 }) {
   return (
-    <div
-      className={`relative p-6 rounded-lg ${
-        active
-          ? "bg-[#eba200]/10 border border-[#eba200]/30"
-          : "bg-black/20 border border-white/10"
-      }`}
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay }}
+      className="bg-[#0b0b0d] border border-gray-800 p-6 md:p-8 rounded-2xl hover:border-[#eba200]/30 transition-all duration-300"
     >
       <div className="flex flex-col items-center text-center">
-        {logoSrc && (
-          <div className="mb-4 relative w-16 h-16 flex items-center justify-center">
-            <img
-              src={logoSrc}
-              alt={`${title} logo`}
-              className="w-full h-full object-contain"
-            />
-            {active && (
-              <div className="absolute inset-0 bg-[#eba200]/20 filter blur-lg rounded-full"></div>
-            )}
-          </div>
-        )}
-        <div
-          className={`text-sm font-mono mb-3 ${
-            active ? "text-[#eba200]" : "text-gray-400"
-          }`}
-        >
-          {number}
+        <div className="w-16 h-16 rounded-xl bg-[#eba200]/10 flex items-center justify-center mb-6">
+          {icon}
         </div>
-        <h3
-          className={`text-xl font-bold mb-2 ${
-            active ? "text-[#eba200]" : "text-white"
-          }`}
-        >
+        <h3 className="text-xl font-bold text-white mb-1 font-alliance">
           {title}
         </h3>
-        <p className="text-gray-400 text-sm">{description}</p>
+        <p className="text-[#eba200] text-sm font-alliance font-medium mb-4">
+          {subtitle}
+        </p>
+        <p className="text-sm text-gray-400 font-alliance">{description}</p>
       </div>
-    </div>
+    </motion.div>
   );
 }
