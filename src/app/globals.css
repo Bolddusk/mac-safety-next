@@ -13,6 +13,30 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Alliance No.2";
+  src: url("/fonts/Alliance-No-2-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sentex";
+  src: url("/fonts/sentex-regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica Now Text";
+  src: url("/fonts/HelveticaNowText-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -137,7 +161,111 @@ select + p {
   }
 }
 
-  /* Noise texture for frosted glass effect */
-  .bg-noise {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+/* Noise texture for frosted glass effect */
+.bg-noise {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.font-furore {
+  font-family: "FURORE", sans-serif;
+}
+
+.font-alliance {
+  font-family: "Alliance No.2", sans-serif;
+}
+
+.font-sentex {
+  font-family: "Sentex", sans-serif;
+}
+
+.font-helvetica-now {
+  font-family: "Helvetica Now Text", sans-serif;
+}
+
+.glow-text {
+  text-shadow: 0 0 5px rgba(235, 162, 0, 0.3), 0 0 10px rgba(235, 162, 0, 0.2),
+    0 0 15px rgba(235, 162, 0, 0.1);
+  animation: pulse 3s infinite alternate;
+}
+
+/* Partner logo scrolling animation */
+.animate-scroll {
+  display: flex;
+  width: fit-content;
+  animation: scroll 40s linear infinite;
+}
+
+@media (max-width: 768px) {
+  .animate-scroll {
+    animation-duration: 25s;
   }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    text-shadow: 0 0 5px rgba(235, 162, 0, 0.3), 0 0 10px rgba(235, 162, 0, 0.2),
+      0 0 15px rgba(235, 162, 0, 0.1);
+  }
+  100% {
+    text-shadow: 0 0 8px rgba(235, 162, 0, 0.5), 0 0 15px rgba(235, 162, 0, 0.3),
+      0 0 20px rgba(235, 162, 0, 0.2);
+  }
+}
+
+/* Dashboard showcase subtle dot pattern */
+.dashboard-dot-field {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle,
+    rgba(235, 162, 0, 0.35) 1px,
+    transparent 1px
+  );
+  background-size: 20px 20px;
+  mask-image: radial-gradient(
+    ellipse 70% 60% at 50% 50%,
+    rgba(0, 0, 0, 0.5) 20%,
+    transparent 70%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 70% 60% at 50% 50%,
+    rgba(0, 0, 0, 0.5) 20%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* Soft pixel cluster accents */
+.pixel-cluster {
+  position: absolute;
+  width: clamp(60px, 8vw, 120px);
+  height: clamp(40px, 6vw, 80px);
+  background-image: radial-gradient(
+      circle,
+      rgba(235, 162, 0, 0.4) 2px,
+      transparent 2px
+    ),
+    radial-gradient(circle, rgba(235, 162, 0, 0.25) 1.5px, transparent 1.5px);
+  background-size: 12px 12px, 8px 8px;
+  background-position: 0 0, 4px 4px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.pixel-cluster::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit;
+  filter: blur(1px);
+  opacity: 0.4;
+}
