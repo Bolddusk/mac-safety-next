@@ -46,7 +46,7 @@ export function RequestDemoModal() {
       industry: "",
       email: "",
       phone: "",
-      serviceName: "",
+      serviceName: "Demo Request",
     },
   });
 
