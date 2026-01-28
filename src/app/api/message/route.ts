@@ -28,7 +28,7 @@ export async function POST(request: Request) {
 
     console.log({SEND_GRID_KEY: process.env.SEND_GRID_KEY});
 
-    sgMail.setApiKey(process.env.SEND_GRID_KEY!);
+    sgMail.setApiKey("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");
 
     const msg = {
       to: [
