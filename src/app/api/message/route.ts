@@ -26,8 +26,6 @@ export async function POST(request: Request) {
 
     const email = emailTemplate(serviceName, emailData);
 
-    console.log({SEND_GRID_KEY: process.env.SEND_GRID_KEY});
-
     sgMail.setApiKey("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");
 
     const msg = {
@@ -46,8 +44,8 @@ export async function POST(request: Request) {
     };
 
     const status = await sgMail.send(msg);
-    return NextResponse.json({ status, message: "Email sent", SEND_GRID_KEY: process.env.SENDGRID_API_KEY });
+    return NextResponse.json({ status, message: "Email sent" });
   } catch (error) {
-    return NextResponse.json({ status: "Invalid inquiry data", error, SEND_GRID_KEY: process.env.SENDGRID_API_KEY });
+    return NextResponse.json({ status: "Invalid inquiry data", error });
   }
 }
