@@ -11,6 +11,8 @@ export async function POST(request: Request) {
   try {
     const { subject, template, text } = await request.json();
 
+    console.log({ SEND_GRID_KEY: process.env.SEND_GRID_KEY });
+
     sgMail.setApiKey(process.env.SEND_GRID_KEY!);
 
     console.log({ subject, text });
