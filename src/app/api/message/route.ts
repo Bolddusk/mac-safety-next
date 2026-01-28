@@ -24,6 +24,8 @@ export async function POST(request: Request) {
 
     const email = emailTemplate(serviceName, emailData);
 
+    console.log({SEND_GRID_KEY: process.env.SEND_GRID_KEY});
+
     sgMail.setApiKey(process.env.SEND_GRID_KEY!);
 
     const msg = {
