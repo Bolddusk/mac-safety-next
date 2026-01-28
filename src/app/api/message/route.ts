@@ -46,8 +46,8 @@ export async function POST(request: Request) {
     };
 
     const status = await sgMail.send(msg);
-    return NextResponse.json({ status, message: "Email sent", SEND_GRID_KEY: process.env.SENDGRID_API_KEY!.trim() });
+    return NextResponse.json({ status, message: "Email sent", SEND_GRID_KEY: process.env.SENDGRID_API_KEY });
   } catch (error) {
-    return NextResponse.json({ status: "Invalid inquiry data", error });
+    return NextResponse.json({ status: "Invalid inquiry data", error, SEND_GRID_KEY: process.env.SENDGRID_API_KEY });
   }
 }
