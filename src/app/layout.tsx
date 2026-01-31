@@ -15,6 +15,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.macsafety.com"),
+  alternates: {
+    canonical: "/",
+  },
   icons: "/uploads/FaviconMAC.png",
 };
 
@@ -43,14 +47,10 @@ export default function RootLayout({
           property="og:description"
           content="MAC integrates people, software, systems, and hardware to expose, measure, and control the Unknown. Risk intelligence and operational safety solutions."
         />
-        <meta
-          property="og:image"
-          content="https://mactest.replit.app/uploads/og-share-image.png"
-        />
+
         <meta property="og:image:width" content="1080" />
         <meta property="og:image:height" content="1080" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://mactest.replit.app" />
         <meta property="og:site_name" content="MAC Safety" />
 
         {/* <!-- Twitter Card Meta Tags --> */}
@@ -63,9 +63,15 @@ export default function RootLayout({
           name="twitter:description"
           content="MAC integrates people, software, systems, and hardware to expose, measure, and control the Unknown."
         />
+
+        <meta
+          property="og:image"
+          content="https://www.macsafety.com/uploads/og-share-image.png"
+        />
+        <meta property="og:url" content="https://www.macsafety.com" />
         <meta
           name="twitter:image"
-          content="https://mactest.replit.app/uploads/og-share-image.png"
+          content="https://www.macsafety.com/uploads/og-share-image.png"
         />
 
         <Script

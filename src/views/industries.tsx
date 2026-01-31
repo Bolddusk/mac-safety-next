@@ -494,178 +494,178 @@ export default function IndustriesPage() {
                             We&apos;ll get back to you within 24 hours.
                           </DialogDescription>
                         </DialogHeader>
-                        <Form {...form}>
-                          <form
-                            onSubmit={form.handleSubmit(onSubmit)}
-                            className="space-y-6"
-                          >
-                            <FormField
-                              control={form.control}
-                              name="name"
-                              render={({ field }) => (
-                                <FormItem>
-                                  <FormLabel className="text-gray-300 font-alliance">
-                                    Name
-                                  </FormLabel>
-                                  <FormControl>
-                                    <Input
-                                      placeholder="Your name"
-                                      {...field}
-                                      className="bg-[#16171a] border-gray-700 text-white placeholder:text-gray-500 font-alliance"
-                                    />
-                                  </FormControl>
-                                  <FormMessage />
-                                </FormItem>
-                              )}
-                            />
-                            <FormField
-                              control={form.control}
-                              name="company"
-                              render={({ field }) => (
-                                <FormItem>
-                                  <FormLabel className="text-gray-300 font-alliance">
-                                    Company
-                                  </FormLabel>
-                                  <FormControl>
-                                    <Input
-                                      placeholder="Your company"
-                                      {...field}
-                                      className="bg-[#16171a] border-gray-700 text-white placeholder:text-gray-500 font-alliance"
-                                    />
-                                  </FormControl>
-                                  <FormMessage />
-                                </FormItem>
-                              )}
-                            />
-                            <FormField
-                              control={form.control}
-                              name="industry"
-                              render={({ field }) => (
-                                <FormItem>
-                                  <FormLabel className="text-gray-300 font-alliance">
-                                    Industry
-                                  </FormLabel>
-                                  <Select
-                                    onValueChange={field.onChange}
-                                    defaultValue={field.value}
-                                  >
-                                    <FormControl>
-                                      <SelectTrigger className="bg-[#16171a] border-gray-700 text-white font-alliance">
-                                        <SelectValue placeholder="Select an industry" />
-                                      </SelectTrigger>
-                                    </FormControl>
-                                    <SelectContent className="bg-[#16171a] border-gray-800">
-                                      <SelectItem value="airline">
-                                        Airports & Capital Projects
-                                      </SelectItem>
-                                      <SelectItem value="auto">
-                                        Automotive
-                                      </SelectItem>
-                                      <SelectItem value="construction">
-                                        Construction
-                                      </SelectItem>
-                                      <SelectItem value="data-centers">
-                                        Data Centers
-                                      </SelectItem>
-                                      <SelectItem value="healthcare">
-                                        Healthcare
-                                      </SelectItem>
-                                      <SelectItem value="insurance">
-                                        Insurance
-                                      </SelectItem>
-                                      <SelectItem value="life-science">
-                                        Life Sciences
-                                      </SelectItem>
-                                      <SelectItem value="manufacturing">
-                                        Manufacturing
-                                      </SelectItem>
-                                      <SelectItem value="oil-gas">
-                                        Oil & Gas
-                                      </SelectItem>
-                                      <SelectItem value="rail">Rail</SelectItem>
-                                      <SelectItem value="steel">
-                                        Steel
-                                      </SelectItem>
-                                      <SelectItem value="chemical">
-                                        Chemical Processing & Refining
-                                      </SelectItem>
-                                      <SelectItem value="defense">
-                                        Defense & Aerospace
-                                      </SelectItem>
-                                      <SelectItem value="maritime">
-                                        Maritime & Shipbuilding
-                                      </SelectItem>
-                                      <SelectItem value="mining">
-                                        Mining & Quarrying
-                                      </SelectItem>
-                                      <SelectItem value="power">
-                                        Utilities & Power Generation
-                                      </SelectItem>
-                                      <SelectItem value="renewable">
-                                        Renewable Energy
-                                      </SelectItem>
-                                      <SelectItem value="telecom">
-                                        Telecommunications & 5G Infrastructure
-                                      </SelectItem>
-                                      <SelectItem value="warehouse">
-                                        Warehousing & Logistics
-                                      </SelectItem>
-                                    </SelectContent>
-                                  </Select>
-                                  <FormMessage />
-                                </FormItem>
-                              )}
-                            />
-                            <FormField
-                              control={form.control}
-                              name="service"
-                              render={({ field }) => (
-                                <FormItem>
-                                  <FormLabel className="text-gray-300 font-alliance">
-                                    Service
-                                  </FormLabel>
-                                  <Select
-                                    onValueChange={field.onChange}
-                                    defaultValue={field.value}
-                                  >
-                                    <FormControl>
-                                      <SelectTrigger className="bg-[#16171a] border-gray-700 text-white font-alliance">
-                                        <SelectValue placeholder="Select a service" />
-                                      </SelectTrigger>
-                                    </FormControl>
-                                    <SelectContent className="bg-[#16171a] border-gray-800">
-                                      <SelectItem value="project-staffing">
-                                        Project Staffing
-                                      </SelectItem>
-                                      <SelectItem value="risk-management">
-                                        Risk Management
-                                      </SelectItem>
-                                      <SelectItem value="training">
-                                        Training
-                                      </SelectItem>
-                                      <SelectItem value="assessment">
-                                        Assessment
-                                      </SelectItem>
-                                      <SelectItem value="program-buildout">
-                                        Program Buildout
-                                      </SelectItem>
-                                      <SelectItem value="other">
-                                        Other
-                                      </SelectItem>
-                                    </SelectContent>
-                                  </Select>
-                                  <FormMessage />
-                                </FormItem>
-                              )}
-                            />
-                            <Button
-                              type="submit"
-                              className="w-full rounded-full bg-white text-black font-medium hover:bg-gray-100 transition-all font-alliance"
+                          <Form {...form}>
+                            <form
+                              onSubmit={form.handleSubmit(onSubmit)}
+                              className="space-y-6"
                             >
-                              Submit Request
-                            </Button>
-                          </form>
-                        </Form>
+                              <FormField
+                                control={form.control}
+                                name="name"
+                                render={({ field }) => (
+                                  <FormItem>
+                                    <FormLabel className="text-gray-300 font-alliance">
+                                      Name
+                                    </FormLabel>
+                                    <FormControl>
+                                      <Input
+                                        placeholder="Your name"
+                                        {...field}
+                                        className="bg-[#16171a] border-gray-700 text-white placeholder:text-gray-500 font-alliance"
+                                      />
+                                    </FormControl>
+                                    <FormMessage />
+                                  </FormItem>
+                                )}
+                              />
+                              <FormField
+                                control={form.control}
+                                name="company"
+                                render={({ field }) => (
+                                  <FormItem>
+                                    <FormLabel className="text-gray-300 font-alliance">
+                                      Company
+                                    </FormLabel>
+                                    <FormControl>
+                                      <Input
+                                        placeholder="Your company"
+                                        {...field}
+                                        className="bg-[#16171a] border-gray-700 text-white placeholder:text-gray-500 font-alliance"
+                                      />
+                                    </FormControl>
+                                    <FormMessage />
+                                  </FormItem>
+                                )}
+                              />
+                              <FormField
+                                control={form.control}
+                                name="industry"
+                                render={({ field }) => (
+                                  <FormItem>
+                                    <FormLabel className="text-gray-300 font-alliance">
+                                      Industry
+                                    </FormLabel>
+                                    <Select
+                                      onValueChange={field.onChange}
+                                      defaultValue={field.value}
+                                    >
+                                      <FormControl>
+                                        <SelectTrigger className="bg-[#16171a] border-gray-700 text-white font-alliance">
+                                          <SelectValue placeholder="Select an industry" />
+                                        </SelectTrigger>
+                                      </FormControl>
+                                      <SelectContent className="bg-[#16171a] border-gray-800">
+                                        <SelectItem value="airline">
+                                          Airports & Capital Projects
+                                        </SelectItem>
+                                        <SelectItem value="auto">
+                                          Automotive
+                                        </SelectItem>
+                                        <SelectItem value="construction">
+                                          Construction
+                                        </SelectItem>
+                                        <SelectItem value="data-centers">
+                                          Data Centers
+                                        </SelectItem>
+                                        <SelectItem value="healthcare">
+                                          Healthcare
+                                        </SelectItem>
+                                        <SelectItem value="insurance">
+                                          Insurance
+                                        </SelectItem>
+                                        <SelectItem value="life-science">
+                                          Life Sciences
+                                        </SelectItem>
+                                        <SelectItem value="manufacturing">
+                                          Manufacturing
+                                        </SelectItem>
+                                        <SelectItem value="oil-gas">
+                                          Oil & Gas
+                                        </SelectItem>
+                                        <SelectItem value="rail">Rail</SelectItem>
+                                        <SelectItem value="steel">
+                                          Steel
+                                        </SelectItem>
+                                        <SelectItem value="chemical">
+                                          Chemical Processing & Refining
+                                        </SelectItem>
+                                        <SelectItem value="defense">
+                                          Defense & Aerospace
+                                        </SelectItem>
+                                        <SelectItem value="maritime">
+                                          Maritime & Shipbuilding
+                                        </SelectItem>
+                                        <SelectItem value="mining">
+                                          Mining & Quarrying
+                                        </SelectItem>
+                                        <SelectItem value="power">
+                                          Utilities & Power Generation
+                                        </SelectItem>
+                                        <SelectItem value="renewable">
+                                          Renewable Energy
+                                        </SelectItem>
+                                        <SelectItem value="telecom">
+                                          Telecommunications & 5G Infrastructure
+                                        </SelectItem>
+                                        <SelectItem value="warehouse">
+                                          Warehousing & Logistics
+                                        </SelectItem>
+                                      </SelectContent>
+                                    </Select>
+                                    <FormMessage />
+                                  </FormItem>
+                                )}
+                              />
+                              <FormField
+                                control={form.control}
+                                name="service"
+                                render={({ field }) => (
+                                  <FormItem>
+                                    <FormLabel className="text-gray-300 font-alliance">
+                                      Service
+                                    </FormLabel>
+                                    <Select
+                                      onValueChange={field.onChange}
+                                      defaultValue={field.value}
+                                    >
+                                      <FormControl>
+                                        <SelectTrigger className="bg-[#16171a] border-gray-700 text-white font-alliance">
+                                          <SelectValue placeholder="Select a service" />
+                                        </SelectTrigger>
+                                      </FormControl>
+                                      <SelectContent className="bg-[#16171a] border-gray-800">
+                                        <SelectItem value="project-staffing">
+                                          Project Staffing
+                                        </SelectItem>
+                                        <SelectItem value="risk-management">
+                                          Risk Management
+                                        </SelectItem>
+                                        <SelectItem value="training">
+                                          Training
+                                        </SelectItem>
+                                        <SelectItem value="assessment">
+                                          Assessment
+                                        </SelectItem>
+                                        <SelectItem value="program-buildout">
+                                          Program Buildout
+                                        </SelectItem>
+                                        <SelectItem value="other">
+                                          Other
+                                        </SelectItem>
+                                      </SelectContent>
+                                    </Select>
+                                    <FormMessage />
+                                  </FormItem>
+                                )}
+                              />
+                              <Button
+                                type="submit"
+                                className="w-full rounded-full bg-white text-black font-medium hover:bg-gray-100 transition-all font-alliance"
+                              >
+                                Submit Request
+                              </Button>
+                            </form>
+                          </Form>
                       </DialogContent>
                     </Dialog>
                     <Link href="/offerings">
