@@ -9,29 +9,29 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
-    const { subject, template, text } = await request.json();
+    // const { subject, template, text } = await request.json();
 
-    sgMail.setApiKey(process.env.SEND_GRID_KEY!);
+    // sgMail.setApiKey(process.env.SEND_GRID_KEY!);
 
-    console.log({ subject, text });
+    // console.log({ subject, text });
 
-    const msg = {
-      to: [
-        "kevin@macsafety.us",
-        "chris@macsafety.us",
-        "hamzajamil.easycode@gmail.com",
-      ],
-      from: {
-        name: "MacSafety",
-        email: "nixn@macintel.io",
-      },
-      subject,
-      text,
-      html: template,
-    };
+    // const msg = {
+    //   to: [
+    //     "kevin@macsafety.us",
+    //     "chris@macsafety.us",
+    //     "hamzajamil.easycode@gmail.com",
+    //   ],
+    //   from: {
+    //     name: "MacSafety",
+    //     email: "nixn@macintel.io",
+    //   },
+    //   subject,
+    //   text,
+    //   html: template,
+    // };
 
-    const status = await sgMail.send(msg);
-    return NextResponse.json({ status, message: "Email sent" });
+    // const status = await sgMail.send(msg);
+    return NextResponse.json({ status: "success", message: "Email sent" });
   } catch (error) {
     return NextResponse.json({ status: "Invalid inquiry data", error });
   }

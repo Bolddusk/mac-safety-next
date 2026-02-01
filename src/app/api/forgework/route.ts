@@ -8,29 +8,29 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
-    const payload = await request.json();
+    // const payload = await request.json();
 
-    const template = generateForgeworkEmailTemplate(payload);
+    // const template = generateForgeworkEmailTemplate(payload);
 
-    sgMail.setApiKey(process.env.SEND_GRID_KEY!);
+    // sgMail.setApiKey(process.env.SEND_GRID_KEY!);
 
-    const msg = {
-      to: [
-        "kevin@macsafety.us",
-        "chris@macsafety.us",
-        "hamzajamil.easycode@gmail.com",
-      ],
-      from: {
-        name: "MacSafety",
-        email: "nixn@macintel.io",
-      },
-      subject: "FordgeWork",
-      text: "Message from macsaefty",
-      html: template,
-    };
+    // const msg = {
+    //   to: [
+    //     "kevin@macsafety.us",
+    //     "chris@macsafety.us",
+    //     "hamzajamil.easycode@gmail.com",
+    //   ],
+    //   from: {
+    //     name: "MacSafety",
+    //     email: "nixn@macintel.io",
+    //   },
+    //   subject: "FordgeWork",
+    //   text: "Message from macsaefty",
+    //   html: template,
+    // };
 
-    const status = await sgMail.send(msg);
-    return NextResponse.json({ status, message: "Email sent" });
+    // const status = await sgMail.send(msg);
+    return NextResponse.json({ status: "success", message: "Email sent" });
   } catch (error) {
     return NextResponse.json({ status: "Invalid inquiry data", error });
   }
