@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-"use client"
+"use client";
 
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -71,7 +71,6 @@ export default function ContactSection({ title }: { title?: string }) {
       service: "",
       message: "",
       serviceName: "People Service",
-      
     },
   });
 
@@ -90,7 +89,8 @@ export default function ContactSection({ title }: { title?: string }) {
   });
 
   const mutation = useMutation({
-    mutationFn: (data: any) => apiRequest("POST", "/api/message", data),
+    mutationFn: (data: any) =>
+      apiRequest("POST", "/api/message", { ...data, name: "" }),
     onSuccess: () => {
       toast({
         title: "Message Sent",
@@ -115,7 +115,8 @@ export default function ContactSection({ title }: { title?: string }) {
     if (formType === "software") softwareForm.reset();
   };
 
-  const inputStyles = "bg-[#1f2024] border-gray-700 text-white placeholder:text-gray-500 focus:border-[#eba200] focus:ring-[#eba200] rounded-xl";
+  const inputStyles =
+    "bg-[#1f2024] border-gray-700 text-white placeholder:text-gray-500 focus:border-[#eba200] focus:ring-[#eba200] rounded-xl";
   const labelStyles = "text-gray-300 font-alliance";
 
   return (
@@ -123,7 +124,7 @@ export default function ContactSection({ title }: { title?: string }) {
       <div className="container mx-auto px-6 md:px-8">
         <div className="max-w-3xl mx-auto">
           {/* Header */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -141,7 +142,7 @@ export default function ContactSection({ title }: { title?: string }) {
           </motion.div>
 
           {/* Form Container */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -166,9 +167,12 @@ export default function ContactSection({ title }: { title?: string }) {
                       <div className="w-16 h-16 rounded-xl bg-[#eba200]/10 flex items-center justify-center mb-6 group-hover:bg-[#eba200]/20 transition-colors">
                         <Users className="w-8 h-8 text-[#eba200]" />
                       </div>
-                      <h3 className="text-xl font-bold text-white mb-2 font-alliance">People Services</h3>
+                      <h3 className="text-xl font-bold text-white mb-2 font-alliance">
+                        People Services
+                      </h3>
                       <p className="text-gray-400 text-sm font-alliance mb-4">
-                        Expert consultants and safety specialists for your mission-critical operations
+                        Expert consultants and safety specialists for your
+                        mission-critical operations
                       </p>
                       <div className="flex items-center gap-2 text-[#eba200] text-sm font-alliance group-hover:gap-3 transition-all">
                         Get Started <ArrowRight className="w-4 h-4" />
@@ -185,7 +189,9 @@ export default function ContactSection({ title }: { title?: string }) {
                       <div className="w-16 h-16 rounded-xl bg-[#64FFDA]/10 flex items-center justify-center mb-6 group-hover:bg-[#64FFDA]/20 transition-colors">
                         <Binary className="w-8 h-8 text-[#64FFDA]" />
                       </div>
-                      <h3 className="text-xl font-bold text-white mb-2 font-alliance">Software Solutions</h3>
+                      <h3 className="text-xl font-bold text-white mb-2 font-alliance">
+                        Software Solutions
+                      </h3>
                       <p className="text-gray-400 text-sm font-alliance mb-4">
                         AI-powered platforms for comprehensive risk management
                       </p>
@@ -204,26 +210,39 @@ export default function ContactSection({ title }: { title?: string }) {
                   className="p-8 md:p-12"
                 >
                   <div className="flex items-center gap-4 mb-8">
-                    <button 
+                    <button
                       onClick={handleBack}
                       className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
                     >
                       <ArrowLeft className="w-5 h-5 text-gray-400" />
                     </button>
-                    <h3 className="text-xl font-bold text-white font-alliance">People Services Inquiry</h3>
+                    <h3 className="text-xl font-bold text-white font-alliance">
+                      People Services Inquiry
+                    </h3>
                   </div>
 
                   <Form {...serviceForm}>
-                    <form onSubmit={serviceForm.handleSubmit((data) => mutation.mutate({ ...data, type: "service" }))} className="space-y-6">
+                    <form
+                      onSubmit={serviceForm.handleSubmit((data) =>
+                        mutation.mutate({ ...data, type: "service" }),
+                      )}
+                      className="space-y-6"
+                    >
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <FormField
                           control={serviceForm.control}
                           name="name"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel className={labelStyles}>Name</FormLabel>
+                              <FormLabel className={labelStyles}>
+                                Name
+                              </FormLabel>
                               <FormControl>
-                                <Input {...field} className={inputStyles} data-testid="input-name" />
+                                <Input
+                                  {...field}
+                                  className={inputStyles}
+                                  data-testid="input-name"
+                                />
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -234,9 +253,16 @@ export default function ContactSection({ title }: { title?: string }) {
                           name="email"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel className={labelStyles}>Email</FormLabel>
+                              <FormLabel className={labelStyles}>
+                                Email
+                              </FormLabel>
                               <FormControl>
-                                <Input {...field} type="email" className={inputStyles} data-testid="input-email" />
+                                <Input
+                                  {...field}
+                                  type="email"
+                                  className={inputStyles}
+                                  data-testid="input-email"
+                                />
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -249,9 +275,15 @@ export default function ContactSection({ title }: { title?: string }) {
                           name="company"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel className={labelStyles}>Company</FormLabel>
+                              <FormLabel className={labelStyles}>
+                                Company
+                              </FormLabel>
                               <FormControl>
-                                <Input {...field} className={inputStyles} data-testid="input-company" />
+                                <Input
+                                  {...field}
+                                  className={inputStyles}
+                                  data-testid="input-company"
+                                />
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -262,21 +294,69 @@ export default function ContactSection({ title }: { title?: string }) {
                           name="industry"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel className={labelStyles}>Industry</FormLabel>
+                              <FormLabel className={labelStyles}>
+                                Industry
+                              </FormLabel>
                               <FormControl>
-                                <Select onValueChange={field.onChange} value={field.value}>
-                                  <SelectTrigger className={inputStyles} data-testid="select-industry">
+                                <Select
+                                  onValueChange={field.onChange}
+                                  value={field.value}
+                                >
+                                  <SelectTrigger
+                                    className={inputStyles}
+                                    data-testid="select-industry"
+                                  >
                                     <SelectValue placeholder="Select industry" />
                                   </SelectTrigger>
                                   <SelectContent className="bg-gray-800 border-gray-700">
-                                    <SelectItem value="construction" className="text-white">Construction</SelectItem>
-                                    <SelectItem value="steel" className="text-white">Steel</SelectItem>
-                                    <SelectItem value="mining" className="text-white">Mining</SelectItem>
-                                    <SelectItem value="healthcare" className="text-white">Healthcare</SelectItem>
-                                    <SelectItem value="energy" className="text-white">Energy</SelectItem>
-                                    <SelectItem value="defense" className="text-white">Defense</SelectItem>
-                                    <SelectItem value="transportation" className="text-white">Transportation</SelectItem>
-                                    <SelectItem value="manufacturing" className="text-white">Manufacturing</SelectItem>
+                                    <SelectItem
+                                      value="construction"
+                                      className="text-white"
+                                    >
+                                      Construction
+                                    </SelectItem>
+                                    <SelectItem
+                                      value="steel"
+                                      className="text-white"
+                                    >
+                                      Steel
+                                    </SelectItem>
+                                    <SelectItem
+                                      value="mining"
+                                      className="text-white"
+                                    >
+                                      Mining
+                                    </SelectItem>
+                                    <SelectItem
+                                      value="healthcare"
+                                      className="text-white"
+                                    >
+                                      Healthcare
+                                    </SelectItem>
+                                    <SelectItem
+                                      value="energy"
+                                      className="text-white"
+                                    >
+                                      Energy
+                                    </SelectItem>
+                                    <SelectItem
+                                      value="defense"
+                                      className="text-white"
+                                    >
+                                      Defense
+                                    </SelectItem>
+                                    <SelectItem
+                                      value="transportation"
+                                      className="text-white"
+                                    >
+                                      Transportation
+                                    </SelectItem>
+                                    <SelectItem
+                                      value="manufacturing"
+                                      className="text-white"
+                                    >
+                                      Manufacturing
+                                    </SelectItem>
                                   </SelectContent>
                                 </Select>
                               </FormControl>
@@ -290,18 +370,51 @@ export default function ContactSection({ title }: { title?: string }) {
                         name="service"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className={labelStyles}>Service Type</FormLabel>
+                            <FormLabel className={labelStyles}>
+                              Service Type
+                            </FormLabel>
                             <FormControl>
-                              <Select onValueChange={field.onChange} value={field.value}>
-                                <SelectTrigger className={inputStyles} data-testid="select-service">
+                              <Select
+                                onValueChange={field.onChange}
+                                value={field.value}
+                              >
+                                <SelectTrigger
+                                  className={inputStyles}
+                                  data-testid="select-service"
+                                >
                                   <SelectValue placeholder="Select service" />
                                 </SelectTrigger>
                                 <SelectContent className="bg-gray-800 border-gray-700">
-                                  <SelectItem value="staffing" className="text-white">Project Staffing</SelectItem>
-                                  <SelectItem value="training" className="text-white">Training</SelectItem>
-                                  <SelectItem value="consulting" className="text-white">Consulting</SelectItem>
-                                  <SelectItem value="risk-management" className="text-white">Risk Management</SelectItem>
-                                  <SelectItem value="other" className="text-white">Other Service</SelectItem>
+                                  <SelectItem
+                                    value="staffing"
+                                    className="text-white"
+                                  >
+                                    Project Staffing
+                                  </SelectItem>
+                                  <SelectItem
+                                    value="training"
+                                    className="text-white"
+                                  >
+                                    Training
+                                  </SelectItem>
+                                  <SelectItem
+                                    value="consulting"
+                                    className="text-white"
+                                  >
+                                    Consulting
+                                  </SelectItem>
+                                  <SelectItem
+                                    value="risk-management"
+                                    className="text-white"
+                                  >
+                                    Risk Management
+                                  </SelectItem>
+                                  <SelectItem
+                                    value="other"
+                                    className="text-white"
+                                  >
+                                    Other Service
+                                  </SelectItem>
                                 </SelectContent>
                               </Select>
                             </FormControl>
@@ -314,9 +427,16 @@ export default function ContactSection({ title }: { title?: string }) {
                         name="message"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className={labelStyles}>Message</FormLabel>
+                            <FormLabel className={labelStyles}>
+                              Message
+                            </FormLabel>
                             <FormControl>
-                              <Textarea {...field} className={inputStyles} rows={4} data-testid="textarea-message" />
+                              <Textarea
+                                {...field}
+                                className={inputStyles}
+                                rows={4}
+                                data-testid="textarea-message"
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -328,7 +448,9 @@ export default function ContactSection({ title }: { title?: string }) {
                         disabled={mutation.isPending}
                         data-testid="button-submit"
                       >
-                        {mutation.isPending ? "Sending..." : (
+                        {mutation.isPending ? (
+                          "Sending..."
+                        ) : (
                           <span className="flex items-center justify-center gap-2">
                             Send Message <Send className="w-4 h-4" />
                           </span>
@@ -346,26 +468,39 @@ export default function ContactSection({ title }: { title?: string }) {
                   className="p-8 md:p-12"
                 >
                   <div className="flex items-center gap-4 mb-8">
-                    <button 
+                    <button
                       onClick={handleBack}
                       className="p-2 hover:bg-gray-700 rounded-lg transition-colors"
                     >
                       <ArrowLeft className="w-5 h-5 text-gray-400" />
                     </button>
-                    <h3 className="text-xl font-bold text-white font-alliance">Software Solutions Inquiry</h3>
+                    <h3 className="text-xl font-bold text-white font-alliance">
+                      Software Solutions Inquiry
+                    </h3>
                   </div>
 
                   <Form {...softwareForm}>
-                    <form onSubmit={softwareForm.handleSubmit((data) => mutation.mutate({ ...data, type: "software" }))} className="space-y-6">
+                    <form
+                      onSubmit={softwareForm.handleSubmit((data) =>
+                        mutation.mutate({ ...data, type: "software" }),
+                      )}
+                      className="space-y-6"
+                    >
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <FormField
                           control={softwareForm.control}
                           name="name"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel className={labelStyles}>Name</FormLabel>
+                              <FormLabel className={labelStyles}>
+                                Name
+                              </FormLabel>
                               <FormControl>
-                                <Input {...field} className={inputStyles} data-testid="input-name" />
+                                <Input
+                                  {...field}
+                                  className={inputStyles}
+                                  data-testid="input-name"
+                                />
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -376,9 +511,16 @@ export default function ContactSection({ title }: { title?: string }) {
                           name="email"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel className={labelStyles}>Email</FormLabel>
+                              <FormLabel className={labelStyles}>
+                                Email
+                              </FormLabel>
                               <FormControl>
-                                <Input {...field} type="email" className={inputStyles} data-testid="input-email" />
+                                <Input
+                                  {...field}
+                                  type="email"
+                                  className={inputStyles}
+                                  data-testid="input-email"
+                                />
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -391,9 +533,15 @@ export default function ContactSection({ title }: { title?: string }) {
                           name="company"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel className={labelStyles}>Company</FormLabel>
+                              <FormLabel className={labelStyles}>
+                                Company
+                              </FormLabel>
                               <FormControl>
-                                <Input {...field} className={inputStyles} data-testid="input-company" />
+                                <Input
+                                  {...field}
+                                  className={inputStyles}
+                                  data-testid="input-company"
+                                />
                               </FormControl>
                               <FormMessage />
                             </FormItem>
@@ -404,21 +552,69 @@ export default function ContactSection({ title }: { title?: string }) {
                           name="industry"
                           render={({ field }) => (
                             <FormItem>
-                              <FormLabel className={labelStyles}>Industry</FormLabel>
+                              <FormLabel className={labelStyles}>
+                                Industry
+                              </FormLabel>
                               <FormControl>
-                                <Select onValueChange={field.onChange} value={field.value}>
-                                  <SelectTrigger className={inputStyles} data-testid="select-industry">
+                                <Select
+                                  onValueChange={field.onChange}
+                                  value={field.value}
+                                >
+                                  <SelectTrigger
+                                    className={inputStyles}
+                                    data-testid="select-industry"
+                                  >
                                     <SelectValue placeholder="Select industry" />
                                   </SelectTrigger>
                                   <SelectContent className="bg-gray-800 border-gray-700">
-                                    <SelectItem value="construction" className="text-white">Construction</SelectItem>
-                                    <SelectItem value="steel" className="text-white">Steel</SelectItem>
-                                    <SelectItem value="mining" className="text-white">Mining</SelectItem>
-                                    <SelectItem value="healthcare" className="text-white">Healthcare</SelectItem>
-                                    <SelectItem value="energy" className="text-white">Energy</SelectItem>
-                                    <SelectItem value="defense" className="text-white">Defense</SelectItem>
-                                    <SelectItem value="transportation" className="text-white">Transportation</SelectItem>
-                                    <SelectItem value="manufacturing" className="text-white">Manufacturing</SelectItem>
+                                    <SelectItem
+                                      value="construction"
+                                      className="text-white"
+                                    >
+                                      Construction
+                                    </SelectItem>
+                                    <SelectItem
+                                      value="steel"
+                                      className="text-white"
+                                    >
+                                      Steel
+                                    </SelectItem>
+                                    <SelectItem
+                                      value="mining"
+                                      className="text-white"
+                                    >
+                                      Mining
+                                    </SelectItem>
+                                    <SelectItem
+                                      value="healthcare"
+                                      className="text-white"
+                                    >
+                                      Healthcare
+                                    </SelectItem>
+                                    <SelectItem
+                                      value="energy"
+                                      className="text-white"
+                                    >
+                                      Energy
+                                    </SelectItem>
+                                    <SelectItem
+                                      value="defense"
+                                      className="text-white"
+                                    >
+                                      Defense
+                                    </SelectItem>
+                                    <SelectItem
+                                      value="transportation"
+                                      className="text-white"
+                                    >
+                                      Transportation
+                                    </SelectItem>
+                                    <SelectItem
+                                      value="manufacturing"
+                                      className="text-white"
+                                    >
+                                      Manufacturing
+                                    </SelectItem>
                                   </SelectContent>
                                 </Select>
                               </FormControl>
@@ -432,7 +628,9 @@ export default function ContactSection({ title }: { title?: string }) {
                         name="requestType"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className={labelStyles}>What would you like to do?</FormLabel>
+                            <FormLabel className={labelStyles}>
+                              What would you like to do?
+                            </FormLabel>
                             <FormControl>
                               <RadioGroup
                                 onValueChange={field.onChange}
@@ -441,7 +639,10 @@ export default function ContactSection({ title }: { title?: string }) {
                               >
                                 <FormItem className="flex items-center space-x-3 space-y-0">
                                   <FormControl>
-                                    <RadioGroupItem value="demo" className="border-gray-600 text-[#64FFDA]" />
+                                    <RadioGroupItem
+                                      value="demo"
+                                      className="border-gray-600 text-[#64FFDA]"
+                                    />
                                   </FormControl>
                                   <FormLabel className="font-normal text-gray-300">
                                     Schedule a Demo
@@ -449,7 +650,10 @@ export default function ContactSection({ title }: { title?: string }) {
                                 </FormItem>
                                 <FormItem className="flex items-center space-x-3 space-y-0">
                                   <FormControl>
-                                    <RadioGroupItem value="learn" className="border-gray-600 text-[#64FFDA]" />
+                                    <RadioGroupItem
+                                      value="learn"
+                                      className="border-gray-600 text-[#64FFDA]"
+                                    />
                                   </FormControl>
                                   <FormLabel className="font-normal text-gray-300">
                                     Learn More
@@ -466,7 +670,9 @@ export default function ContactSection({ title }: { title?: string }) {
                         name="platform"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className={labelStyles}>Platform</FormLabel>
+                            <FormLabel className={labelStyles}>
+                              Platform
+                            </FormLabel>
                             <FormControl>
                               <RadioGroup
                                 onValueChange={field.onChange}
@@ -475,7 +681,10 @@ export default function ContactSection({ title }: { title?: string }) {
                               >
                                 <FormItem className="flex items-center space-x-3 space-y-0">
                                   <FormControl>
-                                    <RadioGroupItem value="NIXN" className="border-gray-600 text-[#64FFDA]" />
+                                    <RadioGroupItem
+                                      value="NIXN"
+                                      className="border-gray-600 text-[#64FFDA]"
+                                    />
                                   </FormControl>
                                   <FormLabel className="font-normal text-gray-300">
                                     NIXN
@@ -483,7 +692,10 @@ export default function ContactSection({ title }: { title?: string }) {
                                 </FormItem>
                                 <FormItem className="flex items-center space-x-3 space-y-0">
                                   <FormControl>
-                                    <RadioGroupItem value="xOS" className="border-gray-600 text-[#64FFDA]" />
+                                    <RadioGroupItem
+                                      value="xOS"
+                                      className="border-gray-600 text-[#64FFDA]"
+                                    />
                                   </FormControl>
                                   <FormLabel className="font-normal text-gray-300">
                                     xOS
@@ -491,7 +703,10 @@ export default function ContactSection({ title }: { title?: string }) {
                                 </FormItem>
                                 <FormItem className="flex items-center space-x-3 space-y-0">
                                   <FormControl>
-                                    <RadioGroupItem value="both" className="border-gray-600 text-[#64FFDA]" />
+                                    <RadioGroupItem
+                                      value="both"
+                                      className="border-gray-600 text-[#64FFDA]"
+                                    />
                                   </FormControl>
                                   <FormLabel className="font-normal text-gray-300">
                                     Both
@@ -508,9 +723,16 @@ export default function ContactSection({ title }: { title?: string }) {
                         name="message"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel className={labelStyles}>Message</FormLabel>
+                            <FormLabel className={labelStyles}>
+                              Message
+                            </FormLabel>
                             <FormControl>
-                              <Textarea {...field} className={inputStyles} rows={4} data-testid="textarea-message" />
+                              <Textarea
+                                {...field}
+                                className={inputStyles}
+                                rows={4}
+                                data-testid="textarea-message"
+                              />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -522,7 +744,9 @@ export default function ContactSection({ title }: { title?: string }) {
                         disabled={mutation.isPending}
                         data-testid="button-submit"
                       >
-                        {mutation.isPending ? "Sending..." : (
+                        {mutation.isPending ? (
+                          "Sending..."
+                        ) : (
                           <span className="flex items-center justify-center gap-2">
                             Send Message <Send className="w-4 h-4" />
                           </span>

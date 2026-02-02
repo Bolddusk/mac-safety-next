@@ -1,3 +1,4 @@
+import { Toaster } from "@/component/ui/toaster";
 import Footer from "@/layout/Footer";
 import Header from "@/layout/Header";
 import { queryClient } from "@/lib/queryClient";
@@ -22,6 +23,7 @@ export default function Index() {
         <Header />
         <Offerings />
         <Footer />
+        <Toaster />
       </div>
     </QueryClientProvider>
   );
