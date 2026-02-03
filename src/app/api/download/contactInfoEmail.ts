@@ -1,10 +1,13 @@
-// @typescript-eslint/no-explicit-any
-export const contactInfoEmail = async (data: {
+import { escapeHtml } from "@/lib/security";
+
+export const contactInfoEmail = (data: {
   name: string;
   phone: string;
   company: string;
 }) => {
-  const { name, phone, company } = data;
+  const name = escapeHtml(data.name);
+  const phone = escapeHtml(data.phone);
+  const company = escapeHtml(data.company);
 
   return `<!DOCTYPE html>
 <html lang="en">

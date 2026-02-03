@@ -1,7 +1,17 @@
+import { escapeHtml } from "@/lib/security";
+
 export const emailTemplate = (
     serviceName: string,
     data: { label: string; value: string }[]
-  ) => `
+  ) => {
+  const safeServiceName = escapeHtml(serviceName);
+  const safeRows = data.map(
+    (el) =>
+      `<div class="info">
+            <span class="label">${escapeHtml(el.label)}:</span> ${escapeHtml(el.value)}
+          </div>`
+  ).join("");
+  return `
   <!DOCTYPE html>
   <html lang="en">
     <head>
@@ -56,13 +66,9 @@ export const emailTemplate = (
     </head>
     <body>
       <div class="container">
-        <div class="header">${serviceName}</div>
+        <div class="header">${safeServiceName}</div>
         <div class="content">
-          ${data.map(
-            (el) => `<div class="info">
-            <span class="label">${el.label}:</span> ${el.value}
-          </div>`
-          )}
+          ${safeRows}
         </div>
         <div class="footer">
           Copyright © ${new Date().getFullYear()} MAC Safety, Inc. All Rights
@@ -72,4 +78,5 @@ export const emailTemplate = (
     </body>
   </html>
   `;
+};
   

@@ -1,5 +1,43 @@
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export const generateForgeworkEmailTemplate = (data: any) => {
+import { escapeHtml } from "@/lib/security";
+
+type ForgeworkData = {
+  fullName?: string;
+  jobTitle?: string;
+  companyName?: string;
+  workEmail?: string;
+  companyWebsite?: string;
+  industry?: string;
+  headcount?: string;
+  collectsData?: string;
+  dataTypes?: string[];
+  openToMAC?: string;
+  timeline?: string;
+  referralSource?: string;
+  termsAccepted?: boolean;
+  friction?: string;
+  problem?: string;
+  consequences?: string;
+  existingSystems?: string;
+  decisionMaking?: string;
+  successDefinition?: string;
+  fitReason?: string;
+};
+
+function safe(value: unknown): string {
+  if (value == null) return "";
+  const s = String(value);
+  return escapeHtml(s);
+}
+
+function safeBool(value: unknown): string {
+  return value ? "Yes" : "No";
+}
+
+export const generateForgeworkEmailTemplate = (data: ForgeworkData) => {
+  const dataTypesHtml = Array.isArray(data.dataTypes)
+    ? data.dataTypes.map((type) => `<span class="badge">${safe(type)}</span>`).join("")
+    : "";
+
   return `
       <!DOCTYPE html>
       <html lang="en">
@@ -61,77 +99,70 @@ export const generateForgeworkEmailTemplate = (data: any) => {
       
           <div class="section">
             <div class="label">Full Name:</div>
-            <div class="value">${data.fullName}</div>
+            <div class="value">${safe(data.fullName)}</div>
       
             <div class="label">Job Title:</div>
-            <div class="value">${data.jobTitle}</div>
+            <div class="value">${safe(data.jobTitle)}</div>
       
             <div class="label">Company Name:</div>
-            <div class="value">${data.companyName}</div>
+            <div class="value">${safe(data.companyName)}</div>
       
             <div class="label">Work Email:</div>
-            <div class="value">${data.workEmail}</div>
+            <div class="value">${safe(data.workEmail)}</div>
       
             <div class="label">Company Website:</div>
-            <div class="value">${data.companyWebsite}</div>
+            <div class="value">${safe(data.companyWebsite)}</div>
       
             <div class="label">Industry:</div>
-            <div class="value">${data.industry}</div>
+            <div class="value">${safe(data.industry)}</div>
       
             <div class="label">Headcount:</div>
-            <div class="value">${data.headcount}</div>
+            <div class="value">${safe(data.headcount)}</div>
       
             <div class="label">Collects Data:</div>
-            <div class="value">${data.collectsData}</div>
+            <div class="value">${safe(data.collectsData)}</div>
       
             <div class="label">Data Types:</div>
-            <div class="value">
-              ${data.dataTypes
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                .map((type: any ) => `<span class="badge">${type}</span>`)
-                .join("")}
-            </div>
+            <div class="value">${dataTypesHtml}</div>
       
             <div class="label">Open to MAC:</div>
-            <div class="value">${data.openToMAC}</div>
+            <div class="value">${safe(data.openToMAC)}</div>
       
             <div class="label">Timeline:</div>
-            <div class="value">${data.timeline}</div>
+            <div class="value">${safe(data.timeline)}</div>
       
             <div class="label">Referral Source:</div>
-            <div class="value">${data.referralSource}</div>
+            <div class="value">${safe(data.referralSource)}</div>
       
             <div class="label">Terms Accepted:</div>
-            <div class="value">${data.termsAccepted ? "✅ Yes" : "❌ No"}</div>
+            <div class="value">${safeBool(data.termsAccepted)}</div>
           </div>
       
           <div class="section">
             <div class="label">Friction:</div>
-            <div class="value">${data.friction}</div>
+            <div class="value">${safe(data.friction)}</div>
       
             <div class="label">Problem:</div>
-            <div class="value">${data.problem}</div>
+            <div class="value">${safe(data.problem)}</div>
       
             <div class="label">Consequences:</div>
-            <div class="value">${data.consequences}</div>
+            <div class="value">${safe(data.consequences)}</div>
       
             <div class="label">Existing Systems:</div>
-            <div class="value">${data.existingSystems}</div>
+            <div class="value">${safe(data.existingSystems)}</div>
       
             <div class="label">Decision Making:</div>
-            <div class="value">${data.decisionMaking}</div>
+            <div class="value">${safe(data.decisionMaking)}</div>
       
             <div class="label">Definition of Success:</div>
-            <div class="value">${data.successDefinition}</div>
+            <div class="value">${safe(data.successDefinition)}</div>
       
             <div class="label">Reason for Fit:</div>
-            <div class="value">${data.fitReason}</div>
+            <div class="value">${safe(data.fitReason)}</div>
           </div>
       
           <div class="footer">
-            &copy; ${new Date().getFullYear()} ${
-    data.companyName
-  }. All rights reserved.
+            &copy; ${new Date().getFullYear()} ${safe(data.companyName)}. All rights reserved.
           </div>
         </div>
       </body>

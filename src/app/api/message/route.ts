@@ -3,6 +3,8 @@ export const runtime = "nodejs";
 import { NextResponse } from "next/server";
 import sgMail from "@sendgrid/mail";
 import { emailTemplate } from "../emailtemplate";
+import { safeParseJson } from "@/lib/security";
+import { messageSchema } from "@/lib/apiSchemas";
 
 const capitalizeWords = (str: string) => {
   return str
@@ -17,23 +19,36 @@ export async function GET() {
 
 export async function POST(request: Request) {
   try {
-    const { serviceName, ...rest } = await request.json();
+    const body = await safeParseJson<Record<string, unknown>>(request);
+    if (!body) {
+      return NextResponse.json(
+        { message: "Invalid request body" },
+        { status: 400 }
+      );
+    }
 
-    const emailData = Object.entries(rest).map((el) => ({
-      label: capitalizeWords(el[0]),
-      value: capitalizeWords(el[1] as string),
-    }));
+    const parsed = messageSchema.safeParse(body);
+    if (!parsed.success) {
+      return NextResponse.json(
+        { message: "Invalid inquiry data" },
+        { status: 400 }
+      );
+    }
+
+    const { serviceName, ...rest } = parsed.data;
+    const emailData = Object.entries(rest)
+      .filter(([, v]) => v != null && v !== "")
+      .map(([key, value]) => ({
+        label: capitalizeWords(key),
+        value: capitalizeWords(String(value)),
+      }));
 
     const email = emailTemplate(serviceName, emailData);
 
-    sgMail.setApiKey("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");
+    sgMail.setApiKey(process.env.SEND_GRID_KEY!);
 
     const msg = {
-      to: [
-        "kevin@macsafety.us",
-        "chris@macsafety.us",
-        "hamzajamil.easycode@gmail.com",
-      ],
+      to: ["bolddusk@gmail.com"],
       from: {
         name: "MacSafety",
         email: "nixn@macintel.io",
@@ -45,7 +60,10 @@ export async function POST(request: Request) {
 
     const status = await sgMail.send(msg);
     return NextResponse.json({ status, message: "Email sent" });
-  } catch (error) {
-    return NextResponse.json({ status: "Invalid inquiry data", error });
+  } catch {
+    return NextResponse.json(
+      { message: "Something went wrong. Please try again later." },
+      { status: 500 }
+    );
   }
 }
