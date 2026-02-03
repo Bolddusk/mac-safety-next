@@ -1,13 +1,14 @@
-export const runtime = "nodejs";
+export {}
+// export const runtime = "nodejs";
 
 import { NextResponse } from "next/server";
 import sgMail from "@sendgrid/mail";
 import { safeParseJson, stripDangerousHtml } from "@/lib/security";
 import { sendSchema } from "@/lib/apiSchemas";
 
-export async function GET() {
-  return NextResponse.json({ message: "Hello API is working" });
-}
+// export async function GET() {
+//   return NextResponse.json({ message: "Hello API is working" });
+// }
 
 export async function POST(request: Request) {
   try {

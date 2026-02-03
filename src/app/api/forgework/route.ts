@@ -4,9 +4,9 @@ import { generateForgeworkEmailTemplate } from "../emailTemplateForFroge";
 import { safeParseJson } from "@/lib/security";
 import { forgeworkSchema } from "@/lib/apiSchemas";
 
-export async function GET() {
-  return NextResponse.json({ message: "Hello API is working" });
-}
+// export async function GET() {
+//   return NextResponse.json({ message: "Hello API is working" });
+// }
 
 export async function POST(request: Request) {
   try {
@@ -28,7 +28,7 @@ export async function POST(request: Request) {
 
     const template = generateForgeworkEmailTemplate(parsed.data);
 
-    // sgMail.setApiKey(process.env.SEND_GRID_KEY!);
+//     // sgMail.setApiKey(process.env.SEND_GRID_KEY!);
 
     const msg = {
       to: ["bolddusk@gmail.com"],

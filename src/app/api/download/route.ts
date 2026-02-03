@@ -4,9 +4,9 @@ import { contactInfoEmail } from "./contactInfoEmail";
 import { safeParseJson } from "@/lib/security";
 import { downloadSchema } from "@/lib/apiSchemas";
 
-export async function GET() {
-  return NextResponse.json({ message: "Hello API is working" });
-}
+// export async function GET() {
+//   return NextResponse.json({ message: "Hello API is working" });
+// }
 
 export async function POST(request: Request) {
   try {
@@ -28,7 +28,7 @@ export async function POST(request: Request) {
 
     const email = contactInfoEmail(parsed.data);
 
-    // sgMail.setApiKey(process.env.SEND_GRID_KEY!);
+//     // sgMail.setApiKey(process.env.SEND_GRID_KEY!);
 
     const msg = {
       to: ["bolddusk@gmail.com"],
