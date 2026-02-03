@@ -101,7 +101,7 @@ export default function IndustriesPage() {
   }
 
   useEffect(() => {
-    if (pathname.includes("#")) {
+    if (pathname?.includes("#")) {
       const id = pathname.split("#")[1];
       const accordionTrigger = document.getElementById(`accordion-${id}`);
       if (accordionTrigger) {

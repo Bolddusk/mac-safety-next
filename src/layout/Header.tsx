@@ -116,7 +116,7 @@ export default function FloatingHeader() {
               <button
                 className={cn(
                   "flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm font-alliance font-medium transition-all duration-200",
-                  pathname.startsWith("/industries")
+                  pathname?.startsWith("/industries")
                     ? "text-[#eba200] bg-[#eba200]/10"
                     : "text-gray-300 hover:text-white hover:bg-white/5"
                 )}
@@ -253,7 +253,7 @@ export default function FloatingHeader() {
                         className={cn(
                           "block text-lg font-alliance font-medium transition-colors",
                           pathname === link.href ||
-                            pathname.startsWith(link.href)
+                            pathname?.startsWith(link.href)
                             ? "text-[#eba200]"
                             : "text-white hover:text-gray-300"
                         )}
