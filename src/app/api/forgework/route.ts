@@ -28,7 +28,7 @@ export async function POST(request: Request) {
 
     const template = generateForgeworkEmailTemplate(parsed.data);
 
-    sgMail.setApiKey(process.env.SEND_GRID_KEY!);
+    // sgMail.setApiKey(process.env.SEND_GRID_KEY!);
 
     const msg = {
       to: ["bolddusk@gmail.com"],

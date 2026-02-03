@@ -43,17 +43,17 @@ export async function POST(request: Request) {
         value: capitalizeWords(String(value)),
       }));
 
-    const email = emailTemplate(serviceName, emailData);
+    const email = emailTemplate(body.serviceName, emailData);
 
     sgMail.setApiKey(process.env.SEND_GRID_KEY!);
 
     const msg = {
       to: ["bolddusk@gmail.com"],
       from: {
-        name: "MacSafety",
-        email: "nixn@macintel.io",
+        name: FROM_NAME,
+        email: FROM_EMAIL,
       },
-      subject: serviceName,
+      subject: body.serviceName,
       text: "Mac Safety",
       html: email,
     };

@@ -4,14 +4,15 @@ import Nixn from "@/views/nixn";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Metadata } from "next";
 
-
 export const metadata: Metadata = {
-    title: "Nixn Risk Management Software - Smarter Safety Solutions | Mac Safety",
-    description: "Enhance workplace safety with Nixn by Mac Safety — innovative software for proactive risk management.",
-    alternates: {
-      canonical: "https://macsafety.com/nixn",
-    },
-  };
+  title:
+    "Nixn Risk Management Software - Smarter Safety Solutions | Mac Safety",
+  description:
+    "Enhance workplace safety with Nixn by Mac Safety — innovative software for proactive risk management.",
+  alternates: {
+    canonical: "https://macsafety.com/nixn",
+  },
+};
 
 export default function Index() {
   return (
