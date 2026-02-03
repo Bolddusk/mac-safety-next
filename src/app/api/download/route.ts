@@ -1,37 +1,38 @@
-import { NextResponse } from "next/server";
-import sgMail from "@sendgrid/mail";
-import { contactInfoEmail } from "./contactInfoEmail";
+export {};
+// import { NextResponse } from "next/server";
+// import sgMail from "@sendgrid/mail";
+// import { contactInfoEmail } from "./contactInfoEmail";
 
-export async function GET() {
-  return NextResponse.json({ message: "Hello API is working" });
-}
+// export async function GET() {
+//   return NextResponse.json({ message: "Hello API is working" });
+// }
 
-export async function POST(request: Request) {
-  try {
-    // const { ...data } = await request.json();
+// export async function POST(request: Request) {
+//   try {
+//     // const { ...data } = await request.json();
 
-    // const email = await contactInfoEmail(data);
+//     // const email = await contactInfoEmail(data);
 
-    // sgMail.setApiKey(process.env.SEND_GRID_KEY!);
+//     // sgMail.setApiKey(process.env.SEND_GRID_KEY!);
 
-    // const msg = {
-    //   to: [
-    //     "kevin@macsafety.us",
-    //     "chris@macsafety.us",
-    //     "hamzajamil.easycode@gmail.com",
-    //   ],
-    //   from: {
-    //     name: "MacSafety",
-    //     email: "nixn@macintel.io",
-    //   },
-    //   subject: "Download Pdf",
-    //   text: "Mac Safety",
-    //   html: email,
-    // };
+//     // const msg = {
+//     //   to: [
+//     //     "kevin@macsafety.us",
+//     //     "chris@macsafety.us",
+//     //     "hamzajamil.easycode@gmail.com",
+//     //   ],
+//     //   from: {
+//     //     name: "MacSafety",
+//     //     email: "nixn@macintel.io",
+//     //   },
+//     //   subject: "Download Pdf",
+//     //   text: "Mac Safety",
+//     //   html: email,
+//     // };
 
-    // const status = await sgMail.send(msg);
-    return NextResponse.json({ status: "success", message: "Email sent" });
-  } catch (error) {
-    return NextResponse.json({ status: "Invalid inquiry data", error });
-  }
-}
+//     // const status = await sgMail.send(msg);
+//     return NextResponse.json({ status: "success", message: "Email sent" });
+//   } catch (error) {
+//     return NextResponse.json({ status: "Invalid inquiry data", error });
+//   }
+// }

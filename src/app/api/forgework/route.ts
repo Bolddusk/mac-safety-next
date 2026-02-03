@@ -1,37 +1,38 @@
-import { NextResponse } from "next/server";
-import sgMail from "@sendgrid/mail";
-import { generateForgeworkEmailTemplate } from "../emailTemplateForFroge";
+export {}
+// import { NextResponse } from "next/server";
+// import sgMail from "@sendgrid/mail";
+// import { generateForgeworkEmailTemplate } from "../emailTemplateForFroge";
 
-export async function GET() {
-  return NextResponse.json({ message: "Hello API is working" });
-}
+// export async function GET() {
+//   return NextResponse.json({ message: "Hello API is working" });
+// }
 
-export async function POST(request: Request) {
-  try {
-    // const payload = await request.json();
+// export async function POST(request: Request) {
+//   try {
+//     // const payload = await request.json();
 
-    // const template = generateForgeworkEmailTemplate(payload);
+//     // const template = generateForgeworkEmailTemplate(payload);
 
-    // sgMail.setApiKey(process.env.SEND_GRID_KEY!);
+//     // sgMail.setApiKey(process.env.SEND_GRID_KEY!);
 
-    // const msg = {
-    //   to: [
-    //     "kevin@macsafety.us",
-    //     "chris@macsafety.us",
-    //     "hamzajamil.easycode@gmail.com",
-    //   ],
-    //   from: {
-    //     name: "MacSafety",
-    //     email: "nixn@macintel.io",
-    //   },
-    //   subject: "FordgeWork",
-    //   text: "Message from macsaefty",
-    //   html: template,
-    // };
+//     // const msg = {
+//     //   to: [
+//     //     "kevin@macsafety.us",
+//     //     "chris@macsafety.us",
+//     //     "hamzajamil.easycode@gmail.com",
+//     //   ],
+//     //   from: {
+//     //     name: "MacSafety",
+//     //     email: "nixn@macintel.io",
+//     //   },
+//     //   subject: "FordgeWork",
+//     //   text: "Message from macsaefty",
+//     //   html: template,
+//     // };
 
-    // const status = await sgMail.send(msg);
-    return NextResponse.json({ status: "success", message: "Email sent" });
-  } catch (error) {
-    return NextResponse.json({ status: "Invalid inquiry data", error });
-  }
-}
+//     // const status = await sgMail.send(msg);
+//     return NextResponse.json({ status: "success", message: "Email sent" });
+//   } catch (error) {
+//     return NextResponse.json({ status: "Invalid inquiry data", error });
+//   }
+// }
