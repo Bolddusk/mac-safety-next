@@ -89,8 +89,7 @@ export default function ContactSection({ title }: { title?: string }) {
   });
 
   const mutation = useMutation({
-    mutationFn: (data: any) =>
-      apiRequest("POST", "/api/message", { ...data, name: "" }),
+    mutationFn: (data: any) => apiRequest("POST", "/api/message", data),
     onSuccess: () => {
       toast({
         title: "Message Sent",

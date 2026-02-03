@@ -6,7 +6,7 @@ import { emailTemplate } from "../emailtemplate";
 const TO_EMAILS = [
   "kevin@macsafety.us",
   "chris@macsafety.us",
-  "hamzajamil.easycode@gmail.com",
+  "hamza@macsafety.us",
 ];
 
 const FROM_EMAIL = "nixn@macintel.io";
@@ -102,8 +102,6 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-
-    console.log({ body });
 
     const { missingRequired, emailData } = validatePayload(body);
 
