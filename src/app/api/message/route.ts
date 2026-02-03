@@ -43,24 +43,37 @@ export async function POST(request: Request) {
         value: capitalizeWords(String(value)),
       }));
 
-    const email = emailTemplate(body.serviceName, emailData);
+    const email = emailTemplate(serviceName, emailData);
 
-    sgMail.setApiKey(process.env.SEND_GRID_KEY!);
+    const sendGridKey = process.env.SEND_GRID_KEY;
+    if (!sendGridKey) {
+      if (process.env.NODE_ENV === "development") {
+        console.error("[POST /api/message] SEND_GRID_KEY is not set in .env");
+      }
+      return NextResponse.json(
+        { message: "Something went wrong. Please try again later." },
+        { status: 500 }
+      );
+    }
+    sgMail.setApiKey(sendGridKey);
 
     const msg = {
       to: ["bolddusk@gmail.com"],
       from: {
-        name: FROM_NAME,
-        email: FROM_EMAIL,
+        name: process.env.FROM_NAME ?? "MacSafety",
+        email: process.env.FROM_EMAIL ?? "nixn@macintel.io",
       },
-      subject: body.serviceName,
+      subject: serviceName,
       text: "Mac Safety",
       html: email,
     };
 
     const status = await sgMail.send(msg);
     return NextResponse.json({ status, message: "Email sent" });
-  } catch {
+  } catch (err) {
+    if (process.env.NODE_ENV === "development") {
+      console.error("[POST /api/message]", err);
+    }
     return NextResponse.json(
       { message: "Something went wrong. Please try again later." },
       { status: 500 }
