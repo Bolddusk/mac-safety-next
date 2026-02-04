@@ -132,7 +132,24 @@ export async function POST(request: Request) {
 
     const email = emailTemplate(body.serviceName, emailData);
 
-    sgMail.setApiKey(process.env.SEND_GRID_KEY!);
+    // Normalize key: trim and strip surrounding quotes (Amplify/env can add these)
+    const rawKey = process.env.SEND_GRID_KEY ?? "";
+    const apiKey = rawKey.trim().replace(/^["']|["']$/g, "");
+    // Safe fingerprint for debugging 401s – never log or expose the full key
+    const keyFingerprint = {
+      length: apiKey.length,
+      startsWithSg: apiKey.startsWith("SG."),
+      hasQuotes: rawKey !== rawKey.trim() || /^["']|["']$/.test(rawKey),
+    };
+
+    if (!apiKey) {
+      return NextResponse.json(
+        { status: "error", message: "Server misconfiguration: missing SendGrid key", keyFingerprint },
+        { status: 500 }
+      );
+    }
+
+    sgMail.setApiKey(apiKey);
 
     const msg = {
       to: TO_EMAILS,
@@ -147,8 +164,17 @@ export async function POST(request: Request) {
 
     const status = await sgMail.send(msg);
     return NextResponse.json({ status, message: "Email sent" });
-  } catch (error) {
-    return NextResponse.json({ status: "Invalid inquiry data", error });
+  } catch (error: unknown) {
+    // Include safe key fingerprint when SendGrid fails (e.g. 401) so you can verify env
+    const rawKey = (process.env.SEND_GRID_KEY ?? "").trim().replace(/^["']|["']$/g, "");
+    const keyFingerprint = {
+      length: rawKey.length,
+      startsWithSg: rawKey.startsWith("SG."),
+    };
+    return NextResponse.json(
+      { status: "Invalid inquiry data", error, keyFingerprint },
+      { status: 400 }
+    );
   }
 }
 
