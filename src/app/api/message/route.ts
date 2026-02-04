@@ -103,6 +103,18 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
 
+    // Contact form sends firstName + lastName, not "name". Build name so validation passes.
+    if (
+      (typeof body.name !== "string" || body.name.trim() === "") &&
+      typeof body.firstName === "string" &&
+      typeof body.lastName === "string"
+    ) {
+      body.name = [body.firstName.trim(), body.lastName.trim()]
+        .filter(Boolean)
+        .join(" ")
+        .slice(0, 120);
+    }
+
     const { missingRequired, emailData } = validatePayload(body);
 
     if (missingRequired?.length) {
