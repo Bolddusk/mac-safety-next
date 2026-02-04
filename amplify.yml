@@ -1,0 +1,21 @@
+version: 1
+applications:
+  - frontend:
+      phases:
+        preBuild:
+          commands:
+            # Amplify sets NODE_ENV=production, so npm skips devDependencies. Force dev deps for next build.
+            - export NODE_ENV=development
+            - npm install
+            - export NODE_ENV=production
+        build:
+          commands:
+            - npm run build
+      artifacts:
+        baseDirectory: .next
+        files:
+          - '**/*'
+      cache:
+        paths:
+          - node_modules/**/*
+          - .next/cache/**/*
